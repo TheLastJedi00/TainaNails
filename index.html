@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./styles/styles.css" />
+    <title>Tainá Lima</title>
+  </head>
+  <body>
+    <header class="lateral">
+      <img
+        src="./assets/Logo.png"
+        alt="Tainá Lima Nail Design"
+        class="lateral__logo"
+      />
+      <div class="lateral__links">
+        <a href="#" class="links__link__destaque"
+          ><img src="./assets/HomeImg.png" alt="Página Inicial" />Home</a
+        >
+        <a href="#" class="links__link"
+          ><img src="./assets/WhatsappImg.png" alt="Fale Comigo" />Fale
+          Comigo</a
+        >
+        <a href="#" class="links__link"
+          ><img src="/assets/PinImg.png" alt="Onde me encontrar" />Onde me
+          encontrar</a
+        >
+      </div>
+      <h1 class="lateral__titulo">
+        Tranforme suas unhas
+        <strong class="lateral__titulo__destacar">em arte</strong>
+      </h1>
+    </header>
+
+    <main class="container">
+      <section class="container primeiro">
+        <h1 class="primeiro__titulo">
+          Descubra a arte por trás de cada detalhe!
+        </h1>
+        <a href="#" class="primeiro__botao"
+          ><img src="./assets/InstagramImg.png" alt="Meu Instagram" />Acompanhe
+          meu trabalho</a
+        >
+      </section>
+
+      <section class="container segundo">
+        <h1 class="container__titulo">
+          Escolha o dia perfeito e agende seu atendimento comigo!
+        </h1>
+        <div class="segundo__form">
+          <form action="#" method="get" class="segundo__form formulario">
+            <div class="formulario__linha">
+              <div class="formulario__linha__coluna">
+                <label for="dia" class="formulario__linha__titulo">Dia</label>
+                <input
+                  type="number"
+                  id="dia"
+                  name="dia"
+                  min="1"
+                  max="31"
+                  class="formulario__linha__input"
+                />
+              </div>
+              <div class="formulario__linha__coluna">
+                <label for="mes" class="formulario__linha__titulo">Mês</label>
+                <input
+                  type="number"
+                  id="mes"
+                  name="mes"
+                  min="1"
+                  max="12"
+                  class="formulario__linha__input"
+                />
+              </div>
+            </div>
+            <button type="submit" class="formulario__botao">Confirmar</button>
+          </form>
+        </div>
+      </section>
+
+      <section class="container terceiro">
+        <h1 class="container__titulo">
+          Adorei que você escolheu um dia especial! Aqui estão os horários
+          disponíveis para esse dia:
+        </h1>
+        <div class="terceiro__tabela">
+          <h1 class="formulario__linha__titulo">Dia 00/00</h1>
+          <ol class="tabela horarios">
+            <li class="horarios__texto">8:00</li>
+            <li class="horarios__texto">9:00</li>
+            <li class="horarios__texto">10:00</li>
+            <li class="horarios__texto">11:00</li>
+            <li class="horarios__texto">12:00</li>
+            <li class="horarios__texto">14:00</li>
+            <li class="horarios__texto">15:00</li>
+            <li class="horarios__texto">16:00</li>
+            <li class="horarios__texto">17:00</li>
+            <li class="horarios__texto">18:00</li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="container quarto">
+        <h1 class="container__titulo">
+          Para garantir seu horário, preencha os campos e finalize seu
+          agendamento!
+        </h1>
+        <div class="segundo__form formulario">
+          <form action="#" method="post">
+            <div class="formulario__linha">
+              <label for="horario" class="formulario__titulo">Hora</label>
+              <input type="number" id="horario" name="horario" />
+            </div>
+            <div class="formulario__linha">
+              <label for="nome" class="formulario__titulo">Nome</label>
+              <input type="text" id="nome" name="nome" />
+            </div>
+            <div class="formulario__linha">
+              <label for="numero" class="formulario__titulo">Contato</label>
+              <input type="number" id="numero" name="numero" />
+            </div>
+            <button type="submit">Agendar</button>
+          </form>
+        </div>
+      </section>
+    </main>
+    <footer></footer>
+  </body>
+</html>
