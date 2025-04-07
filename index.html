@@ -35,7 +35,7 @@
     <main class="container">
       <section class="container primeiro">
         <h1 class="primeiro__titulo">
-          Descubra a arte por trás de cada detalhe!
+          Beleza e elegância começando pelas mãos.
         </h1>
         <a href="#" class="primeiro__botao"
           ><img src="./assets/InstagramImg.png" alt="Meu Instagram" />Acompanhe
@@ -51,9 +51,9 @@
           <form action="#" method="get" class="segundo__form formulario">
             <div class="formulario__linha">
               <div class="formulario__linha__coluna">
-                <label for="dia" class="formulario__linha__titulo">Dia</label>
+                <label for="dia" class="formulario__coluna__titulo">Escolha uma data:</label>
                 <input
-                  type="number"
+                  type="date"
                   id="dia"
                   name="dia"
                   min="1"
@@ -61,17 +61,17 @@
                   class="formulario__linha__input"
                 />
               </div>
-              <div class="formulario__linha__coluna">
-                <label for="mes" class="formulario__linha__titulo">Mês</label>
+              <!-- <div class="formulario__linha__coluna">
+                <label for="mes" class="formulario__coluna__titulo">Mês</label>
                 <input
-                  type="number"
+                  type="month"
                   id="mes"
                   name="mes"
                   min="1"
                   max="12"
                   class="formulario__linha__input"
                 />
-              </div>
+              </div> -->
             </div>
             <button type="submit" class="formulario__botao">Confirmar</button>
           </form>
@@ -84,7 +84,7 @@
           disponíveis para esse dia:
         </h1>
         <div class="terceiro__tabela">
-          <h1 class="formulario__linha__titulo">Dia 00/00</h1>
+          <h1 class="formulario__coluna__titulo">Dia 00/00</h1>
           <ol class="tabela horarios">
             <li class="horarios__texto">8:00</li>
             <li class="horarios__texto">9:00</li>
@@ -105,21 +105,53 @@
           Para garantir seu horário, preencha os campos e finalize seu
           agendamento!
         </h1>
-        <div class="segundo__form formulario">
-          <form action="#" method="post">
-            <div class="formulario__linha">
-              <label for="horario" class="formulario__titulo">Hora</label>
-              <input type="number" id="horario" name="horario" />
+        <div class="quarto__form">
+          <form action="#" method="post" class="formulario__agendar">
+            <div class="quarto__form__colunas">
+              <div class="quarto__form__linha">
+                <label for="horario" class="formulario__linha__titulo"
+                  >Hora</label
+                >
+                <input
+                  class="quarto__form__input"
+                  type="time"
+                  id="horario"
+                  name="horario"
+                />
+              </div>
+              <div class="quarto__form__linha">
+                <label for="nome" class="formulario__linha__titulo">Nome</label>
+                <input
+                  class="quarto__form__input"
+                  type="text"
+                  id="nome"
+                  name="nome"
+                />
+              </div>
+              <div class="quarto__form__linha">
+                <label for="servico" class="formulario__linha__titulo"
+                  >Serviço</label
+                >
+                <input
+                  class="quarto__form__input"
+                  type="text"
+                  id="servico"
+                  name="servico"
+                />
+              </div>
+              <div class="quarto__form__linha">
+                <label for="numero" class="formulario__linha__titulo"
+                  >Contato</label
+                >
+                <input
+                  class="quarto__form__input"
+                  type="tel"
+                  id="numero"
+                  name="numero"
+                />
+              </div>
             </div>
-            <div class="formulario__linha">
-              <label for="nome" class="formulario__titulo">Nome</label>
-              <input type="text" id="nome" name="nome" />
-            </div>
-            <div class="formulario__linha">
-              <label for="numero" class="formulario__titulo">Contato</label>
-              <input type="number" id="numero" name="numero" />
-            </div>
-            <button type="submit">Agendar</button>
+            <button type="submit" class="formulario__botao">Agendar</button>
           </form>
         </div>
       </section>

@@ -1,16 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Tilt+Neon&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Tilt+Neon&family=Waterfall&display=swap');
 :root{
     --mainColor: #FF8F9E;
     --secondColor: #E07281;
     --thirdColor: #331D20;
     --font: Tilt Neon, sans-serif;
+    --fontCaligraphy: Waterfall, sans-serif;
     --titleSize: 3rem;
-    --containerFontSize: 4rem;
-    --extraBigSize: 7rem;
+    --containerFontSize: 3rem;
+    --lateralFontSize: 2.5rem;
+    --extraBigSize: 15rem;
     --titleWeight: 400;
     --extraWeight: 550;
     --containerMargin: 0 0 0 19.2vw;
+    --elementMargin: 0 10% 0 10%;
 }
 *{
     margin: 0;
@@ -53,7 +56,7 @@ body{
 .links__link{
     text-decoration: none;
     color: var(--mainColor);
-    font-size: var(--titleSize);
+    font-size: var(--lateralFontSize);
     font-weight: var(--titleWeight);
 }
 .links__link:hover{
@@ -62,7 +65,7 @@ body{
 .links__link__destaque{
     color: white;
     text-decoration: none;
-    font-size: var(--titleSize);
+    font-size: var(--lateralFontSize);
 }
 .links__link__destaque:hover{
     color: var(--mainColor);
@@ -95,9 +98,10 @@ body{
 .primeiro__titulo{
     display: flex;
     justify-content: center;
-    text-align: left;
+    text-align: canter;
     align-items: center;
     width: 70%;
+    font-family: var(--fontCaligraphy);
     color: var(--thirdColor);
     font-size: var(--extraBigSize);
     font-weight: var(--extraWeight);
@@ -111,7 +115,7 @@ body{
     color: var(--mainColor);
     font-size: var(--titleSize);
     font-weight: var(--titleWeight);
-    width: 30%;
+    width:35%;
     height: 10%;
     border-radius: 40em;
     gap: 0.7em;
@@ -125,14 +129,13 @@ body{
 .segundo{
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     text-align: center;
     background-color: var(--secondColor);
     height: 35vh;
     width: 80vw;
     margin: var(--containerMargin);
-    gap: 20em;
 }
 .container__titulo{
     color: var(--thirdColor);
@@ -143,6 +146,7 @@ body{
     align-items: center;
     text-align: center;
     width: 50%;
+    margin: var(--elementMargin);
 }
 .segundo__form{
     display: flex;
@@ -150,10 +154,11 @@ body{
     justify-content: center;
     align-items: center;
     text-align: center;
-    width: 20%;
+    width: 30%;
     background-color: var(--thirdColor);
     border-radius: 40px;
     padding: 1em 0 1em 0;
+    margin: var(--elementMargin);
 }
 .formulario{
     display: flex;
@@ -171,7 +176,7 @@ body{
     align-items: center;
     text-align: center;
     width: auto;
-    gap: 3em;
+    gap: 2em;
 }
 .formulario__linha__coluna{
     display: flex;
@@ -179,14 +184,14 @@ body{
     justify-content: center;
     align-items: center;
     text-align: left;
-    width: 40%;
+    width: 25rem;
     gap: 1em;
 }
-.formulario__linha__titulo{
+.formulario__coluna__titulo{
     color: white;
     font-size: var(--containerFontSize);
     font-weight: var(--titleWeight);
-    width: 100%;
+    width: 25rem;
     text-align: center;
 }
 .formulario__linha__input{
@@ -196,8 +201,8 @@ body{
     line-height: var(--titleSize);
     font-weight: var(--titleWeight);
     text-align: center;
-    width: auto;
-    height: 2em;
+    width: 25rem;
+    height: 1.5em;
     border-radius: 40px;
     padding: 0 0.5em;
 }
@@ -210,10 +215,10 @@ body{
     color: var(--thirdColor);
     font-size: var(--titleSize);
     font-weight: var(--titleWeight);
-    width: 70%;
+    width: 25rem;
     height: 5vh;
     border-radius: 40px;
-    gap: 0.7em;
+    margin: 0;
     text-decoration: none;
 }
 .formulario__botao:hover{
@@ -231,7 +236,6 @@ body{
     height: 35vh;
     width: 80vw;
     margin: var(--containerMargin);
-    gap: 20em;
 }
 .terceiro__tabela{
     display: flex;
@@ -244,6 +248,7 @@ body{
     border-radius: 40px;
     padding: 1em 0 1em 0;
     gap: 1em;
+    margin: var(--elementMargin);
 }
 .horarios{
     display: grid;
@@ -261,12 +266,65 @@ body{
 .quarto{
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     text-align: center;
     background-color: var(--secondColor);
     height: 35vh;
     width: 80vw;
     margin: var(--containerMargin);
-    gap: 20em;
+}
+.formulario__agendar{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+    margin: 1.5em 2em;
+}
+.quarto__form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 30%;
+    height: max-content;
+    background-color: var(--thirdColor);
+    border-radius: 40px;
+    margin: var(--elementMargin);
+}
+.quarto__form__colunas{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1em;
+    width: 100%;
+}
+.quarto__form__linha{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: auto;
+    gap: 2em;
+}
+.formulario__linha__titulo{
+    color: white;
+    font-size: var(--containerFontSize);
+    font-weight: var(--titleWeight);
+    width: 100%;
+    text-align: left;
+}
+.quarto__form__input{
+    background-color: var(--mainColor);
+    color: var(--thirdColor);
+    font-size: var(--titleSize);
+    line-height: var(--titleSize);
+    font-weight: var(--titleWeight);
+    width: 20rem;
+    text-align: center;
+    border-radius: 40px;
+    padding: 0 0.5em;
 }
