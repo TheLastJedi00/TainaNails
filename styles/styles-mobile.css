@@ -161,7 +161,7 @@
     text-align: center;
     background-color: var(--secondColor);
     gap: 1em;
-    height: var(--containerHeight);
+    height: auto;
     width: 100vw;
     margin: 0;
   }
@@ -262,7 +262,7 @@
     align-items: center;
     text-align: center;
     background-color: var(--mainColor);
-    height: 32vh;
+    height: auto;
     width: 100vw;
     margin: 0;
     gap: 1vh;
