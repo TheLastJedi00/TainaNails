@@ -50,7 +50,7 @@
     position: relative;
   }
   .lateral__icon{
-    width: 6vh;
+    width: 5vh;
   }
   .lateral__links {
     display: flex;
@@ -60,7 +60,7 @@
     text-align: center;
     height: 100%;
     margin: 0 0 0 0;
-    gap: 0.5em;
+    gap: 0;
   }
   .links__link {
     display: flex;
