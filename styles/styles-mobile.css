@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Tilt+Neon&family=Waterfall&display=swap");
 
-@media (max-aspect-ratio: 3/4) {
+@media (max-width: 768px) {
   :root{
         --mainColor: #FF8F9E;
         --secondColor: #E07281;
@@ -47,7 +47,7 @@
     background-color: var(--thirdColor);
     height: 8vh;
     width: 100vw;
-    position: relative;
+    position: fixed;
   }
   .lateral__icon{
     width: 5vh;
@@ -114,7 +114,7 @@
     align-items: center;
     text-align: center;
     width: 100vw;
-    margin: 0 0 1vh 0;
+    margin: 8vh 0 1vh 0;
     gap: 1em;
   }
 
@@ -262,7 +262,8 @@
     align-items: center;
     text-align: center;
     background-color: var(--mainColor);
-    height: auto;
+    height: auto
+    ;
     width: 100vw;
     margin: 0;
     gap: 1vh;
@@ -361,3 +362,4 @@
     border-radius: 40px;
   }
 }
+
