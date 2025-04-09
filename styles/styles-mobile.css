@@ -194,7 +194,7 @@
     justify-content: center;
     align-items: center;
     text-align: center;
-    width: 100%;
+    width: 50vw;
     gap: 2vh;
   }
   .formulario__linha {
@@ -203,7 +203,7 @@
     justify-content: center;
     align-items: center;
     text-align: center;
-    width: auto;
+    width: 100%;
     gap: 1vh;
   }
   .formulario__linha__coluna {
@@ -212,14 +212,14 @@
     justify-content: center;
     align-items: center;
     text-align: left;
-    width: 25rem;
+    width: 100%;
     gap: 1vh;
   }
   .formulario__coluna__titulo {
     color: white;
     font-size: var(--containerFontSize);
     font-weight: var(--titleWeight);
-    width: 25rem;
+    width: 100%;
     text-align: center;
   }
   .formulario__linha__input {
@@ -320,7 +320,7 @@
     justify-content: center;
     align-items: center;
     text-align: center;
-    width: 75vw;
+    width: 90vw;
     height: max-content;
     background-color: var(--thirdColor);
     border-radius: 20px;
@@ -330,7 +330,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    gap: 1em;
+    gap: 1vh;
     width: 100%;
   }
   .quarto__form__linha {
@@ -340,7 +340,7 @@
     align-items: center;
     text-align: center;
     width: auto;
-    gap: 1em;
+    gap: 8vw;
   }
   .formulario__linha__titulo {
     color: white;
@@ -357,7 +357,7 @@
     font-weight: var(--titleWeight);
     height: var(--containerFontSize);
     padding: 1em 0;
-    width: 50vw;
+    width: 60vw;
     text-align: center;
     border-radius: 40px;
   }
