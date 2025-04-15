@@ -9,14 +9,14 @@
     <title>Tainá Lima</title>
   </head>
   <body>
-    <header class="lateral">
+    <aside class="lateral">
       <img
         src="./assets/Logo.png"
         alt="Tainá Lima Nail Design"
         class="lateral__logo"
       />
       <div class="lateral__links">
-        <a href="#" class="links__link__destaque"
+        <a href="#" class="link__destaque"
           ><img class="lateral__icon" src="./assets/HomeImg.png" alt="Página Inicial" />Home</a
         >
         <a href="#" class="links__link"
@@ -32,10 +32,10 @@
         Tranforme suas unhas
         <strong class="lateral__titulo__destacar">em arte</strong>
       </h1>
-    </header>
+    </aside>
 
     <main class="container">
-      <section class="container primeiro">
+      <section class="primeiro">
         <h1 class="primeiro__titulo">
           Beleza e elegância começando pelas mãos.
         </h1>
@@ -45,7 +45,7 @@
         >
       </section>
 
-      <section class="container segundo">
+      <section class="segundo">
         <h1 class="container__titulo">
           Escolha o dia perfeito e agende seu atendimento comigo!
         </h1>
@@ -56,37 +56,26 @@
                 <label for="dia" class="formulario__coluna__titulo">Escolha uma data:</label>
                 <input
                   type="date"
-                  id="dia"
+                  id="data"
                   name="dia"
                   min="1"
                   max="31"
                   class="formulario__linha__input"
                 />
               </div>
-              <!-- <div class="formulario__linha__coluna">
-                <label for="mes" class="formulario__coluna__titulo">Mês</label>
-                <input
-                  type="month"
-                  id="mes"
-                  name="mes"
-                  min="1"
-                  max="12"
-                  class="formulario__linha__input"
-                />
-              </div> -->
             </div>
-            <button type="submit" class="formulario__botao">Confirmar</button>
+            <button type="submit" class="formulario__botao" id="botao-confirmar">Confirmar</button>
           </form>
         </div>
       </section>
 
-      <section class="container terceiro">
+      <section class="terceiro">
         <h1 class="container__titulo">
           Adorei que você escolheu um dia especial! Aqui estão os horários
           disponíveis para esse dia:
         </h1>
         <div class="terceiro__tabela">
-          <h1 class="formulario__coluna__titulo">Dia 00/00</h1>
+          <h1 class="formulario__coluna__titulo" id="titulo-tabela">Dia 00/00</h1>
           <ol class="tabela horarios">
             <li class="horarios__texto">8:00</li>
             <li class="horarios__texto">9:00</li>
@@ -102,12 +91,11 @@
         </div>
       </section>
 
-      <section class="container quarto">
+      <section class="quarto">
         <h1 class="container__titulo">
           Para garantir seu horário, preencha os campos e finalize seu
           agendamento!
         </h1>
-        <div class="quarto__form">
           <form action="#" method="post" class="formulario__agendar">
             <div class="quarto__form__colunas">
               <div class="quarto__form__linha">
@@ -155,9 +143,9 @@
             </div>
             <button type="submit" class="formulario__botao">Agendar</button>
           </form>
-        </div>
       </section>
     </main>
     <footer></footer>
+    <script src="index.js"></script>
   </body>
 </html>

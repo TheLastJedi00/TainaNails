@@ -20,6 +20,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: var(--font);
+    gap: 0;
 }
 body{
     background: var(--mainColor);
@@ -32,6 +33,8 @@ body{
     justify-content: center;
     align-items: center;
     height: auto;
+    width: 100vw;
+    padding: 0 0 0 500px;
 }
 .lateral{
     display: flex;
@@ -40,7 +43,7 @@ body{
     text-align: left;
     background-color: var(--thirdColor);
     height: 100%;
-    width: 20vw;
+    width: 500px;
     position: fixed;
 }
 .lateral__links{
@@ -62,12 +65,12 @@ body{
 .links__link:hover{
     color: white;
 }
-.links__link__destaque{
+.link__destaque{
     color: white;
     text-decoration: none;
     font-size: var(--lateralFontSize);
 }
-.links__link__destaque:hover{
+.link__destaque:hover{
     color: var(--mainColor);
 }
 .lateral__titulo{
@@ -97,16 +100,15 @@ body{
     justify-content: center;
     align-items: center;
     text-align: center;
-    height: 80vh;
-    width: 80vw;
-    margin: var(--containerMargin);
+    height: 1220px;
+    width: 100%;
     gap: 7em;
 }
 
 .primeiro__titulo{
     display: flex;
     justify-content: center;
-    text-align: canter;
+    text-align: center;
     align-items: center;
     width: 70%;
     font-family: var(--fontCaligraphy);
@@ -141,9 +143,9 @@ body{
     align-items: center;
     text-align: center;
     background-color: var(--secondColor);
+    border-radius: 40px;
     height: 35vh;
     width: 80vw;
-    margin: var(--containerMargin);
 }
 .container__titulo{
     color: var(--thirdColor);
@@ -162,7 +164,7 @@ body{
     justify-content: center;
     align-items: center;
     text-align: center;
-    width: 30%;
+    width: 17vw;
     background-color: var(--thirdColor);
     border-radius: 40px;
     padding: 1em 0 1em 0;
@@ -209,7 +211,7 @@ body{
     line-height: var(--titleSize);
     font-weight: var(--titleWeight);
     text-align: center;
-    width: 25rem;
+    width: 10vw;
     height: 2.5em;
     border-radius: 40px;
     padding: 0 0.5em;
@@ -223,7 +225,7 @@ body{
     color: var(--thirdColor);
     font-size: var(--titleSize);
     font-weight: var(--titleWeight);
-    width: 25rem;
+    width: 10vw;
     height: 5vh;
     border-radius: 40px;
     margin: 0;
@@ -237,13 +239,12 @@ body{
 .terceiro{
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     text-align: center;
     background-color: var(--mainColor);
     height: 35vh;
     width: 80vw;
-    margin: var(--containerMargin);
 }
 .terceiro__tabela{
     display: flex;
@@ -278,51 +279,46 @@ body{
     align-items: center;
     text-align: center;
     background-color: var(--secondColor);
-    height: 35vh;
+    border-radius: 40px;
+    height: max-content;
+    padding: 20px 0;
     width: 80vw;
-    margin: var(--containerMargin);
+    margin-bottom: 20px;
 }
 .formulario__agendar{
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    gap: 1em;
+    gap: 1px;
     margin: 1.5em 2em;
-}
-.quarto__form{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    width: 30%;
-    height: max-content;
     background-color: var(--thirdColor);
-    border-radius: 40px;
     margin: var(--elementMargin);
+    border-radius: 40px;
+    padding: 25px;
+    width: 60%;
 }
 .quarto__form__colunas{
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    gap: 1em;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
     width: 100%;
+    margin-bottom: 20px;
 }
 .quarto__form__linha{
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     text-align: center;
-    width: auto;
-    gap: 2em;
+    width: 100%;
 }
 .formulario__linha__titulo{
     color: white;
     font-size: var(--containerFontSize);
     font-weight: var(--titleWeight);
-    width: 100%;
     text-align: left;
 }
 .quarto__form__input{
@@ -331,7 +327,7 @@ body{
     font-size: var(--titleSize);
     line-height: var(--titleSize);
     font-weight: var(--titleWeight);
-    width: 20rem;
+    width: 70%;
     height: 2.5em;
     text-align: center;
     border-radius: 40px;
