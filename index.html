@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./styles/styles-desktop.css" />
     <link rel="stylesheet" href="./styles/styles-mobile.css" />
-    <link rel="stylesheet" href="./styles/styles-ultrawide.css">
+    <link rel="stylesheet" href="./styles/styles-ultrawide.css" />
     <title>Tainá Lima</title>
   </head>
   <body>
@@ -17,15 +17,25 @@
       />
       <div class="lateral__links">
         <a href="#" class="link__destaque"
-          ><img class="lateral__icon" src="./assets/HomeImg.png" alt="Página Inicial" />Home</a
+          ><img
+            class="lateral__icon"
+            src="./assets/HomeImg.png"
+            alt="Página Inicial"
+          />Home</a
         >
         <a href="#" class="links__link"
-          ><img class="lateral__icon" src="./assets/WhatsappImg.png" alt="Fale Comigo" />Fale
-          Comigo</a
+          ><img
+            class="lateral__icon"
+            src="./assets/WhatsappImg.png"
+            alt="Fale Comigo"
+          />Fale Comigo</a
         >
         <a href="#" class="links__link"
-          ><img class="lateral__icon" src="/assets/PinImg.png" alt="Onde me encontrar" />Onde me
-          encontrar</a
+          ><img
+            class="lateral__icon"
+            src="/assets/PinImg.png"
+            alt="Onde me encontrar"
+          />Onde me encontrar</a
         >
       </div>
       <h1 class="lateral__titulo">
@@ -40,8 +50,11 @@
           Beleza e elegância começando pelas mãos.
         </h1>
         <a href="#" class="primeiro__botao"
-          ><img class="icon__instagram" src="./assets/InstagramImg.png" alt="Meu Instagram" />Acompanhe
-          meu trabalho</a
+          ><img
+            class="icon__instagram"
+            src="./assets/InstagramImg.png"
+            alt="Meu Instagram"
+          />Acompanhe meu trabalho</a
         >
       </section>
 
@@ -49,24 +62,26 @@
         <h1 class="container__titulo">
           Escolha o dia perfeito e agende seu atendimento comigo!
         </h1>
-        <div class="segundo__form">
-          <form action="#" method="get" class="segundo__form formulario">
-            <div class="formulario__linha">
-              <div class="formulario__linha__coluna">
-                <label for="dia" class="formulario__coluna__titulo">Escolha uma data:</label>
-                <input
-                  type="date"
-                  id="data"
-                  name="dia"
-                  min="1"
-                  max="31"
-                  class="formulario__linha__input"
-                />
-              </div>
+        <form action="#" method="get" class="segundo__form">
+          <div class="formulario__linha">
+            <div class="formulario__linha__coluna">
+              <label for="data" class="formulario__coluna__titulo"
+                >Escolha uma data:</label
+              >
+              <input
+                type="date"
+                id="data"
+                name="dia"
+                min="1"
+                max="31"
+                class="formulario__linha__input"
+              />
             </div>
-            <button type="submit" class="formulario__botao" id="botao-confirmar">Confirmar</button>
-          </form>
-        </div>
+          </div>
+          <button type="submit" class="formulario__botao" id="botao-confirmar">
+            Confirmar
+          </button>
+        </form>
       </section>
 
       <section class="terceiro">
@@ -75,7 +90,9 @@
           disponíveis para esse dia:
         </h1>
         <div class="terceiro__tabela">
-          <h1 class="formulario__coluna__titulo" id="titulo-tabela">Dia 00/00</h1>
+          <h1 class="formulario__coluna__titulo" id="titulo-tabela">
+            Escolha uma data
+          </h1>
           <ol class="tabela horarios">
             <li class="horarios__texto">8:00</li>
             <li class="horarios__texto">9:00</li>
@@ -96,53 +113,54 @@
           Para garantir seu horário, preencha os campos e finalize seu
           agendamento!
         </h1>
-          <form action="#" method="post" class="formulario__agendar">
-            <div class="quarto__form__colunas">
-              <div class="quarto__form__linha">
-                <label for="horario" class="formulario__linha__titulo"
-                  >Hora</label
-                >
-                <input
-                  class="quarto__form__input"
-                  type="time"
-                  id="horario"
-                  name="horario"
-                />
-              </div>
-              <div class="quarto__form__linha">
-                <label for="nome" class="formulario__linha__titulo">Nome</label>
-                <input
-                  class="quarto__form__input"
-                  type="text"
-                  id="nome"
-                  name="nome"
-                />
-              </div>
-              <div class="quarto__form__linha">
-                <label for="servico" class="formulario__linha__titulo"
-                  >Serviço</label
-                >
-                <input
-                  class="quarto__form__input"
-                  type="text"
-                  id="servico"
-                  name="servico"
-                />
-              </div>
-              <div class="quarto__form__linha">
-                <label for="numero" class="formulario__linha__titulo"
-                  >Contato</label
-                >
-                <input
-                  class="quarto__form__input"
-                  type="tel"
-                  id="numero"
-                  name="numero"
-                />
-              </div>
+        <form action="#" method="post" class="formulario__agendar">
+          <div class="quarto__form__colunas">
+            <div class="quarto__form__linha">
+              <label for="horario" class="formulario__linha__titulo"
+                >Hora</label
+              >
+              <input
+                class="quarto__form__input"
+                type="time"
+                step="3600"
+                id="horario"
+                name="horario"
+              />
             </div>
-            <button type="submit" class="formulario__botao">Agendar</button>
-          </form>
+            <div class="quarto__form__linha">
+              <label for="nome" class="formulario__linha__titulo">Nome</label>
+              <input
+                class="quarto__form__input"
+                type="text"
+                id="nome"
+                name="nome"
+              />
+            </div>
+            <div class="quarto__form__linha">
+              <label for="servico" class="formulario__linha__titulo"
+                >Serviço</label
+              >
+              <input
+                class="quarto__form__input"
+                type="text"
+                id="servico"
+                name="servico"
+              />
+            </div>
+            <div class="quarto__form__linha">
+              <label for="numero" class="formulario__linha__titulo"
+                >Contato</label
+              >
+              <input
+                class="quarto__form__input"
+                type="tel"
+                id="numero"
+                name="numero"
+              />
+            </div>
+          </div>
+          <button type="submit" class="formulario__botao">Agendar</button>
+        </form>
       </section>
     </main>
     <footer></footer>

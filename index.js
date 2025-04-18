@@ -18,7 +18,15 @@ confirmButton.addEventListener("click", (event) => {
   //log
   console.log(`Day of week in array: ${weekday}`);
   //Array with days of week in portuguese
-  const daysOfWeek = ["Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado", "Domingo"];
+  const daysOfWeek = [
+    "Segunda",
+    "Terça",
+    "Quarta",
+    "Quinta",
+    "Sexta",
+    "Sábado",
+    "Domingo",
+  ];
   //Translate weekday
   const weekdayName = daysOfWeek[weekday];
   //Log

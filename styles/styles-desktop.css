@@ -164,20 +164,13 @@ body{
     justify-content: center;
     align-items: center;
     text-align: center;
-    width: 17vw;
+    width: 500px;
+    height: 300px;
+    gap: 30px;
     background-color: var(--thirdColor);
     border-radius: 40px;
     padding: 1em 0 1em 0;
     margin: var(--elementMargin);
-}
-.formulario{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    width: 100%;
-    gap: 3em;
 }
 .formulario__linha{
     display: flex;
@@ -194,8 +187,8 @@ body{
     justify-content: center;
     align-items: center;
     text-align: left;
-    width: 25rem;
-    gap: 1em;
+    width: 100%;
+    gap: 30px;
 }
 .formulario__coluna__titulo{
     color: white;
@@ -211,10 +204,10 @@ body{
     line-height: var(--titleSize);
     font-weight: var(--titleWeight);
     text-align: center;
-    width: 10vw;
-    height: 2.5em;
+    width: 250px;
+    height: 70px;
     border-radius: 40px;
-    padding: 0 0.5em;
+    padding: 5px 5px;
 }
 .formulario__botao{
     display: flex;
@@ -225,9 +218,10 @@ body{
     color: var(--thirdColor);
     font-size: var(--titleSize);
     font-weight: var(--titleWeight);
-    width: 10vw;
-    height: 5vh;
+    width: 250px;
+    height: 70px;
     border-radius: 40px;
+    padding: 5px 5px;
     margin: 0;
     text-decoration: none;
 }
@@ -252,7 +246,8 @@ body{
     justify-content: center;
     align-items: center;
     text-align: center;
-    width: 20%;
+    width: 500px;
+    height: 300px;
     background-color: var(--thirdColor);
     border-radius: 40px;
     padding: 1em 0 1em 0;
@@ -296,7 +291,7 @@ body{
     margin: var(--elementMargin);
     border-radius: 40px;
     padding: 25px;
-    width: 60%;
+    width: 900px;
 }
 .quarto__form__colunas{
     display: flex;
@@ -314,6 +309,7 @@ body{
     align-items: center;
     text-align: center;
     width: 100%;
+    gap: 50px;
 }
 .formulario__linha__titulo{
     color: white;
@@ -327,9 +323,9 @@ body{
     font-size: var(--titleSize);
     line-height: var(--titleSize);
     font-weight: var(--titleWeight);
-    width: 70%;
-    height: 2.5em;
-    text-align: center;
+    width: 400px;
+    height: 70px;
     border-radius: 40px;
-    padding: 0 0.5em;
+    padding: 5px 5px;
+    text-align: center;
 }
