@@ -52,6 +52,9 @@
     margin: 0;
     gap: 25px;
   }
+  .lateral__icon {
+    width: 45px;
+  }
   .links__link {
     font-size: 0;
   }
@@ -142,8 +145,9 @@
   .terceiro__tabela {
     width: 200px;
     height: 160px;
+    min-width: 120px;
     border-radius: 20px;
-    padding: 10px 0;
+    padding: 10px 10px;
     gap: 10px;
   }
   .quarto {
@@ -172,5 +176,41 @@
   .quarto__form__input {
     width: 200px;
     height: 40px;
+  }
+  .lista__servicos {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    position: fixed;
+  }
+  .lista__servicos.show {
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    place-items: center;
+    position: absolute;
+    width: 61em;
+    gap: 5px;
+    background-color: var(--thirdColor);
+    padding: 20px;
+    border: 3px solid var(--mainColor);
+    border-radius: 40px;
+    opacity: 1;
+  }
+
+  .servico {
+    width: 90%;
+    height: 3em;
+    padding: 10px;
+    font-size: 1.5rem;
+    text-align: center;
+  }
+  .selecione__botao {
+    width: 200px;
+    height: 70px;
+    border-radius: 20px;
+  }
+  .selecione__botao:hover {
+    background-color: var(--secondColor);
+    color: white;
+    font-weight: 500;
   }
 }

@@ -89,22 +89,11 @@
           Adorei que você escolheu um dia especial! Aqui estão os horários
           disponíveis para esse dia:
         </h1>
-        <div class="terceiro__tabela">
+        <div id="div-tabela" class="terceiro__tabela">
           <h1 class="formulario__coluna__titulo" id="titulo-tabela">
-            Escolha uma data
+            Escolha uma data para ver os horários aqui
           </h1>
-          <ol class="tabela horarios">
-            <li class="horarios__texto">8:00</li>
-            <li class="horarios__texto">9:00</li>
-            <li class="horarios__texto">10:00</li>
-            <li class="horarios__texto">11:00</li>
-            <li class="horarios__texto">12:00</li>
-            <li class="horarios__texto">14:00</li>
-            <li class="horarios__texto">15:00</li>
-            <li class="horarios__texto">16:00</li>
-            <li class="horarios__texto">17:00</li>
-            <li class="horarios__texto">18:00</li>
-          </ol>
+          <ol id="tabela" class="tabela horarios"></ol>
         </div>
       </section>
 
@@ -140,17 +129,69 @@
               <label for="servico" class="formulario__linha__titulo"
                 >Serviço</label
               >
-              <input
-                class="quarto__form__input"
-                type="text"
-                id="servico"
-                name="servico"
-              />
+              <button class="selecione__botao" type="button" id="servico">
+                Selecione aqui
+              </button>
             </div>
+            <ul class="lista__servicos" id="lista-servicos">
+              <button id="botao-servico" type="button" class="servico formulario__botao">Manicure</button>
+              <button id="botao-servico" type="button" class="servico formulario__botao">Pedicure</button>
+              <button id="botao-servico" type="button" class="servico formulario__botao">
+                Manicure e Pedicure
+              </button>
+              <button id="botao-servico" type="button" class="servico formulario__botao">
+                Manicure e Pedicure (Decorados)
+              </button>
+              <button id="botao-servico" type="button" class="servico formulario__botao">
+                Manicure (Decorada)
+              </button>
+              <button id="botao-servico" type="button" class="servico formulario__botao">
+                Pedicure (Decorado)
+              </button>
+              <button id="botao-servico" type="button" class="servico formulario__botao">
+                Manicure em Gel e Pedicure Simples
+              </button>
+              <button id="botao-servico" type="button" class="servico formulario__botao">
+                Manicure e Pedicure (Esmaltação em Gel)
+              </button>
+              <button id="botao-servico" type="button" class="servico formulario__botao">
+                Manicure (Esmaltação em Gel)
+              </button>
+              <button id="botao-servico" type="button" class="servico formulario__botao">
+                Pedicure (Esmaltação em Gel)
+              </button>
+              <button id="botao-servico" type="button" class="servico formulario__botao">Unhas Postiças</button>
+              <button id="botao-servico" type="button" class="servico formulario__botao">
+                Unhas Postiças (Decoradas)
+              </button>
+              <button id="botao-servico" type="button" class="servico formulario__botao">
+                Unhas Postiças (Realistas)
+              </button>
+              <button id="botao-servico" type="button" class="servico formulario__botao">
+                Unhas Postiças (Realistas Decoradas)
+              </button>
+              <button id="botao-servico" type="button" class="servico formulario__botao">Blindagem</button>
+              <button id="botao-servico" type="button" class="servico formulario__botao">Banho de Gel</button>
+              <button id="botao-servico" type="button" class="servico formulario__botao">
+                Alongamento (Fibra de Vidro)
+              </button>
+              <button id="botao-servico" type="button" class="servico formulario__botao">
+                Alongamento (Model F1)
+              </button>
+              <button id="botao-servico" type="button" class="servico formulario__botao">
+                Alongamento (Tip de Gel)
+              </button>
+              <button id="botao-servico" type="button" class="servico formulario__botao">
+                Alongamento (SoftGel)
+              </button>
+              <button id="botao-servico" type="button" class="servico formulario__botao">
+                Remoção de Alongamentos
+              </button>
+            </ul>
             <div class="quarto__form__linha">
               <label for="numero" class="formulario__linha__titulo"
-                >Contato</label
-              >
+                >Contato
+              </label>
               <input
                 class="quarto__form__input"
                 type="tel"
