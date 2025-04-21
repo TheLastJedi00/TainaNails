@@ -1,20 +1,19 @@
 import {
   chooseDate,
   confirmButton,
-  tableDate,
   tableList,
   tableDiv,
   selectService,
   serviceList,
   scheduleButton,
-} from "./scripts/Globals.js";
+} from "../scripts/Globals.js";
 import {
   ProcessedDate,
   weekdayName,
   day,
   month,
-} from "/scripts/ProcessedDate.js";
-import { schedulingData } from "/scripts/SchedulingData.js";
+} from "../scripts/ProcessedDate.js";
+import { schedulingData } from "../scripts/SchedulingData.js";
 
 //Listen click confirm button event and save in "event" parameter
 confirmButton.addEventListener("click", (event) => {
