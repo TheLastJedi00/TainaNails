@@ -6,14 +6,14 @@ import {
   selectService,
   serviceList,
   scheduleButton,
-} from "../scripts/Globals.js";
+} from "./Globals.js";
 import {
   ProcessedDate,
   weekdayName,
   day,
   month,
-} from "../scripts/ProcessedDate.js";
-import { schedulingData } from "../scripts/SchedulingData.js";
+} from "./ProcessedDate.js";
+import { schedulingData } from "./SchedulingData.js";
 
 //Listen click confirm button event and save in "event" parameter
 confirmButton.addEventListener("click", (event) => {
