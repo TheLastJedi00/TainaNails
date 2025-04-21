@@ -2,7 +2,7 @@ const chooseDate = document.querySelector("#data");
 const confirmButton = document.querySelector("#botao-confirmar");
 const tableDate = document.querySelector("#titulo-tabela");
 const list = document.querySelector("#tabela");
-//Select Here Button
+//Button "Select Here"
 const selectService = document.querySelector("#servico");
 //Grid of services
 const serviceList = document.querySelector("#lista-servicos");
@@ -36,7 +36,6 @@ confirmButton.addEventListener("click", (event) => {
     alert("Escolha uma data antes de confirmar!");
   } else {
     //update table with formated date
-    schedulingData(day, month, weekdayName);
     timeTable(weekday);
     timeTableSize(weekday);
     tableDate.innerText = `${weekdayName} ${day}/${month}`;
@@ -86,25 +85,51 @@ function timeTableSize(weekday) {
   }
 }
 
-function schedulingData(
-  day,
-  month,
-  weekdayName,
-) {
-  console.log(`Dia: ${weekdayName} ${day}, Mês: ${month}`);
-}
-
+//Event listener on click "Select Here" button
 selectService.addEventListener("click", (event) => {
   event.preventDefault();
+  //add "show" class in the button
   serviceList.classList.toggle("show");
 });
+//Event listener in List of services 
 serviceList.addEventListener("click", (event) => {
   event.preventDefault();
+  //If click in any button of list of services
   if (event.target.tagName === "BUTTON") {
+    //remove "show" class
     serviceList.classList.remove("show");
-    let selectedButton = event.target.innerText;
-    console.log(selectedButton);
+    //Catch the inner text of the selected button and save in a variable
+    let selectedButton = event.target.innerText.trim();
+    //Button "Select Here" show the selected service
     selectService.innerText = selectedButton;
+    //Set height of button to 100px
     selectService.style.height = "100px";
   }
 });
+
+//Save schedule button click
+const scheduleButton = document.querySelector("#botao-agendar");
+//Event listener on a schedule button click
+scheduleButton.addEventListener("click", (event) => {
+  event.preventDefault();
+  const hourInput = document.querySelector("#horario").value;
+  const nameInput = document.querySelector("#nome").value;
+  const serviceInput = document.querySelector("#servico").innerText;
+  const phoneInput = document.querySelector("#numero").value;
+  schedulingData(0, 10, 0, hourInput, nameInput, serviceInput, phoneInput);
+});
+
+function schedulingData(
+  weekdayName,
+  day,
+  month,
+  hour,
+  name,
+  service,
+  phone
+) {
+  console.log(`Dia: ${weekdayName} ${day}/${month}`);
+  console.log(`Cliente: ${name}    Contato: ${phone}`);
+  console.log(`Tipo do atendimento: ${service}}`);
+  console.log(`Horário: ${hour}`);
+}
