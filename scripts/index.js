@@ -5,14 +5,9 @@ import {
   tableDiv,
   selectService,
   serviceList,
-  scheduleButton,
+  scheduleButton
 } from "./Globals.js";
-import {
-  ProcessedDate,
-  weekdayName,
-  day,
-  month,
-} from "./ProcessedDate.js";
+import { ProcessedDate, weekdayName, day, month } from "./ProcessedDate.js";
 import { schedulingData } from "./SchedulingData.js";
 
 //Listen click confirm button event and save in "event" parameter
@@ -30,6 +25,7 @@ selectService.addEventListener("click", (event) => {
   //add "show" class in the button
   serviceList.classList.toggle("show");
 });
+let serviceCode = 0;
 //Event listener in List of services
 serviceList.addEventListener("click", (event) => {
   event.preventDefault();
@@ -37,6 +33,12 @@ serviceList.addEventListener("click", (event) => {
   if (event.target.tagName === "BUTTON") {
     //remove "show" class
     serviceList.classList.remove("show");
+    //Get parent element of the button clicked
+    const listItem = event.target.closest("li");
+    //Get the <p> element inside the <li> element
+    let serviceCodeElement = listItem.querySelector("#codigo-servico").innerText;
+    //Save de code in a global variable
+    serviceCode = serviceCodeElement;
     //Catch the inner text of the selected button and save in a variable
     let selectedButton = event.target.innerText.trim();
     //Button "Select Here" show the selected service
@@ -55,6 +57,7 @@ scheduleButton.addEventListener("click", (event) => {
   const dayInput = day;
   const monthInput = month;
   const thisWeekdayName = weekdayName;
+
   schedulingData(
     thisWeekdayName,
     dayInput,
@@ -62,6 +65,7 @@ scheduleButton.addEventListener("click", (event) => {
     hourInput,
     nameInput,
     serviceInput,
+    serviceCode,
     phoneInput
   );
 });

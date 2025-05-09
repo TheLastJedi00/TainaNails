@@ -7,6 +7,7 @@ export function schedulingData(
   hour,
   name,
   service,
+  serviceCode,
   phone
 ) {
   function isServiceValid(service) {
@@ -34,7 +35,7 @@ export function schedulingData(
   ) {
     console.log(`Dia: ${weekdayName} ${day}/${month}`);
     console.log(`Cliente: ${name}    Contato: ${phone}`);
-    console.log(`Tipo do atendimento: ${service}`);
+    console.log(`Tipo do atendimento: ${service} (${serviceCode})`);
     console.log(`Horário: ${hour}`);
   }
 }

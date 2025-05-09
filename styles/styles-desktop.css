@@ -339,6 +339,7 @@ body {
 .lista__servicos.show {
   display: grid;
   grid-template-columns: 33% 33% 33%;
+  list-style: none;
   place-items: center;
   position: absolute;
   width: 61em;
@@ -347,6 +348,15 @@ body {
   padding: 20px;
   border: 3px solid var(--mainColor);
   border-radius: 40px;
+}
+
+.item__botao {
+  width: 100%;
+}
+
+.codigo__servico {
+  width: 0%;
+  font-size: 0;
 }
 
 .servico {
