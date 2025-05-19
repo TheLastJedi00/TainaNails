@@ -1,4 +1,4 @@
-import { NullFieldDetector } from "./NullFieldDetector.js";
+import { NullFieldDetector } from "/NullFieldDetector.js";
 
 export function schedulingData(
   weekdayName,
