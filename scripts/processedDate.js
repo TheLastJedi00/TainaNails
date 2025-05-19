@@ -1,6 +1,6 @@
-import { tableDate } from "/Globals.js";
-import { timeTable } from "/TimeTable.js";
-import { timeTableSize } from "/TimeTableSize.js";
+import { tableDate } from "./Globals.js";
+import { timeTable } from "./TimeTable.js";
+import { timeTableSize } from "./TimeTableSize.js";
 
 export let weekdayName = "";
 export let day = "";
