@@ -35,7 +35,7 @@ export function schedulingData(
   ) {
     console.log(`Dia: ${weekdayName} ${day}/${month}`);
     console.log(`Cliente: ${name}    Contato: ${phone}`);
-    console.log(`Tipo do atendimento: ${service} (${serviceCode})`);
+    console.log(`Tipo do atendimento: ${service} (Code:${serviceCode})`);
     console.log(`Horário: ${hour}`);
   }
 }
