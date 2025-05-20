@@ -7,7 +7,7 @@ import {
   serviceList,
   scheduleButton
 } from "./Globals.js";
-import { ProcessedDate, weekdayName, day, month } from "./ProcessedDate.js";
+import { ProcessedDate, weekdayName, day, month } from "./processedDate.js";
 import { schedulingData } from "./SchedulingData.js";
 
 //Listen click confirm button event and save in "event" parameter
