@@ -9,7 +9,7 @@
   --titleSize: 2rem;
   --containerFontSize: 2.5rem;
   --lateralFontSize: 2rem;
-  --extraBigSize: 12rem;
+  --extraBigSize: 8em;
   --titleWeight: 400;
   --extraWeight: 550;
   --containerMargin: 0 0 0 19.2vw;
@@ -30,11 +30,11 @@ body {
 .container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: left;
   align-items: center;
   height: auto;
   width: 100vw;
-  padding: 0 0 0 500px;
+  padding-left: 25em;
 }
 .lateral {
   display: flex;
@@ -43,7 +43,9 @@ body {
   text-align: left;
   background-color: var(--thirdColor);
   height: 100%;
-  width: 500px;
+  width: 23%;
+  max-width: 25em;
+  min-width: 372px;
   position: fixed;
 }
 .lateral__links {
@@ -53,8 +55,8 @@ body {
   align-items: start;
   text-align: left;
   height: 100vh;
-  margin: 10% 5% 0% 5%;
-  gap: 5em;
+  margin: 10% 5% 0 5%;
+  gap: 3em;
 }
 .links__link {
   text-decoration: none;
@@ -94,14 +96,14 @@ body {
 .primeiro {
   background-image: url(../assets/BackgroundImage.png);
   background-repeat: no-repeat;
-  background-size: 100% 100%;
+  background-size: contain;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
-  height: 1220px;
-  width: 100%;
+  width: 75%;
+  height: 63vh;
   gap: 7em;
 }
 
@@ -130,6 +132,7 @@ body {
   border-radius: 40em;
   gap: 1vw;
   text-decoration: none;
+  padding: 1.2em 0;
 }
 .primeiro__botao:hover {
   background-color: var(--secondColor);
@@ -144,8 +147,8 @@ body {
   text-align: center;
   background-color: var(--secondColor);
   border-radius: 40px;
-  height: 35vh;
-  width: 80vw;
+  height: 40vh;
+  width: 75vw;
 }
 .container__titulo {
   color: var(--thirdColor);
@@ -237,8 +240,8 @@ body {
   align-items: center;
   text-align: center;
   background-color: var(--mainColor);
-  height: 35vh;
-  width: 80vw;
+  height: 40vh;
+  width: 75vw;
 }
 .terceiro__tabela {
   display: flex;
@@ -278,7 +281,7 @@ body {
   border-radius: 40px;
   height: max-content;
   padding: 20px 0;
-  width: 80vw;
+  width: 75vw;
   margin-bottom: 20px;
 }
 .formulario__agendar {
@@ -289,7 +292,7 @@ body {
   gap: 1px;
   margin: 1.5em 2em;
   background-color: var(--thirdColor);
-  margin: var(--elementMargin);
+  margin-right: 3em;
   border-radius: 40px;
   padding: 25px;
   width: 900px;
