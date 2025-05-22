@@ -183,6 +183,7 @@
     width: 100vw;
     gap: 5px;
     border-radius: 30px;
+    transform: translateX(0%) translateY(-25%);
   }
   
   .servico {
