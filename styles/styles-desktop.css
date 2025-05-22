@@ -7,7 +7,7 @@
   --font: Tilt Neon, sans-serif;
   --fontCaligraphy: Waterfall, sans-serif;
   --titleSize: 2rem;
-  --containerFontSize: 2.5rem;
+  --containerFontSize: 2.2rem;
   --lateralFontSize: 2rem;
   --extraBigSize: 8em;
   --titleWeight: 400;
@@ -197,7 +197,7 @@ body {
   color: white;
   font-size: var(--containerFontSize);
   font-weight: var(--titleWeight);
-  width: 25rem;
+  width: 100%;
   text-align: center;
 }
 .formulario__linha__input {
@@ -347,6 +347,7 @@ body {
   position: absolute;
   width: 61em;
   gap: 5px;
+  transform: translateX(-30%) translateY(8%);
   background-color: var(--thirdColor);
   padding: 20px;
   border: 3px solid var(--mainColor);

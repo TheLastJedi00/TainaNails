@@ -371,6 +371,7 @@
     padding: 20px;
     border: 3px solid var(--mainColor);
     border-radius: 40px;
+    transform: translateX(-20%) translateY(-27%);
   }
   .servico {
     width: 100%;
