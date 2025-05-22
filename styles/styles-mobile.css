@@ -1,0 +1,200 @@
+@media (max-width: 768px) {
+  :root {
+    --mainColor: #ff8f9e;
+    --secondColor: #e07281;
+    --thirdColor: #331d20;
+    --font: Tilt Neon, sans-serif;
+    --fontCaligraphy: Waterfall, sans-serif;
+    --titleSize: 1rem;
+    --containerFontSize: 1rem;
+    --lateralFontSize: 1rem;
+    --extraBigSize: 3.4rem;
+    --titleWeight: 400;
+    --extraWeight: 550;
+    --containerMargin: 0 0 0 19.2vw;
+    --elementMargin: 0 10% 0 10%;
+  }
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--font);
+    gap: 0;
+  }
+  body {
+    background: var(--mainColor);
+    height: 100vh;
+    display: flex;
+    width: 100vw;
+  }
+  .container {
+    flex-direction: column;
+    width: 100%;
+    padding: 70px 0 0 0;
+  }
+  .lateral {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: left;
+    background-color: var(--thirdColor);
+    height: 70px;
+    width: 100vw;
+    max-width: 100vw;
+    position: fixed;
+    padding: 0 25px;
+  }
+  .lateral__links {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    margin: 0;
+    gap: 25px;
+  }
+  .lateral__icon {
+    width: 45px;
+  }
+  .links__link {
+    font-size: 0;
+  }
+  .link__destaque {
+    font-size: 0;
+  }
+  .lateral__titulo {
+    display: none;
+  }
+  .lateral__titulo__destacar {
+    color: var(--secondColor);
+  }
+  .lateral__logo {
+    width: fit-content;
+    height: 100%;
+  }
+  .primeiro {
+    height: 230px;
+    width: 100%;
+    gap: 1em;
+  }
+
+  .primeiro__titulo {
+    width: 90%;
+  }
+  .primeiro__botao {
+    width: 70vw;
+    height: 20%;
+    border-radius: 40em;
+    gap: 1em;
+  }
+  .icon__instagram{
+    height: 0.9em;
+  }
+  .primeiro__botao:hover {
+    background-color: var(--secondColor);
+    color: white;
+    font-weight: 500;
+  }
+  .segundo {
+    flex-direction: column;
+    border-radius: 20px;
+    height: 220px;
+    width: 100vw;
+    padding: 10px 0;
+  }
+  .container__titulo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 90%;
+  }
+  .segundo__form {
+    width: 200px;
+    height: 150px;
+    gap: 10px;
+    border-radius: 20px;
+    padding: 1em 0 1em 0;
+  }
+  .formulario__linha {
+    gap: 10px;
+  }
+  .formulario__linha__coluna {
+    width: 100%;
+    gap: 10px;
+  }
+  .formulario__coluna__titulo {
+    width: auto;
+    text-align: center;
+  }
+  .formulario__linha__input {
+    width: 150px;
+    height: 40px;
+  }
+  .formulario__botao {
+    width: 150px;
+    height: 40px;
+  }
+  .terceiro {
+    flex-direction: column;
+    height: 230px;
+    width: 100vw;
+    padding: 10px 0;
+  }
+  .terceiro__tabela {
+    width: 200px;
+    height: 160px;
+    min-width: 120px;
+    border-radius: 20px;
+    padding: 10px 10px;
+    gap: 10px;
+  }
+  .quarto {
+    flex-direction: column;
+    border-radius: 20px;
+    height: auto;
+    padding: 10px 0;
+    width: 100vw;
+    margin-bottom: 5px;
+  }
+  .formulario__agendar {
+    gap: 1px;
+    margin: 1.5em 2em;
+    border-radius: 20px;
+    padding: 10px;
+    width: 330px;
+  }
+  .quarto__form__colunas {
+    gap: 10px;
+  }
+  .quarto__form__linha {
+    width: 100%;
+    padding: 0 10px;
+    gap: 0;
+  }
+  .quarto__form__input {
+    width: 200px;
+    height: 40px;
+  }
+  .lista__servicos {
+    display: none;
+  }
+  .lista__servicos.show {
+    width: 100vw;
+    gap: 5px;
+    border-radius: 30px;
+  }
+  
+  .servico {
+    width: 100%;
+    height: 100px;
+    padding: 10px;
+    font-size: 1rem;
+    border-radius: 30px;
+  }
+  .selecione__botao {
+    width: 200px;
+    height: 40px;
+    max-height: 65px;
+  }
+}
