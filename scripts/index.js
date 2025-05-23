@@ -47,6 +47,7 @@ serviceList.addEventListener("click", (event) => {
     selectService.style.height = "100px";
   }
 });
+
 //Event listener on a schedule button click
 scheduleButton.addEventListener("click", (event) => {
   event.preventDefault();

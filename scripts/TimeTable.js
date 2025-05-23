@@ -8,10 +8,12 @@ export function timeTable(weekday, tableList) {
     tableList.innerHTML = "";
 
     time.forEach((itemTime) => {
-      const itemList = document.createElement("li");
+      const itemList = document.createElement("button");
       itemList.className = "horarios__texto";
+      itemList.id = "horario-botao";
       itemList.textContent = `${itemTime}h`;
       tableList.appendChild(itemList);
+
     });
   }
   if (weekday === 5) {
@@ -21,4 +23,17 @@ export function timeTable(weekday, tableList) {
   } else {
     createList(normalTime);
   }
+
+  const hourButtons = document.querySelectorAll("#horario-botao");
+  hourButtons.forEach((button) => {
+    button.addEventListener("click", (event) => {
+      event.preventDefault();
+      
+      let selectedHour = event.target.innerText.trim();
+
+      //Acess input field and set the hour value
+      const hourInput = document.getElementById("horario");
+      hourInput.value = selectedHour;
+    });
+  })
 }

@@ -240,7 +240,7 @@ body {
   align-items: center;
   text-align: center;
   background-color: var(--mainColor);
-  height: 40vh;
+  height: 45vh;
   width: 75vw;
 }
 .terceiro__tabela {
@@ -249,13 +249,13 @@ body {
   justify-content: center;
   align-items: center;
   text-align: center;
-  width: 500px;
-  height: 300px;
+  width: 510px;
+  height: 350px;
   min-width: 300px;
   background-color: var(--thirdColor);
   border-radius: 40px;
   padding: 1em 0 1em 0;
-  gap: 1em;
+  gap: 0em;
   margin: var(--elementMargin);
 }
 .horarios {
@@ -263,13 +263,24 @@ body {
   grid-template-columns: 100%;
   list-style-type: none;
   width: 100%;
+  text-align: center;
+  padding: 1em;
+  gap: 8px;
 }
 .horarios__texto {
-  color: white;
+  background-color: var(--mainColor);
+  color: var(--thirdColor);
   font-size: var(--titleSize);
   font-weight: var(--titleWeight);
   text-align: center;
   width: 100%;
+  padding: 1px 0;
+  border-radius: 40px;
+}
+.horarios__texto:hover {
+  background-color: var(--secondColor);
+  color: white;
+  font-weight: 500;
 }
 .quarto {
   display: flex;
@@ -334,7 +345,7 @@ body {
   text-align: center;
 }
 .quarto__form__input::placeholder {
-  color: var(--thirdColor);
+  color: #68484c;
 }
 .lista__servicos {
   display: none;

@@ -10,3 +10,4 @@ export const selectService = document.querySelector("#servico");
 export const serviceList = document.querySelector("#lista-servicos");
 //Save schedule button click
 export const scheduleButton = document.querySelector("#botao-agendar");
+
