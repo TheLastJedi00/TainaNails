@@ -137,17 +137,17 @@
   }
   .terceiro {
     flex-direction: column;
-    height: 230px;
+    height: 19.5em;
     width: 100vw;
     padding: 10px 0;
   }
   .terceiro__tabela {
     width: 200px;
-    height: 160px;
+    height: 15em;
     min-width: 120px;
     border-radius: 20px;
-    padding: 10px 10px;
-    gap: 10px;
+    padding: 7px;
+    gap: 0px;
   }
   .quarto {
     flex-direction: column;
