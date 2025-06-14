@@ -1,0 +1,118 @@
+@import "../../../app/pages/home/src/styles/variables.scss";
+
+.home-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+
+  aside {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: fixed;
+    width: $aside-width;
+    height: 100vh;
+    background-color: $dark-color;
+
+    .button {
+      color: $first-color;
+      text-decoration: none;
+      padding-left: 0.5em;
+      font-size: 1.7em;
+    }
+
+    .aside-group {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5em;
+
+      .home {
+        color: white;
+      }
+      .home::before {
+        content: url("../../../assets/HomeImg.png");
+      }
+
+      .phone::before {
+        content: url("../../../assets/WhatsappImg.png");
+      }
+      .local::before {
+        content: url("../../../assets/PinImg.png");
+      }
+
+      .item-group:hover {
+        color: white;
+      }
+    }
+
+    .admin {
+      padding-bottom: 0.5em;
+    }
+    .admin:hover {
+      color: white;
+    }
+  }
+
+  .home-content {
+    margin-left: $aside-width;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+
+    .first-container {
+      background-image: url("../../../assets/BackgroundImage.png");
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 5em;
+      height: 80vh;
+      width: calc(100vw - $aside-width);
+
+      .title {
+        color: $dark-color;
+        font-family: $font-caligraphy;
+        font-size: 7em;
+        font-weight: 600;
+        width: 70%;
+        text-align: center;
+      }
+      .instagram {
+        background-color: $dark-color;
+        color: white;
+        text-decoration: none;
+        width: 25vw;
+        height: 2em;
+        border-radius: $border-radius;
+        font-size: 1.5em;
+        padding: 0.2em 2em;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 1em;
+      }
+      .instagram::before {
+        content: "";
+        background-image: url("../../../assets/InstagramImg.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        margin-right: 1em;
+        display: inline-block;
+        height: 90%;
+        width: 7%;
+      }
+      .instagram:hover {
+        color: $first-color;
+        padding: 0.5em 2.7em;
+        transition: 0.2s;
+      }
+    }
+  }
+}

@@ -1,0 +1,35 @@
+<div [ngSwitch]="mainView">
+  <div *ngSwitchCase="'firstView'" class="container">
+    <h2>Agende seu atendimento comigo.</h2>
+    <form>
+      <button class="schedule-start" (click)="showServices()">Que tipo de serviço você deseja?</button>
+    </form>
+  </div>
+
+  <div *ngSwitchCase="'serviceList'" class="container">
+    <ol class="list">
+        <button class="item-list" (click)="showDateSelection()"
+          *ngFor="let service of services">{{ service.name }}
+        </button>
+    </ol>
+    <button class="return-button" (click)="returnFirstView()">Voltar</button>
+  </div>
+
+  <div *ngSwitchCase="'dateSelection'" class="container">
+    <h2>Escolha um dia do seu agrado para realizar seu atendimento.</h2>
+    <form action="" class="form-date">
+      <h3>Selecione uma data:</h3>
+      <input class="input-date" type="date" name="date" id="date" required/>
+      <button class="confirm-date" (click)="showTimeSelection()">Confirmar</button>
+    </form>
+    <button class="return-button" (click)="showServices()">Voltar</button>
+  </div>
+
+  <div class="container-timelist" *ngSwitchCase="'timeSelection'">
+    <h2>Confira os horários disponíveis para esse dia:</h2>
+    <form action="" class="form-timelist">
+      <button class="time-button" *ngFor="let  time of timeList">{{ time }}h</button>
+    </form>
+    <button class="return-button" (click)="showDateSelection()">Voltar</button>
+  </div>
+</div>
