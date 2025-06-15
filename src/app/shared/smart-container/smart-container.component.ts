@@ -1,5 +1,10 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
+
+interface Service {
+    id: number;
+    name: string;
+  }
 
 @Component({
   selector: 'app-smart-container',
@@ -8,11 +13,14 @@ import { Component } from '@angular/core';
   templateUrl: './smart-container.component.html',
   styleUrl: './smart-container.component.scss',
 })
+
 export class SmartContainerComponent {
-  services: { id: number; name: string }[] = [];
+  services: Service[] = [];
   mainView: string = 'firstView';
   timeList: number[] = [];
-  
+  @ViewChild('dateinput') dateinputRef!: ElementRef<HTMLInputElement>;
+  selectedService: Service | null = null;
+
   constructor() {
     this.services = [
       { id: 1, name: 'Manicure' },
@@ -37,8 +45,10 @@ export class SmartContainerComponent {
       { id: 20, name: 'Alongamento com SoftGel' },
       { id: 21, name: 'Remoção de Alongamento' },
     ];
+
     this.timeList = [14, 15, 16, 17, 18];
   }
+
   showServices() {
     this.mainView = 'serviceList';
   }
@@ -48,7 +58,28 @@ export class SmartContainerComponent {
   showDateSelection() {
     this.mainView = 'dateSelection';
   }
+  
+  selectService(service: Service):void {
+    this.selectedService = service;
+    this.showDateSelection();
+    console.log(this.selectedService);
+  }
+
   showTimeSelection() {
-    this.mainView = 'timeSelection';
+    let inputValue = this.dateinputRef.nativeElement.value;
+
+    if (inputValue === '') {
+      alert('Selecione uma data');
+      return;
+    }
+    
+    let date = new Date(inputValue);
+
+    if (date.getDay() === 6) {
+      alert('No momento não estou atendo aos domingos');
+      return;
+    } else {
+      this.mainView = 'timeSelection';
+    }
   }
 }

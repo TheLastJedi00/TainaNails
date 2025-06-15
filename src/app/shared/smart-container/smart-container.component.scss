@@ -1,25 +1,27 @@
-@import "../../pages/home/src/styles/variables.scss";
+@import "../../pages/home/styles/variables.scss";
 
 .container {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-  background-color: $second-color;
+  background-image: linear-gradient($first-color, $second-color);
   border-radius: $border-radius;
   margin: 1em 0;
-  width: 50vw;
+  width: 79vw;
   height: auto;
   min-height: 20vh;
   padding: 1em 0;
 
   h2 {
     font-size: 1.5em;
+    color: $dark-color;
   }
 
   .schedule-start {
     border-radius: $border-radius;
     background-color: $dark-color;
+    border: 0;
     color: white;
     font-size: 1.5em;
     width: 25vw;
@@ -34,7 +36,7 @@
   }
   .list {
     display: grid;
-    grid-template-columns: 32% 32% 32%;
+    grid-template-columns: 31% 31% 31%;
     gap: 0.5em;
     align-items: center;
     justify-content: center;
@@ -45,11 +47,12 @@
       background-color: $dark-color;
       color: white;
       font-size: 1.1em;
-      height: 3.5em;
+      height: 4em;
       width: 100%;
+      border: 0;
     }
     .item-list:hover {
-      height: 2.9em;
+      height: 3.7em;
       width: 99.5%;
       color: $first-color;
       transition: 0.2s;
@@ -57,6 +60,7 @@
   }
 
   .return-button {
+    border: 0;
     border-radius: $border-radius;
     background-color: $dark-color;
     color: white;
@@ -93,6 +97,7 @@
       border-radius: $border-radius;
       background-color: $first-color;
       color: $dark-color;
+      border: 0;
       font-size: 1.5em;
       line-height: 2em;
       width: 10vw;
@@ -102,6 +107,7 @@
       border-radius: $border-radius;
       background-color: $first-color;
       color: $dark-color;
+      border: 0;
       font-size: 1.5em;
       line-height: 2em;
       width: 15vw;
@@ -109,7 +115,7 @@
     .confirm-date:hover {
       color: $second-color;
       transition: 0.2s;
-      width: 12vw;
+      width: 14vw;
     }
   }
 }
@@ -118,10 +124,10 @@
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-  background-color: $second-color;
+  background-image: linear-gradient($first-color, $second-color);
   border-radius: $border-radius;
   margin: 1em 0;
-  width: 40vw;
+  width: 79vw;
   height: auto;
   min-height: 20vh;
   padding: 1em 0;
@@ -134,6 +140,7 @@
     height: 3em;
     font-size: 1.1em;
     margin-top: 1em;
+    border: 0;
   }
   .return-button:hover {
     color: $first-color;
@@ -142,6 +149,7 @@
   }
   h2 {
     font-size: 1.5em;
+    color: $dark-color;
   }
   .form-timelist {
     background-color: $dark-color;
@@ -158,11 +166,13 @@
       background-color: $first-color;
       color: $dark-color;
       border-radius: $border-radius;
+      font-family: $font-family;
       height: 70%;
       width: 100%;
       font-size: 1.2em;
       font-weight: bold;
       padding: 0.5em;
+      border: 0;
     }
 
     .time-button:hover {

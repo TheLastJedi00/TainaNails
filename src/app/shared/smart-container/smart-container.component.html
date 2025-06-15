@@ -8,7 +8,7 @@
 
   <div *ngSwitchCase="'serviceList'" class="container">
     <ol class="list">
-        <button class="item-list" (click)="showDateSelection()"
+        <button class="item-list" (click)="selectService(service)"
           *ngFor="let service of services">{{ service.name }}
         </button>
     </ol>
@@ -19,7 +19,7 @@
     <h2>Escolha um dia do seu agrado para realizar seu atendimento.</h2>
     <form action="" class="form-date">
       <h3>Selecione uma data:</h3>
-      <input class="input-date" type="date" name="date" id="date" required/>
+      <input class="input-date" type="date" name="date" id="date" #dateinput required/>
       <button class="confirm-date" (click)="showTimeSelection()">Confirmar</button>
     </form>
     <button class="return-button" (click)="showServices()">Voltar</button>

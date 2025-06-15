@@ -1,4 +1,4 @@
-@import './src/styles/variables.scss';
+@import "./styles/variables.scss";
 
 .home-container {
   display: flex;
@@ -73,7 +73,7 @@
       justify-content: center;
       gap: 5em;
       height: 80vh;
-      width: calc(100vw - $aside-width);
+      width: calc(99vw - $aside-width);
 
       .title {
         color: $dark-color;
