@@ -30,14 +30,47 @@
         color: white;
       }
       .home::before {
-        content: url("../../../assets/HomeImg.png");
+        content: "";
+        background-image: url("../../../assets/HomeImg.png");
+        display: inline-block;
+        background-size: cover;
+        background-position: center;
+        margin: 0 0.2em;
+        height: 100%;
+        width: 40px;
       }
 
       .phone::before {
-        content: url("../../../assets/WhatsappImg.png");
+        content: "";
+        background-image: url("../../../assets/WhatsappImg.png");
+        display: inline-block;
+        background-size: cover;
+        background-position: center;
+        margin: 0 0.2em;
+        height: 100%;
+        width: 40px;
+      }
+      .phone:hover::before {
+        content: "";
+        background-image: url("../../../assets/WhatsappWhite.png");
+        height: 100%;
+        width: 40px;
       }
       .local::before {
-        content: url("../../../assets/PinImg.png");
+        content: "";
+        background-image: url("../../../assets/PinImg.png");
+        display: inline-block;
+        background-size: cover;
+        background-position: center;
+        margin: 0 0.2em;
+        height: 100%;
+        width: 40px;
+      }
+      .local:hover::before {
+        content: "";
+        background-image: url("../../../assets/PinWhite.png");
+        height: 100%;
+        width: 40px;
       }
 
       .item-group:hover {
@@ -112,6 +145,110 @@
         color: $first-color;
         padding: 0.5em 2.7em;
         transition: 0.2s;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .home-container {
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+
+    aside {
+      justify-content: start;
+      flex-direction: row;
+      position: fixed;
+      width: 100vw;
+      height: 8vh;
+
+      .logo {
+        width: 30%;
+        margin-left: 0.2em;
+      }
+      .button {
+        padding-left: 0.5em;
+        font-size: 0em;
+      }
+
+      .aside-group {
+        flex-direction: row;
+        align-items: center;
+        justify-content: start;
+        gap: 1em;
+
+        .home {
+          color: white;
+        }
+        .home::before {
+          margin: 0 0;
+          height: 35px;
+          width: 60px;
+        }
+
+        .phone::before {
+          margin: 0 0;
+          height: 35px;
+          width: 60px;
+        }
+        .phone:hover::before {
+          content: "";
+          background-image: url("../../../assets/WhatsappWhite.png");
+          height: 35px;
+          width: 60px;
+        }
+        .local::before {
+          margin: 0 0;
+          height: 35px;
+          width: 60px;
+        }
+        .local:hover::before {
+          content: "";
+          background-image: url("../../../assets/PinWhite.png");
+          height: 35px;
+          width: 60px;
+        }
+
+        .item-group:hover {
+          color: white;
+        }
+      }
+
+      .admin {
+        padding-bottom: 0.5em;
+      }
+      .admin:hover {
+        color: white;
+      }
+    }
+
+    .home-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: start;
+      align-items: center;
+      height: 100vh;
+      width: 100vw;
+      margin: 0;
+
+      .first-container {
+        margin: 8vh 0 0 0;
+        gap: 0.5em;
+        height: 35vh;
+        width: 100vw;
+
+        .title {
+          font-size: 4em;
+          font-weight: 600;
+          width: 95%;
+          margin: 0;
+        }
+        .instagram {
+          width: 65vw;
+          padding: 0.5em 1em;
+          font-size: 1em;
+        }
       }
     }
   }

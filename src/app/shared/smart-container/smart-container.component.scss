@@ -24,6 +24,7 @@
     border: 0;
     color: white;
     font-size: 1.5em;
+    font-family: $font-family;
     width: 25vw;
     height: 3em;
     padding: 0.2em 2em;
@@ -160,7 +161,6 @@
     grid-template-columns: 15% 15% 15% 15% 15%;
     justify-content: space-evenly;
     align-items: center;
-    
 
     .time-button {
       background-color: $first-color;
@@ -176,9 +176,88 @@
     }
 
     .time-button:hover {
-        color: $second-color;
-        transition: 0.2s;
-        width: 95%;
+      color: $second-color;
+      transition: 0.2s;
+      width: 95%;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    text-align: center;
+    border-radius: $border-radius;
+    margin: 1em 0;
+    width: 100vw;
+
+    h2 {
+      font-size: 1.5em;
+    }
+
+    .schedule-start {
+      font-size: 1.2em;
+      width: 90vw;
+    }
+    .list {
+      .item-list {
+        border-radius: 30px;
+        font-size: 1em;
+        height: 5em;
+        padding: 0.1;
+      }
+    }
+
+    .return-button {
+      border: 0;
+      border-radius: $border-radius;
+      background-color: $dark-color;
+      color: white;
+      width: 22%;
+      height: 3em;
+      font-size: 1.1em;
+    }
+
+    .form-date {
+      gap: 1em;
+      width: 90vw;
+      margin-bottom: 1em;
+      padding: 1em;
+
+      h3 {
+        font-size: 1.5em;
+        margin: 0;
+      }
+
+      .input-date {
+        font-size: 1.5em;
+        font-weight: bold;
+        line-height: 2em;
+        width: 35vw;
+        padding: 0.5em 1em;
+      }
+      .confirm-date {
+        padding: 0 2em;
+        width: 46vw;
+      }
+    }
+  }
+  .container-timelist {
+    width: 100vw;
+    height: auto;
+    min-height: 30vh;
+    text-align: center;
+
+    h2 {
+      font-size: 1.5em;
+    }
+    .form-timelist {
+      width: 95vw;
+      min-height: 10vh;
+      max-height: 40vh;
+
+      .time-button {
+        font-size: 1.2em;
+      }
     }
   }
 }
