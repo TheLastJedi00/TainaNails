@@ -26,6 +26,14 @@
       flex-direction: column;
       gap: 1.5em;
 
+      .buttons-list {
+          display: flex;
+          flex-direction: column;
+          width: 100%;
+          height: 20vh;
+          justify-content: space-between;
+        }
+
       .home {
         color: white;
       }
@@ -37,7 +45,7 @@
         background-position: center;
         margin: 0 0.2em;
         height: 100%;
-        width: 40px;
+        width: 45px;
       }
 
       .phone::before {
@@ -48,13 +56,13 @@
         background-position: center;
         margin: 0 0.2em;
         height: 100%;
-        width: 40px;
+        width: 45px;
       }
       .phone:hover::before {
         content: "";
         background-image: url("../../../assets/WhatsappWhite.png");
         height: 100%;
-        width: 40px;
+        width: 45px;
       }
       .local::before {
         content: "";
@@ -64,13 +72,13 @@
         background-position: center;
         margin: 0 0.2em;
         height: 100%;
-        width: 40px;
+        width: 45px;
       }
       .local:hover::before {
         content: "";
         background-image: url("../../../assets/PinWhite.png");
         height: 100%;
-        width: 40px;
+        width: 45px;
       }
 
       .item-group:hover {
@@ -164,8 +172,8 @@
       height: 8vh;
 
       .logo {
-        width: 30%;
-        margin-left: 0.2em;
+        width: 33%;
+        margin-left: 1em;
       }
       .button {
         padding-left: 0.5em;
@@ -178,36 +186,45 @@
         justify-content: start;
         gap: 1em;
 
+        .buttons-list {
+          display: flex;
+          flex-direction: row;
+          width: 100%;
+          height: 100%;
+          justify-content: space-between;
+          align-items: center;
+          margin: 0 1em;
+        }
         .home {
           color: white;
         }
         .home::before {
           margin: 0 0;
-          height: 35px;
-          width: 60px;
+          height: 25px;
+          width: 40px;
         }
 
         .phone::before {
           margin: 0 0;
-          height: 35px;
-          width: 60px;
+          height: 25px;
+          width: 40px;
         }
         .phone:hover::before {
           content: "";
           background-image: url("../../../assets/WhatsappWhite.png");
-          height: 35px;
-          width: 60px;
+          height: 25px;
+          width: 40px;
         }
         .local::before {
           margin: 0 0;
-          height: 35px;
-          width: 60px;
+          height: 25px;
+          width: 40px;
         }
         .local:hover::before {
           content: "";
           background-image: url("../../../assets/PinWhite.png");
-          height: 35px;
-          width: 60px;
+          height: 25px;
+          width: 40px;
         }
 
         .item-group:hover {
@@ -216,7 +233,12 @@
       }
 
       .admin {
-        padding-bottom: 0.5em;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0;
+        margin-right: 2em;
+        font-size: 1em;
       }
       .admin:hover {
         color: white;

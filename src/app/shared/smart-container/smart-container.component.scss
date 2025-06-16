@@ -199,16 +199,20 @@
       width: 90vw;
     }
     .list {
+      font-family: $font-family;
       .item-list {
+        font-family: $font-family;
         border-radius: 30px;
         font-size: 1em;
-        height: 5em;
+        font-weight: normal;
+        height: 5.5em;
         padding: 0.1;
       }
     }
 
     .return-button {
       border: 0;
+      font-family: $font-family;
       border-radius: $border-radius;
       background-color: $dark-color;
       color: white;
@@ -218,6 +222,7 @@
     }
 
     .form-date {
+      font-family: $font-family;
       gap: 1em;
       width: 90vw;
       margin-bottom: 1em;
@@ -236,12 +241,14 @@
         padding: 0.5em 1em;
       }
       .confirm-date {
-        padding: 0 2em;
+        font-family: $font-family;
+        padding: 0 1em;
         width: 46vw;
       }
     }
   }
   .container-timelist {
+    font-family: $font-family;
     width: 100vw;
     height: auto;
     min-height: 30vh;
