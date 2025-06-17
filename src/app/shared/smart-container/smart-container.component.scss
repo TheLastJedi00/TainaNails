@@ -13,7 +13,22 @@
   min-height: 20vh;
   padding: 1em 0;
 
+  .first-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+
+    .agenda {
+      display: flex;
+      height: 30vh;
+      border-radius: $border-radius;
+    }
+  }
+
   h2 {
+    text-align: center;
     font-size: 1.5em;
     color: $dark-color;
   }
@@ -189,6 +204,21 @@
     border-radius: $border-radius;
     margin: 1em 0;
     width: 100vw;
+
+    .first-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      align-items: center;
+      height: 50vh;
+      width: 100%;
+
+      .agenda {
+        display: flex;
+        height: 24vh;
+        border-radius: $border-radius;
+      }
+    }
 
     h2 {
       font-size: 1.5em;
