@@ -2,9 +2,9 @@ import { CommonModule } from '@angular/common';
 import { Component, ElementRef, ViewChild } from '@angular/core';
 
 interface Service {
-    id: number;
-    name: string;
-  }
+  id: number;
+  name: string;
+}
 
 @Component({
   selector: 'app-smart-container',
@@ -13,7 +13,6 @@ interface Service {
   templateUrl: './smart-container.component.html',
   styleUrl: './smart-container.component.scss',
 })
-
 export class SmartContainerComponent {
   services: Service[] = [];
   mainView: string = 'firstView';
@@ -58,8 +57,8 @@ export class SmartContainerComponent {
   showDateSelection() {
     this.mainView = 'dateSelection';
   }
-  
-  selectService(service: Service):void {
+
+  selectService(service: Service): void {
     this.selectedService = service;
     this.showDateSelection();
     console.log(this.selectedService);
@@ -72,7 +71,7 @@ export class SmartContainerComponent {
       alert('Selecione uma data');
       return;
     }
-    
+
     let date = new Date(inputValue);
 
     if (date.getDay() === 6) {
@@ -81,5 +80,13 @@ export class SmartContainerComponent {
     } else {
       this.mainView = 'timeSelection';
     }
+  }
+
+  showConfirmSchedule() {
+    this.mainView = 'confirmSchedule';
+  }
+
+  returnTimeSelection() {
+    this.mainView = 'timeSelection';
   }
 }
