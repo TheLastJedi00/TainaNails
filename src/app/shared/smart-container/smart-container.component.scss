@@ -56,12 +56,12 @@
       border: 0;
       font-size: 1.5em;
       line-height: 2em;
-      width: 15vw;
+      width: 28vw;
     }
     button:hover {
       color: $second-color;
       transition: 0.2s;
-      width: 16vw;
+      width: 30vw;
     }
   }
 
@@ -92,13 +92,13 @@
     color: white;
     font-size: 1.5em;
     font-family: $font-family;
-    width: 25vw;
+    width: 28vw;
     height: 3em;
     padding: 0.2em 2em;
   }
   .schedule-start:hover {
     height: 2.9em;
-    width: 23vw;
+    width: 30vw;
     color: $first-color;
     transition: 0.2s;
   }

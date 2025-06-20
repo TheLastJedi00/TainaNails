@@ -52,7 +52,7 @@
   <section class="container-timelist" *ngSwitchCase="'timeSelection'">
     <h2>Confira os horários disponíveis para esse dia:</h2>
     <form action="" class="form-timelist">
-      <button class="time-button" (click)="showConfirmSchedule()" *ngFor="let time of timeList">
+      <button class="time-button" (click)="selectedTime(time)" *ngFor="let time of timeList" #timeinput>
         {{ time }}h
       </button>
     </form>
@@ -63,25 +63,25 @@
     <form class="form-last">
       <label
         >Primeiro e Último Nome:
-        <input type="text" class="input" />
+        <input type="text" class="input" #nameinput required/>
       </label>
       <label
         >Telefone:
-        <input type="text" class="input" />
+        <input type="text" class="input" #phoneinput required/>
       </label>
       <label
         >Serviço escolhido:
-        <input type="text" class="input" readonly />
+        <input type="text" class="input" [value]="selectedService?.name" readonly/>
       </label>
       <label
         >Horário escolhido:
-        <input type="time" class="input" readonly />
+        <input type="text" class="input" [value]="inputedTime?.getHours()?.toString() + ':00'" readonly/>
       </label>
       <label
         >Dia escolhido:
-        <input type="date" class="input" readonly />
+        <input type="date" class="input" [value]="inputedDate | date:'yyyy-MM-dd'" readonly/>
       </label>
-      <button>Confirmar agendamento</button>
+      <button (click)="saveSchedule()">Confirmar agendamento</button>
     </form>
     <button class="return-button" (click)="returnTimeSelection()">Voltar</button>
   </section>
