@@ -81,7 +81,7 @@
         >Dia escolhido:
         <input type="date" class="input" [value]="inputedDate | date:'yyyy-MM-dd'" readonly/>
       </label>
-      <button (click)="saveSchedule()">Confirmar agendamento</button>
+      <button type="button" (click)="confirmSchedule()">Confirmar agendamento</button>
     </form>
     <button class="return-button" (click)="returnTimeSelection()">Voltar</button>
   </section>

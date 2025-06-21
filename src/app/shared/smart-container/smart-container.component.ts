@@ -6,14 +6,6 @@ interface Service {
   id: number;
   name: string;
 }
-interface Schedule {
-  date: Date;
-  name: string;
-  service: string;
-  serviceCode: number;
-  phone: string;
-  dayOfWeek: string;
-}
 
 @Component({
   selector: 'app-smart-container',
@@ -26,6 +18,7 @@ export class SmartContainerComponent {
   services: Service[] = [];
   daysOfWeek: string[] = [];
   mainView: string = 'firstView';
+  scheduleObject: object = {};
   timeList: number[] = [];
   inputedTime: Date | null = null;
   inputedDate: Date | null = null;
@@ -42,13 +35,13 @@ export class SmartContainerComponent {
       { id: 1, name: 'Manicure' },
       { id: 2, name: 'Pedicure' },
       { id: 3, name: 'Manicure e Pedicure' },
-      { id: 4, name: 'Manicure Decorado' },
-      { id: 5, name: 'Pedicure Decorado' },
-      { id: 6, name: 'Manicure e Pedicure Decorado' },
-      { id: 7, name: 'Manicure com Esmaltação em Gel' },
-      { id: 8, name: 'Pedicure com Esmaltação em Gel' },
-      { id: 9, name: 'Manicure e Pedicure com Esmaltação em Gel' },
-      { id: 10, name: 'Manicure em Gel e Pedicure Simples' },
+      { id: 4, name: 'Manicure e Pedicure Decorados' },
+      { id: 5, name: 'Manicure Decorado' },
+      { id: 6, name: 'Pedicure Decorado' },
+      { id: 7, name: 'Manicure em Gel e Pedicure Simples' },
+      { id: 8, name: 'Manicure e Pedicure com Esmaltação em Gel' },
+      { id: 9, name: 'Manicure com Esmaltação em Gel' },
+      { id: 10, name: 'Pedicure com Esmaltação em Gel' },
       { id: 11, name: 'Unhas Postiças' },
       { id: 12, name: 'Unhas Postiças Decoradas' },
       { id: 13, name: 'Unhas Postiças Realistas' },
@@ -91,14 +84,21 @@ export class SmartContainerComponent {
     console.log(this.selectedService);
   }
 
+  dateFormatter(date: string): Date {
+    let splitter = date.split('-');
+    let year = parseInt(splitter[0]);
+    let month = parseInt(splitter[1]) - 1; // Month is 0-indexed in JavaScript
+    let day = parseInt(splitter[2]);
+
+    let formattedDate: Date = new Date(year, month, day);
+    return formattedDate;
+  }
+
   showTimeSelection() {
     let inputedValue = this.dateinputRef.nativeElement.value;
-    let day = new Date(inputedValue).getDate();
-    let month = new Date(inputedValue).getMonth();
-    let year = new Date(inputedValue).getFullYear();
-    this.inputedDate = new Date(year, month, day + 1);
-    console.log(this.inputedDate);
 
+    this.inputedDate = this.dateFormatter(inputedValue);
+    console.log(this.inputedDate);
 
     if (inputedValue === '') {
       alert('Selecione uma data');
@@ -115,7 +115,7 @@ export class SmartContainerComponent {
     }
   }
 
-  selectedTime(time: number){
+  selectedTime(time: number) {
     this.mainView = 'confirmSchedule';
     this.showConfirmSchedule();
     const newTime = new Date().setHours(time, 0, 0, 0);
@@ -130,13 +130,42 @@ export class SmartContainerComponent {
     this.mainView = 'timeSelection';
   }
 
-  saveSchedule() {
-    let date = this.inputedDate?.getDate();
-    let dayOfWeek = this.daysOfWeek[this.inputedDate?.getDay()!];
-    let time = this.inputeddateRef.nativeElement.value;
-    let service = this.selectedService?.name;
-    let serviceCode = this.selectedService?.id;
-    let phone = this.dateinputRef.nativeElement.value;
-    let name = this.dateinputRef.nativeElement.value;
+  formatSchedule(name: string, service: string, phone: string): object {
+    if (!this.inputedDate || !this.inputedTime) {
+      throw new Error('Data ou hora não selecionada');
+    }
+
+    let dayOfWeek = this.daysOfWeek[this.inputedDate.getDay()];
+
+    return (
+      this.scheduleObject = {
+      date: new Date(this.inputedDate.getFullYear(), this.inputedDate.getMonth(), this.inputedDate.getDate(), this.inputedTime.getHours(), 0, 0, 0),
+      name: name,
+      service: service,
+      serviceCode: this.selectedService ? this.selectedService.id : 0,
+      phone: phone,
+      dayOfWeek: dayOfWeek,
+      }
+    );
+  }
+
+  confirmSchedule() {
+    let name = this.nameinputRef.nativeElement.value;
+    let service = this.selectedService ? this.selectedService.name : '';
+    let phone = this.phoneinputRef.nativeElement.value;
+
+    if (!name || !service || !phone) {
+      alert('Preencha todos os campos');
+      return;
+    }
+
+    try {
+      console.log(this.formatSchedule(name, service, phone));
+      alert('Fecthing Schedule');
+    } catch (error) {
+      console.error(error);
+      alert('Erro ao confirmar agendamento. Tente novamente.');
+    }
   }
 }
+

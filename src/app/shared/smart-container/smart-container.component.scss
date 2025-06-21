@@ -302,13 +302,15 @@
         margin-top: 1.5em;
         border: 0;
         font-size: 1.5em;
-        line-height: 2em;
-        width: 85%;
+        line-height: 1.6em;
+        width: 50%;
+        height: 18%;
       }
       button:hover {
         color: $second-color;
         transition: 0.2s;
-        width: 16vw;
+        width: 55%;
+        height: 18%;
       }
     }
 
