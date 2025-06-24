@@ -1,11 +1,6 @@
 import { CommonModule, Time, WeekDay } from '@angular/common';
 import { Component, ElementRef, ViewChild } from '@angular/core';
-import { time } from 'node:console';
-
-interface Service {
-  id: number;
-  name: string;
-}
+import { Service, Schedule } from '../../core/types/types';
 
 @Component({
   selector: 'app-smart-container',
@@ -18,7 +13,7 @@ export class SmartContainerComponent {
   services: Service[] = [];
   daysOfWeek: string[] = [];
   mainView: string = 'firstView';
-  scheduleObject: object = {};
+  scheduleObject!: Schedule;
   timeList: number[] = [];
   inputedTime: Date | null = null;
   inputedDate: Date | null = null;
@@ -130,23 +125,31 @@ export class SmartContainerComponent {
     this.mainView = 'timeSelection';
   }
 
-  formatSchedule(name: string, service: string, phone: string): object {
+  formatSchedule(name: string, service: string, phone: string): Schedule {
     if (!this.inputedDate || !this.inputedTime) {
       throw new Error('Data ou hora não selecionada');
     }
 
     let dayOfWeek = this.daysOfWeek[this.inputedDate.getDay()];
 
-    return (
-      this.scheduleObject = {
-      date: new Date(this.inputedDate.getFullYear(), this.inputedDate.getMonth(), this.inputedDate.getDate(), this.inputedTime.getHours(), 0, 0, 0),
+    let formattedSchedule: Schedule = {
+      date: new Date(
+        this.inputedDate.getFullYear(),
+        this.inputedDate.getMonth(),
+        this.inputedDate.getDate(),
+        this.inputedTime.getHours(),
+        0,
+        0,
+        0
+      ),
       name: name,
       service: service,
       serviceCode: this.selectedService ? this.selectedService.id : 0,
       phone: phone,
       dayOfWeek: dayOfWeek,
-      }
-    );
+    };
+
+    return formattedSchedule;
   }
 
   confirmSchedule() {
@@ -168,4 +171,3 @@ export class SmartContainerComponent {
     }
   }
 }
-
