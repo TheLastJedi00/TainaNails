@@ -14,13 +14,6 @@
     height: 100vh;
     background-color: $dark-color;
 
-    .button {
-      color: $first-color;
-      text-decoration: none;
-      padding-left: 0.5em;
-      font-size: 1.7em;
-    }
-
     .aside-group {
       display: flex;
       flex-direction: column;
@@ -30,59 +23,33 @@
         display: flex;
         flex-direction: column;
         width: 100%;
-        height: 20vh;
+        height: 15vh;
         justify-content: space-between;
-      }
 
-      .home {
-        color: white;
-      }
-      .home::before {
-        content: "";
-        background-image: url("../../../assets/HomeImg.png");
-        display: inline-block;
-        background-size: cover;
-        background-position: center;
-        margin: 0 0.2em;
-        height: 100%;
-        width: 45px;
-      }
+        button {
+          color: $first-color;
+          font-family: $font-family;
+          text-decoration: none;
+          font-size: 1.6em;
+          width: fit-content;
+          height: fit-content;
+          margin-left: 0.2em;
+          padding: 0.5em 0.5em;
+          border-radius: 40px;
 
-      .phone::before {
-        content: "";
-        background-image: url("../../../assets/WhatsappImg.png");
-        display: inline-block;
-        background-size: cover;
-        background-position: center;
-        margin: 0 0.2em;
-        height: 100%;
-        width: 45px;
-      }
-      .phone:hover::before {
-        content: "";
-        background-image: url("../../../assets/WhatsappWhite.png");
-        height: 100%;
-        width: 45px;
-      }
-      .local::before {
-        content: "";
-        background-image: url("../../../assets/PinImg.png");
-        display: inline-block;
-        background-size: cover;
-        background-position: center;
-        margin: 0 0.2em;
-        height: 100%;
-        width: 45px;
-      }
-      .local:hover::before {
-        content: "";
-        background-image: url("../../../assets/PinWhite.png");
-        height: 100%;
-        width: 45px;
-      }
-
-      .item-group:hover {
-        color: white;
+          .material-symbols-rounded {
+            height: 100%;
+            width: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 30px;
+            font-variation-settings: "OPSZ" 30, "FILL" 0, "wght" 400, "GRAD" 0;
+          }
+        }
+        button:first-of-type {
+          color: white;
+        }
       }
     }
 
@@ -103,6 +70,27 @@
     height: 100vh;
     width: 100vw;
 
+    .social-media {
+      font-family: $font-family;
+      font-size: 1.5em;
+      padding: 1.1em 2em;
+      border-radius: 40px;
+
+      .material-symbols-rounded {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 60px;
+        width: 50px;
+        font-size: 30px;
+        font-variation-settings: "OPSZ" 30, "FILL" 0, "wght" 400, "GRAD" 0;
+      }
+    }
+
+    .mat-mdc-unelevated-button.mat-accent {
+      --mdc-filled-button-container-color: #331d20;
+    }
+
     .first-container {
       background-image: url("../../../assets/BackgroundImage.png");
       background-size: cover;
@@ -115,6 +103,7 @@
       gap: 5em;
       height: 80vh;
       width: calc(99vw - $aside-width);
+      padding: 2em 0;
 
       .title {
         color: $dark-color;
@@ -122,154 +111,126 @@
         font-size: 7em;
         font-weight: 600;
         width: 70%;
+        height: fit-content;
+        margin: 0;
         text-align: center;
-      }
-      .instagram {
-        background-color: $dark-color;
-        color: white;
-        text-decoration: none;
-        width: 25vw;
-        height: 2em;
-        border-radius: $border-radius;
-        font-size: 1.5em;
-        padding: 0.2em 2em;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-bottom: 1em;
-      }
-      .instagram::before {
-        content: "";
-        background-image: url("../../../assets/InstagramImg.png");
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position: center;
-        margin-right: 1em;
-        display: inline-block;
-        height: 90%;
-        width: 7%;
-      }
-      .instagram:hover {
-        color: $first-color;
-        padding: 0.5em 2.7em;
-        transition: 0.2s;
       }
     }
   }
-}
 
-@media (max-width: 768px) {
-  .home-container {
-    flex-direction: column;
-    justify-content: start;
-    align-items: center;
-
-    aside {
-      justify-content: start;
-      flex-direction: row;
-      position: fixed;
-      width: 100vw;
-      height: 8vh;
-
-      .logo {
-        width: 33%;
-        margin-left: 1em;
-      }
-      .button {
-        padding-left: 0.5em;
-        font-size: 0em;
-      }
-
-      .aside-group {
-        flex-direction: row;
-        align-items: center;
-        justify-content: start;
-        gap: 1em;
-
-        .buttons-list {
-          display: flex;
-          flex-direction: row;
-          width: 100%;
-          height: 100%;
-          justify-content: space-between;
-          align-items: center;
-          margin: 0 1em;
-        }
-        .home {
-          color: white;
-        }
-        .home::before {
-          margin: 0 0;
-          height: 25px;
-          width: 40px;
-        }
-
-        .phone::before {
-          margin: 0 0;
-          height: 25px;
-          width: 40px;
-        }
-        .phone:hover::before {
-          content: "";
-          background-image: url("../../../assets/WhatsappWhite.png");
-          height: 25px;
-          width: 40px;
-        }
-        .local::before {
-          margin: 0 0;
-          height: 25px;
-          width: 40px;
-        }
-        .local:hover::before {
-          content: "";
-          background-image: url("../../../assets/PinWhite.png");
-          height: 25px;
-          width: 40px;
-        }
-
-        .item-group:hover {
-          color: white;
-        }
-      }
-
-      .admin {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 0;
-        margin-right: 2em;
-        font-size: 1em;
-      }
-      .admin:hover {
-        color: white;
-      }
-    }
-
-    .home-content {
-      display: flex;
+  @media (max-width: 768px) {
+    .home-container {
       flex-direction: column;
       justify-content: start;
       align-items: center;
-      height: 100vh;
-      width: 100vw;
-      margin: 0;
 
-      .first-container {
-        margin: 8vh 0 0 0;
-        gap: 0.5em;
-        height: 35vh;
+      aside {
+        justify-content: start;
+        flex-direction: row;
+        position: fixed;
         width: 100vw;
+        height: 8vh;
 
-        .title {
-          font-size: 4em;
-          font-weight: 600;
-          width: 95%;
-          margin: 0;
+        .logo {
+          width: 33%;
+          margin-left: 1em;
         }
-        .instagram {
-          width: 65vw;
-          padding: 0.5em 1em;
+        .button {
+          padding-left: 0.5em;
+          font-size: 0em;
+        }
+
+        .aside-group {
+          flex-direction: row;
+          align-items: center;
+          justify-content: start;
+          gap: 1em;
+
+          .buttons-list {
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            height: 100%;
+            justify-content: space-between;
+            align-items: center;
+            margin: 0 1em;
+          }
+          .home {
+            color: white;
+          }
+          .home::before {
+            margin: 0 0;
+            height: 25px;
+            width: 40px;
+          }
+
+          .phone::before {
+            margin: 0 0;
+            height: 25px;
+            width: 40px;
+          }
+          .phone:hover::before {
+            content: "";
+            background-image: url("../../../assets/WhatsappWhite.png");
+            height: 25px;
+            width: 40px;
+          }
+          .local::before {
+            margin: 0 0;
+            height: 25px;
+            width: 40px;
+          }
+          .local:hover::before {
+            content: "";
+            background-image: url("../../../assets/PinWhite.png");
+            height: 25px;
+            width: 40px;
+          }
+
+          .item-group:hover {
+            color: white;
+          }
+        }
+
+        .admin {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          padding: 0;
+          margin-right: 2em;
           font-size: 1em;
+        }
+        .admin:hover {
+          color: white;
+        }
+      }
+
+      .home-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        align-items: center;
+        height: 100vh;
+        width: 100vw;
+        margin: 0;
+
+        .first-container {
+          margin: 8vh 0 0 0;
+          gap: 0.5em;
+          height: 35vh;
+          width: 100vw;
+
+          .title {
+            font-size: 4em;
+            font-weight: 600;
+            width: 95%;
+            margin: 0;
+          }
+          .instagram {
+            width: 65vw;
+            padding: 0.5em 1em;
+            font-size: 1em;
+          }
         }
       }
     }

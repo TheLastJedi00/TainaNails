@@ -14,6 +14,16 @@
   padding: 1em 0;
   transition: 0.5s;
 
+  .material-symbols-rounded {
+    height: 30px;
+    width: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    font-variation-settings: "OPSZ" 30, "FILL" 0, "wght" 400, "GRAD" 0;
+  }
+
   .form-last {
     display: flex;
     flex-direction: column;
@@ -56,13 +66,33 @@
       border: 0;
       font-size: 1.5em;
       line-height: 2em;
+      padding: 1.2em 0;
       width: 28vw;
     }
     button:hover {
       color: $second-color;
-      transition: 0.2s;
-      width: 30vw;
+      background-color: $third-color;
+      transition: 0.1s;
     }
+    .return-button {
+    border: 0;
+    border-radius: $border-radius;
+    background-color: $dark-color;
+    font-family: $font-family;
+    color: white;
+    font-size: 1.5em;
+    padding: 1.5em 10em;
+
+    .material-symbols-rounded {
+      height:30px;
+      width: 30px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 30px;
+      font-variation-settings: "OPSZ" 30, "FILL" 0, "wght" 400, "GRAD" 0;
+    }
+  }
   }
 
   .first-container {
@@ -96,12 +126,7 @@
     height: 3em;
     padding: 0.2em 2em;
   }
-  .schedule-start:hover {
-    height: 2.9em;
-    width: 30vw;
-    color: $first-color;
-    transition: 0.2s;
-  }
+
   .list {
     display: grid;
     grid-template-columns: 31% 31% 31%;
@@ -113,17 +138,12 @@
     .item-list {
       border-radius: $border-radius;
       background-color: $dark-color;
+      font-family: $font-family;
       color: white;
-      font-size: 1.1em;
+      font-size: 1.2em;
       height: 4em;
       width: 100%;
       border: 0;
-    }
-    .item-list:hover {
-      height: 3.7em;
-      width: 99.5%;
-      color: $first-color;
-      transition: 0.2s;
     }
   }
 
@@ -131,15 +151,20 @@
     border: 0;
     border-radius: $border-radius;
     background-color: $dark-color;
+    font-family: $font-family;
     color: white;
-    width: 22%;
-    height: 3em;
-    font-size: 1.1em;
-  }
-  .return-button:hover {
-    color: $first-color;
-    transition: 0.2s;
-    width: 25%;
+    font-size: 1.5em;
+    padding: 1.5em 10em;
+
+    .material-symbols-rounded {
+      height:30px;
+      width: 30px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 30px;
+      font-variation-settings: "OPSZ" 30, "FILL" 0, "wght" 400, "GRAD" 0;
+    }
   }
 
   .form-date {
@@ -174,16 +199,17 @@
     .confirm-date {
       border-radius: $border-radius;
       background-color: $first-color;
+      font-family: $font-family;
       color: $dark-color;
-      border: 0;
+      padding: 1em;
       font-size: 1.5em;
       line-height: 2em;
       width: 15vw;
     }
     .confirm-date:hover {
+      transition: 0.1s;
       color: $second-color;
-      transition: 0.2s;
-      width: 14vw;
+      background-color: $third-color;
     }
   }
 }
@@ -201,20 +227,25 @@
   padding: 1em 0;
 
   .return-button {
+    border: 0;
     border-radius: $border-radius;
     background-color: $dark-color;
+    font-family: $font-family;
     color: white;
-    width: 22%;
-    height: 3em;
-    font-size: 1.1em;
-    margin-top: 1em;
-    border: 0;
+    font-size: 1.5em;
+    padding: 1.5em 10em;
+
+    .material-symbols-rounded {
+      height:30px;
+      width: 30px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 30px;
+      font-variation-settings: "OPSZ" 30, "FILL" 0, "wght" 400, "GRAD" 0;
+    }
   }
-  .return-button:hover {
-    color: $first-color;
-    transition: 0.2s;
-    width: 25%;
-  }
+
   h2 {
     font-size: 1.5em;
     color: $dark-color;
@@ -228,6 +259,7 @@
     grid-template-columns: 15% 15% 15% 15% 15%;
     justify-content: space-evenly;
     align-items: center;
+    margin-bottom: 1em;
 
     .time-button {
       background-color: $first-color;
@@ -241,11 +273,10 @@
       padding: 0.5em;
       border: 0;
     }
-
     .time-button:hover {
+      transition: 0.1s;
       color: $second-color;
-      transition: 0.2s;
-      width: 95%;
+      background-color: $third-color;
     }
   }
 }

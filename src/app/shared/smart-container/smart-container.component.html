@@ -1,10 +1,20 @@
+<link
+  href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded"
+  rel="stylesheet"
+/>
 <div [ngSwitch]="mainView">
   <section *ngSwitchCase="'firstView'" class="container">
     <div class="first-container">
       <form>
         <h2>Agende seu atendimento comigo.</h2>
-        <button class="schedule-start" (click)="showServices()">
-          Que tipo de serviço você deseja?
+        <button
+          mat-flat-button
+          color="accent"
+          class="schedule-start"
+          (click)="showServices()"
+        >
+          <mat-icon class="material-symbols-rounded">edit_calendar</mat-icon>Que
+          tipo de serviço você deseja?
         </button>
       </form>
       <img
@@ -19,6 +29,8 @@
     <form action="">
       <ol class="list">
         <button
+          mat-flat-button
+          color="primary"
           class="item-list"
           (click)="selectService(service)"
           *ngFor="let service of services"
@@ -27,7 +39,15 @@
         </button>
       </ol>
     </form>
-    <button class="return-button" (click)="returnFirstView()">Voltar</button>
+    <button
+      mat-flat-button
+      color="primary"
+      class="return-button"
+      (click)="returnFirstView()"
+    >
+      <mat-icon class="material-symbols-rounded">arrow_back</mat-icon>
+      Voltar
+    </button>
   </section>
 
   <section *ngSwitchCase="'dateSelection'" class="container">
@@ -42,47 +62,105 @@
         #dateinput
         required
       />
-      <button class="confirm-date" (click)="showTimeSelection()">
+      <button
+        mat-flat-button
+        color="accent"
+        class="confirm-date"
+        (click)="showTimeSelection()"
+        type="button"
+      >
         Confirmar
       </button>
     </form>
-    <button class="return-button" (click)="showServices()">Voltar</button>
+    <button
+      mat-flat-button
+      color="primary"
+      class="return-button"
+      (click)="showServices()"
+    >
+      <mat-icon class="material-symbols-rounded">arrow_back</mat-icon>
+      Voltar
+    </button>
   </section>
 
   <section class="container-timelist" *ngSwitchCase="'timeSelection'">
     <h2>Confira os horários disponíveis para esse dia:</h2>
     <form action="" class="form-timelist">
-      <button class="time-button" (click)="selectedTime(time)" *ngFor="let time of timeList" #timeinput>
+      <button
+        mat-flat-button
+        class="time-button"
+        (click)="selectedTime(time)"
+        *ngFor="let time of timeList"
+        #timeinput
+      >
         {{ time }}h
       </button>
     </form>
-    <button class="return-button" (click)="showDateSelection()">Voltar</button>
+    <button
+      mat-flat-button
+      color="primary"
+      class="return-button"
+      class="return-button"
+      (click)="showDateSelection()"
+    >
+      <mat-icon class="material-symbols-rounded">arrow_back</mat-icon>
+      Voltar
+    </button>
   </section>
   <section class="container" *ngSwitchCase="'confirmSchedule'">
     <h2>Para finalizar o agendamento preencha e confirme os campos abaixo:</h2>
     <form class="form-last">
       <label
         >Primeiro e Último Nome:
-        <input type="text" class="input" #nameinput required/>
+        <input type="text" class="input" #nameinput required />
       </label>
       <label
         >Telefone:
-        <input type="text" class="input" #phoneinput required/>
+        <input type="text" class="input" #phoneinput required />
       </label>
       <label
         >Serviço escolhido:
-        <input type="text" class="input" [value]="selectedService?.name" readonly/>
+        <input
+          type="text"
+          class="input"
+          [value]="selectedService?.name"
+          readonly
+        />
       </label>
       <label
         >Horário escolhido:
-        <input type="text" class="input" [value]="inputedTime?.getHours()?.toString() + ':00'" readonly/>
+        <input
+          type="text"
+          class="input"
+          [value]="inputedTime?.getHours()?.toString() + ':00'"
+          readonly
+        />
       </label>
       <label
         >Dia escolhido:
-        <input type="date" class="input" [value]="inputedDate | date:'yyyy-MM-dd'" readonly/>
+        <input
+          type="date"
+          class="input"
+          [value]="inputedDate | date : 'yyyy-MM-dd'"
+          readonly
+        />
       </label>
-      <button type="button" (click)="confirmSchedule()">Confirmar agendamento</button>
+      <button
+        mat-flat-button
+        color="primary"
+        type="button"
+        (click)="confirmSchedule()"
+      ><mat-icon class="material-symbols-rounded">event_available</mat-icon>
+        Confirmar agendamento
+      </button>
     </form>
-    <button class="return-button" (click)="returnTimeSelection()">Voltar</button>
+    <button
+      mat-flat-button
+      color="primary"
+      class="return-button"
+      (click)="returnTimeSelection()"
+    >
+      <mat-icon class="material-symbols-rounded">arrow_back</mat-icon>Voltar
+    </button>
   </section>
 </div>

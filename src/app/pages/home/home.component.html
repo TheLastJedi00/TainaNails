@@ -1,3 +1,7 @@
+<link
+  href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded"
+  rel="stylesheet"
+/>
 <div class="home-container">
   <aside>
     <div class="aside-group">
@@ -7,9 +11,17 @@
         alt="Tainá Lima: Nail Design"
       />
       <div class="buttons-list">
-        <a class="button home item-group" href="#">Home</a>
-        <a class="button phone item-group" href="#">Fale Comigo</a>
-        <a class="button local item-group" href="#">Onde Me encontrar</a>
+        <button mat-button href="#" color="accent">
+          <mat-icon class="material-symbols-rounded">home</mat-icon>Home
+        </button>
+        <button mat-button href="#" color="primary">
+          <mat-icon class="material-symbols-rounded">maps_ugc</mat-icon>Fale
+          Comigo
+        </button>
+        <button mat-button href="#" color="primary">
+          <mat-icon class="material-symbols-rounded">location_on</mat-icon>Onde
+          me encontrar
+        </button>
       </div>
     </div>
     <a class="button admin" href="#">Admin</a>
@@ -17,7 +29,10 @@
   <div class="home-content">
     <div class="first-container">
       <h1 class="title">Beleza e elegância começando pelas mãos.</h1>
-      <a href="#" class="instagram">Acompanhe meu trabalho</a>
+      <button href="#" mat-flat-button color="accent" class="social-media">
+        <mat-icon class="material-symbols-rounded">public</mat-icon>Acompanhe meu
+        trabalho
+      </button>
     </div>
     <app-smart-container></app-smart-container>
   </div>
