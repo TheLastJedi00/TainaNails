@@ -75,24 +75,24 @@
       transition: 0.1s;
     }
     .return-button {
-    border: 0;
-    border-radius: $border-radius;
-    background-color: $dark-color;
-    font-family: $font-family;
-    color: white;
-    font-size: 1.5em;
-    padding: 1.5em 10em;
+      border: 0;
+      border-radius: $border-radius;
+      background-color: $dark-color;
+      font-family: $font-family;
+      color: white;
+      font-size: 1.5em;
+      padding: 1.5em 10em;
 
-    .material-symbols-rounded {
-      height:30px;
-      width: 30px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 30px;
-      font-variation-settings: "OPSZ" 30, "FILL" 0, "wght" 400, "GRAD" 0;
+      .material-symbols-rounded {
+        height: 30px;
+        width: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 30px;
+        font-variation-settings: "OPSZ" 30, "FILL" 0, "wght" 400, "GRAD" 0;
+      }
     }
-  }
   }
 
   .first-container {
@@ -157,7 +157,7 @@
     padding: 1.5em 10em;
 
     .material-symbols-rounded {
-      height:30px;
+      height: 30px;
       width: 30px;
       display: flex;
       justify-content: center;
@@ -236,7 +236,7 @@
     padding: 1.5em 10em;
 
     .material-symbols-rounded {
-      height:30px;
+      height: 30px;
       width: 30px;
       display: flex;
       justify-content: center;
@@ -334,14 +334,25 @@
         border: 0;
         font-size: 1.5em;
         line-height: 1.6em;
-        width: 50%;
-        height: 18%;
+        width: 85vw;
+        height: fit-content;
+        padding: 0.5em 0.2em;
       }
+      .material-symbols-rounded {
+        height: 30px;
+        width: 30px;
+        display: flex;
+        justify-content: end;
+        align-items: center;
+        font-size: 30px;
+        font-variation-settings: "OPSZ" 30, "FILL" 0, "wght" 400, "GRAD" 0;
+      }
+
       button:hover {
         color: $second-color;
         transition: 0.2s;
-        width: 55%;
-        height: 18%;
+        width: 0;
+        height: 0;
       }
     }
 
@@ -358,6 +369,15 @@
         height: 24vh;
         border-radius: $border-radius;
       }
+      .material-symbols-rounded {
+        height: 30px;
+        width: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 30px;
+        font-variation-settings: "OPSZ" 30, "FILL" 0, "wght" 400, "GRAD" 0;
+      }
     }
 
     h2 {
@@ -365,17 +385,18 @@
     }
 
     .schedule-start {
-      font-size: 1.2em;
+      font-size: 1em;
       width: 90vw;
     }
     .list {
       font-family: $font-family;
+
       .item-list {
         font-family: $font-family;
-        border-radius: 30px;
-        font-size: 1em;
+        border-radius: 25px;
+        font-size: 0.9em;
         font-weight: normal;
-        height: 5.5em;
+        height: 7em;
         padding: 0.1;
       }
     }
@@ -386,9 +407,19 @@
       border-radius: $border-radius;
       background-color: $dark-color;
       color: white;
-      width: 75vw;
-      height: 3.5em;
-      font-size: 1.1em;
+      width: 90vw;
+      height: fit-content;
+      padding: 0.7em 0;
+      font-size: 1em;
+    }
+    .material-symbols-rounded {
+      height: 50px;
+      width: 50px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 50px;
+      font-variation-settings: "OPSZ" 50, "FILL" 0, "wght" 400, "GRAD" 0;
     }
 
     .form-date {
@@ -412,7 +443,7 @@
       }
       .confirm-date {
         font-family: $font-family;
-        padding: 0 1em;
+        padding: 1em 0;
         width: 46vw;
       }
     }
@@ -437,8 +468,24 @@
       }
     }
     .return-button {
-      width: 75vw;
-      height: 3.5em;
+      border: 0;
+      font-family: $font-family;
+      border-radius: $border-radius;
+      background-color: $dark-color;
+      color: white;
+      width: 90vw;
+      height: fit-content;
+      padding: 0.7em 0;
+      font-size: 1em;
+    }
+    .material-symbols-rounded {
+      height: 50px;
+      width: 50px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 50px;
+      font-variation-settings: "OPSZ" 50, "FILL" 0, "wght" 400, "GRAD" 0;
     }
   }
 }

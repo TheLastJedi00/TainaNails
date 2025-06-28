@@ -117,120 +117,134 @@
       }
     }
   }
+}
 
-  @media (max-width: 768px) {
-    .home-container {
-      flex-direction: column;
-      justify-content: start;
-      align-items: center;
+@media (max-width: 768px) {
+  .home-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
 
-      aside {
-        justify-content: start;
+    aside {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      position: absolute;
+      width: 100vw;
+      height: 8vh;
+      background-color: $dark-color;
+
+      .aside-group {
+        display: flex;
         flex-direction: row;
-        position: fixed;
-        width: 100vw;
-        height: 8vh;
+        gap:0em;
+        height: 100%;
 
-        .logo {
-          width: 33%;
+        img {
+          height:100%;
+          width: auto;
           margin-left: 1em;
         }
-        .button {
-          padding-left: 0.5em;
-          font-size: 0em;
-        }
 
-        .aside-group {
-          flex-direction: row;
-          align-items: center;
-          justify-content: start;
-          gap: 1em;
-
-          .buttons-list {
-            display: flex;
-            flex-direction: row;
-            width: 100%;
-            height: 100%;
-            justify-content: space-between;
-            align-items: center;
-            margin: 0 1em;
-          }
-          .home {
-            color: white;
-          }
-          .home::before {
-            margin: 0 0;
-            height: 25px;
-            width: 40px;
-          }
-
-          .phone::before {
-            margin: 0 0;
-            height: 25px;
-            width: 40px;
-          }
-          .phone:hover::before {
-            content: "";
-            background-image: url("../../../assets/WhatsappWhite.png");
-            height: 25px;
-            width: 40px;
-          }
-          .local::before {
-            margin: 0 0;
-            height: 25px;
-            width: 40px;
-          }
-          .local:hover::before {
-            content: "";
-            background-image: url("../../../assets/PinWhite.png");
-            height: 25px;
-            width: 40px;
-          }
-
-          .item-group:hover {
-            color: white;
-          }
-        }
-
-        .admin {
+        .buttons-list {
           display: flex;
-          justify-content: center;
+          flex-direction: row;
+          width: 100%;
+          height: 100%;
+          justify-content: end;
           align-items: center;
-          padding: 0;
-          margin-right: 2em;
-          font-size: 1em;
-        }
-        .admin:hover {
-          color: white;
+
+          button {
+            color: $first-color;
+            font-family: $font-family;
+            text-decoration: none;
+            font-size: 0em;
+            width: fit-content;
+            height: 80%;
+            margin-left: 0em;
+            padding: 0em 0em;
+            border-radius: 40px;
+
+            .material-symbols-rounded {
+              height: 100%;
+              width: 30px;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              font-size: 30px;
+              font-variation-settings: "OPSZ" 30, "FILL" 0, "wght" 400, "GRAD" 0;
+            }
+          }
+          button:first-of-type {
+            color: white;
+          }
         }
       }
 
-      .home-content {
+      .admin {
+        padding-bottom: 0em;
+        margin-right: 1em;
+      }
+      .admin:hover {
+        color: white;
+      }
+    }
+
+    .home-content {
+      margin-left: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: start;
+      align-items: center;
+      height: 100vh;
+      width: 100vw;
+
+      .social-media {
+        font-family: $font-family;
+        font-size: 1em;
+        padding: 0.5em 1em;
+        border-radius: 40px;
+
+        .material-symbols-rounded {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 30px;
+          width: 30px;
+          font-size: 30px;
+          font-variation-settings: "OPSZ" 30, "FILL" 0, "wght" 400, "GRAD" 0;
+        }
+      }
+
+      .mat-mdc-unelevated-button.mat-accent {
+        --mdc-filled-button-container-color: #331d20;
+      }
+
+      .first-container {
+        background-image: url("../../../assets/BackgroundImage.png");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
         display: flex;
         flex-direction: column;
-        justify-content: start;
         align-items: center;
-        height: 100vh;
+        justify-content: center;
+        gap: 1em;
+        height: 30vh;
         width: 100vw;
-        margin: 0;
+        padding: 0em 0;
+        margin-top: 8vh;
+        border-radius: 0 0 40px 40px;
 
-        .first-container {
-          margin: 8vh 0 0 0;
-          gap: 0.5em;
-          height: 35vh;
-          width: 100vw;
-
-          .title {
-            font-size: 4em;
-            font-weight: 600;
-            width: 95%;
-            margin: 0;
-          }
-          .instagram {
-            width: 65vw;
-            padding: 0.5em 1em;
-            font-size: 1em;
-          }
+        .title {
+          color: $dark-color;
+          font-family: $font-caligraphy;
+          font-size: 3em;
+          font-weight: 600;
+          width: 95%;
+          height: fit-content;
+          margin: 0;
+          text-align: center;
         }
       }
     }
