@@ -12,6 +12,7 @@
           color="accent"
           class="schedule-start"
           (click)="showServices()"
+          type="button"
         >
           <mat-icon class="material-symbols-rounded">edit_calendar</mat-icon>Que
           tipo de serviço você deseja?
@@ -33,6 +34,7 @@
           color="primary"
           class="item-list"
           (click)="selectService(service)"
+          type="button"
           *ngFor="let service of services"
         >
           {{ service.name }}
@@ -44,6 +46,7 @@
       color="primary"
       class="return-button"
       (click)="returnFirstView()"
+      type="button"
     >
       <mat-icon class="material-symbols-rounded">arrow_back</mat-icon>
       Voltar
@@ -76,6 +79,7 @@
       mat-flat-button
       color="primary"
       class="return-button"
+      type="button"
       (click)="showServices()"
     >
       <mat-icon class="material-symbols-rounded">arrow_back</mat-icon>
@@ -89,6 +93,7 @@
       <button
         mat-flat-button
         class="time-button"
+        type="button"
         (click)="selectedTime(time)"
         *ngFor="let time of timeList"
         #timeinput
@@ -100,7 +105,7 @@
       mat-flat-button
       color="primary"
       class="return-button"
-      class="return-button"
+      type="button"
       (click)="showDateSelection()"
     >
       <mat-icon class="material-symbols-rounded">arrow_back</mat-icon>
@@ -132,7 +137,7 @@
         <input
           type="text"
           class="input"
-          [value]="inputedTime?.getHours()?.toString() + ':00'"
+          [value]="inputedTime?.toString() + ':00'"
           readonly
         />
       </label>
@@ -150,11 +155,13 @@
         color="primary"
         type="button"
         (click)="confirmSchedule()"
-      ><mat-icon class="material-symbols-rounded">event_available</mat-icon>
+      >
+        <mat-icon class="material-symbols-rounded">event_available</mat-icon>
         Confirmar agendamento
       </button>
     </form>
     <button
+      type="button"
       mat-flat-button
       color="primary"
       class="return-button"

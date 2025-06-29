@@ -3,7 +3,7 @@ export interface Service {
   name: string;
 }
 export interface Schedule {
-    date: Date;
+    date: string;
     name: string;
     service: string
     serviceCode: number;

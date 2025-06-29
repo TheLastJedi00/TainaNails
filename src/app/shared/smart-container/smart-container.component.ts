@@ -1,4 +1,4 @@
-import { CommonModule, Time, WeekDay } from '@angular/common';
+import { CommonModule, formatDate, Time, WeekDay } from '@angular/common';
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { Service, Schedule } from '../../core/types/types';
 import { SchedulesService } from '../../core/services/schedules.service';
@@ -8,11 +8,12 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { provideNativeDateAdapter } from '@angular/material/core';
+import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-smart-container',
   standalone: true,
-  providers: [provideNativeDateAdapter()],
+  providers: [ provideNativeDateAdapter(), SchedulesService ],
   imports: [
     CommonModule,
     MatButtonModule,
@@ -20,6 +21,7 @@ import { provideNativeDateAdapter } from '@angular/material/core';
     MatDatepickerModule,
     MatInputModule,
     MatFormFieldModule,
+    HttpClientModule
   ],
   templateUrl: './smart-container.component.html',
   styleUrl: './smart-container.component.scss',
@@ -30,8 +32,8 @@ export class SmartContainerComponent {
   mainView: string = 'firstView';
   scheduleObject!: Schedule;
   timeList: number[] = [];
-  inputedTime: Date | null = null;
-  inputedDate: Date | null = null;
+  inputedTime: number | null = null;
+  inputedDate: string | null = null;
   @ViewChild('dateinput') dateinputRef!: ElementRef<HTMLInputElement>;
   @ViewChild('inputedService') inputeddateRef!: ElementRef<HTMLInputElement>;
   @ViewChild('phoneinput') phoneinputRef!: ElementRef<HTMLInputElement>;
@@ -40,7 +42,7 @@ export class SmartContainerComponent {
 
   selectedService: Service | null = null;
 
-  constructor() {
+  constructor(private http: HttpClientModule, private schedulesService: SchedulesService) {
     this.services = [
       { id: 1, name: 'Manicure' },
       { id: 2, name: 'Pedicure' },
@@ -66,13 +68,13 @@ export class SmartContainerComponent {
     ];
 
     this.daysOfWeek = [
-      'DOMINGO',
       'SEGUNDA',
       'TERÇA',
       'QUARTA',
       'QUINTA',
       'SEXTA',
       'SÁBADO',
+      'DOMINGO',
     ];
 
     this.timeList = [14, 15, 16, 17, 18];
@@ -94,18 +96,21 @@ export class SmartContainerComponent {
     console.log(this.selectedService);
   }
 
-  dateFormatter(date: string): Date {
+  dateFormatter(date: string): string {
     let splitter = date.split('-');
     let year = parseInt(splitter[0]);
-    let month = parseInt(splitter[1]) - 1; // Month is 0-indexed in JavaScript
+    let month = parseInt(splitter[1]).toString().padStart(2, '0'); // Adiciona zero à esquerda se necessário
     let day = parseInt(splitter[2]);
 
-    let formattedDate: Date = new Date(year, month, day);
+    let formattedDate: string = `${year}-${month}-${day}`;
     return formattedDate;
   }
 
   showTimeSelection() {
     let inputedValue = this.dateinputRef.nativeElement.value;
+    
+    this.schedulesService.listSchedules().subscribe((schedules) => {
+      console.log(schedules);});
 
     this.inputedDate = this.dateFormatter(inputedValue);
     console.log(this.inputedDate);
@@ -128,8 +133,7 @@ export class SmartContainerComponent {
   selectedTime(time: number) {
     this.mainView = 'confirmSchedule';
     this.showConfirmSchedule();
-    const newTime = new Date().setHours(time, 0, 0, 0);
-    this.inputedTime = new Date(newTime);
+    this.inputedTime = time;
   }
 
   showConfirmSchedule() {
@@ -145,18 +149,10 @@ export class SmartContainerComponent {
       throw new Error('Data ou hora não selecionada');
     }
 
-    let dayOfWeek = this.daysOfWeek[this.inputedDate.getDay()];
+    let dayOfWeek = this.daysOfWeek[new Date (this.inputedDate).getDay()];
 
     let formattedSchedule: Schedule = {
-      date: new Date(
-        this.inputedDate.getFullYear(),
-        this.inputedDate.getMonth(),
-        this.inputedDate.getDate(),
-        this.inputedTime.getHours(),
-        0,
-        0,
-        0
-      ),
+      date: `${this.dateFormatter(this.inputedDate)}T${this.inputedTime}:00`,
       name: name,
       service: service,
       serviceCode: this.selectedService ? this.selectedService.id : 0,
@@ -180,6 +176,22 @@ export class SmartContainerComponent {
     try {
       console.log(this.formatSchedule(name, service, phone));
       alert('Fecthing Schedule');
+
+      this.schedulesService.createSchedule(this.formatSchedule(name, service, phone)).subscribe({
+        next: (response: any) => {
+          console.log(response);
+          alert('Agendamento confirmado com sucesso!');
+          this.mainView = 'firstView';
+          this.selectedService = null;
+          this.inputedDate = null;
+          this.inputedTime = null;
+        },
+        error: (error: any) => {
+          console.error(error);
+          alert('Erro ao confirmar agendamento. Tente novamente.');
+        }
+
+      });
     } catch (error) {
       console.error(error);
       alert('Erro ao confirmar agendamento. Tente novamente.');
