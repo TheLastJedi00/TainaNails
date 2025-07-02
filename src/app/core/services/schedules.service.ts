@@ -13,8 +13,8 @@ export class SchedulesService {
 
   constructor(private http: HttpClient) {}
 
-  listSchedules() {
-    return this.http.get<Schedule[]>(`${this.apiUrl}/agendamento`);
+  listSchedules(date: string) {
+    return this.http.get<Schedule[]>(`${this.apiUrl}/agendamento?date=${date}`);
   }
 
   createSchedule(schedule: Schedule): Observable<any> {

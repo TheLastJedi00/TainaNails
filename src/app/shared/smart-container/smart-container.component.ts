@@ -1,4 +1,4 @@
-import { CommonModule, formatDate, Time, WeekDay } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { Service, Schedule } from '../../core/types/types';
 import { SchedulesService } from '../../core/services/schedules.service';
@@ -9,6 +9,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { provideNativeDateAdapter } from '@angular/material/core';
 import { HttpClientModule } from '@angular/common/http';
+import { dateFormatter } from './utils/schedule-utils';
+
 
 @Component({
   selector: 'app-smart-container',
@@ -21,7 +23,7 @@ import { HttpClientModule } from '@angular/common/http';
     MatDatepickerModule,
     MatInputModule,
     MatFormFieldModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   templateUrl: './smart-container.component.html',
   styleUrl: './smart-container.component.scss',
@@ -96,23 +98,13 @@ export class SmartContainerComponent {
     console.log(this.selectedService);
   }
 
-  dateFormatter(date: string): string {
-    let splitter = date.split('-');
-    let year = parseInt(splitter[0]);
-    let month = parseInt(splitter[1]).toString().padStart(2, '0'); // Adiciona zero à esquerda se necessário
-    let day = parseInt(splitter[2]);
-
-    let formattedDate: string = `${year}-${month}-${day}`;
-    return formattedDate;
-  }
-
   showTimeSelection() {
     let inputedValue = this.dateinputRef.nativeElement.value;
     
-    this.schedulesService.listSchedules().subscribe((schedules) => {
+    this.schedulesService.listSchedules(this.inputedDate!).subscribe((schedules) => {
       console.log(schedules);});
 
-    this.inputedDate = this.dateFormatter(inputedValue);
+    this.inputedDate = dateFormatter(inputedValue);
     console.log(this.inputedDate);
 
     if (inputedValue === '') {
@@ -152,7 +144,7 @@ export class SmartContainerComponent {
     let dayOfWeek = this.daysOfWeek[new Date (this.inputedDate).getDay()];
 
     let formattedSchedule: Schedule = {
-      date: `${this.dateFormatter(this.inputedDate)}T${this.inputedTime}:00`,
+      date: `${dateFormatter(this.inputedDate)}T${this.inputedTime}:00`,
       name: name,
       service: service,
       serviceCode: this.selectedService ? this.selectedService.id : 0,

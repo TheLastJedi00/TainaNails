@@ -102,10 +102,31 @@
     align-items: center;
     width: 100%;
 
-    .agenda {
+    .schedule-info {
       display: flex;
-      height: 30vh;
+      flex-direction: column;
+      justify-content: center;
+      align-items: start;
+      background-image: url("../../../assets/Agenda.png");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
       border-radius: $border-radius;
+      padding: 2em;
+
+      p {
+        color: $dark-color;
+      }
+    }
+
+    .material-symbols-rounded {
+      height: 30px;
+      width: 30px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 30px;
+      font-variation-settings: "OPSZ" 30, "FILL" 0, "wght" 400, "GRAD" 0;
     }
   }
 
@@ -361,13 +382,26 @@
       flex-direction: column;
       justify-content: space-evenly;
       align-items: center;
-      height: 50vh;
+      height: 60vh;
       width: 100%;
 
-      .agenda {
+      .schedule-info {
         display: flex;
-        height: 24vh;
+        flex-direction: column;
+        justify-content: center;
+        align-items: start;
+        background-image: url("../../../assets/Agenda.png");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
         border-radius: $border-radius;
+        padding: 1em;
+        height: 30vh;
+        width: 85vw;
+
+        p {
+          color: $dark-color;
+        }
       }
       .material-symbols-rounded {
         height: 30px;
