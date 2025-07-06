@@ -100,12 +100,14 @@ export class SmartContainerComponent {
 
   showTimeSelection() {
     let inputedValue = this.dateinputRef.nativeElement.value;
+    this.inputedDate = dateFormatter(inputedValue);
+    console.log(this.inputedDate);
+
     
     this.schedulesService.listSchedules(this.inputedDate!).subscribe((schedules) => {
       console.log(schedules);});
 
-    this.inputedDate = dateFormatter(inputedValue);
-    console.log(this.inputedDate);
+    
 
     if (inputedValue === '') {
       alert('Selecione uma data');
