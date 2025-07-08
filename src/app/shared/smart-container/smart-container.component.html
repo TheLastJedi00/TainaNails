@@ -101,7 +101,7 @@
         class="time-button"
         type="button"
         (click)="selectedTime(time)"
-        *ngFor="let time of timeList"
+        *ngFor="let time of this.freeTime"
         #timeinput
       >
         {{ time }}h

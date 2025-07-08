@@ -9,13 +9,13 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { provideNativeDateAdapter } from '@angular/material/core';
 import { HttpClientModule } from '@angular/common/http';
-import { dateFormatter } from './utils/schedule-utils';
-
+import { listSavedSchedules, dateFormatter, timeList } from './utils/schedule-utils';
+import { time } from 'node:console';
 
 @Component({
   selector: 'app-smart-container',
   standalone: true,
-  providers: [ provideNativeDateAdapter(), SchedulesService ],
+  providers: [provideNativeDateAdapter(), SchedulesService],
   imports: [
     CommonModule,
     MatButtonModule,
@@ -34,6 +34,7 @@ export class SmartContainerComponent {
   mainView: string = 'firstView';
   scheduleObject!: Schedule;
   timeList: number[] = [];
+  freeTime: number[] = [];
   inputedTime: number | null = null;
   inputedDate: string | null = null;
   @ViewChild('dateinput') dateinputRef!: ElementRef<HTMLInputElement>;
@@ -44,7 +45,10 @@ export class SmartContainerComponent {
 
   selectedService: Service | null = null;
 
-  constructor(private http: HttpClientModule, private schedulesService: SchedulesService) {
+  constructor(
+    private http: HttpClientModule,
+    private schedulesService: SchedulesService
+  ) {
     this.services = [
       { id: 1, name: 'Manicure' },
       { id: 2, name: 'Pedicure' },
@@ -78,8 +82,6 @@ export class SmartContainerComponent {
       'SÁBADO',
       'DOMINGO',
     ];
-
-    this.timeList = [14, 15, 16, 17, 18];
   }
 
   showServices() {
@@ -95,19 +97,22 @@ export class SmartContainerComponent {
   selectService(service: Service): void {
     this.selectedService = service;
     this.showDateSelection();
-    console.log(this.selectedService);
   }
 
   showTimeSelection() {
     let inputedValue = this.dateinputRef.nativeElement.value;
     this.inputedDate = dateFormatter(inputedValue);
-    console.log(this.inputedDate);
+    this.timeList = timeList(this.inputedDate);
 
-    
-    this.schedulesService.listSchedules(this.inputedDate!).subscribe((schedules) => {
-      console.log(schedules);});
 
-    
+    this.schedulesService
+      .listSchedules(this.inputedDate!)
+      .subscribe((schedules) => {
+
+        this.freeTime = this.timeList.filter(
+          (time) => !listSavedSchedules(schedules, this.inputedDate!).includes(time)
+        );
+      });
 
     if (inputedValue === '') {
       alert('Selecione uma data');
@@ -143,7 +148,7 @@ export class SmartContainerComponent {
       throw new Error('Data ou hora não selecionada');
     }
 
-    let dayOfWeek = this.daysOfWeek[new Date (this.inputedDate).getDay()];
+    let dayOfWeek = this.daysOfWeek[new Date(this.inputedDate).getDay()];
 
     let formattedSchedule: Schedule = {
       date: `${dateFormatter(this.inputedDate)}T${this.inputedTime}:00`,
@@ -171,21 +176,22 @@ export class SmartContainerComponent {
       console.log(this.formatSchedule(name, service, phone));
       alert('Fecthing Schedule');
 
-      this.schedulesService.createSchedule(this.formatSchedule(name, service, phone)).subscribe({
-        next: (response: any) => {
-          console.log(response);
-          alert('Agendamento confirmado com sucesso!');
-          this.mainView = 'firstView';
-          this.selectedService = null;
-          this.inputedDate = null;
-          this.inputedTime = null;
-        },
-        error: (error: any) => {
-          console.error(error);
-          alert('Erro ao confirmar agendamento. Tente novamente.');
-        }
-
-      });
+      this.schedulesService
+        .createSchedule(this.formatSchedule(name, service, phone))
+        .subscribe({
+          next: (response: any) => {
+            console.log(response);
+            alert('Agendamento confirmado com sucesso!');
+            this.mainView = 'firstView';
+            this.selectedService = null;
+            this.inputedDate = null;
+            this.inputedTime = null;
+          },
+          error: (error: any) => {
+            console.error(error);
+            alert('Erro ao confirmar agendamento. Tente novamente.');
+          },
+        });
     } catch (error) {
       console.error(error);
       alert('Erro ao confirmar agendamento. Tente novamente.');

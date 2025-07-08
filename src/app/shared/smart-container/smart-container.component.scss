@@ -275,11 +275,14 @@
     background-color: $dark-color;
     border-radius: $border-radius;
     width: 25vw;
-    height: 8vh;
+    height: auto;
+    min-height: 8vh;
     display: grid;
     grid-template-columns: 15% 15% 15% 15% 15%;
+    row-gap: 0.8em;
     justify-content: space-evenly;
     align-items: center;
+    padding: 1em 0;
     margin-bottom: 1em;
 
     .time-button {
@@ -287,7 +290,7 @@
       color: $dark-color;
       border-radius: $border-radius;
       font-family: $font-family;
-      height: 70%;
+      min-height: 3em;
       width: 100%;
       font-size: 1.2em;
       font-weight: bold;

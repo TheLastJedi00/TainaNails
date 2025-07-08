@@ -35,23 +35,44 @@ export function isValidInputedDate(selectedDate: string): boolean {
   return true;
 }
 
-export function checkSavedSchedules(
+export function listSavedSchedules(
   scheduleList: Page<ScheduleResponse>,
   selectedDate: string
-): any {
+): number[] {
   let listEmpty: boolean =
     scheduleList.empty || scheduleList.content.length === 0;
+  let slots: number[] = [];
+
   if (listEmpty) {
     console.log('Nenhum agendamento neste dia.');
   }
 
-  let start = scheduleList.content.forEach((schedule) => {
-    let startSchedule = schedule.date.split('T')[1].split(':')[0];
-    let endSchedule = schedule.endOfService.split('T')[1].split(':')[0];
-    
+  scheduleList.content.forEach((schedule) => {
+    let startSchedule: number = parseInt(
+      schedule.date.split('T')[1].split(':')[0]
+    );
+    let endSchedule = parseInt(
+      schedule.endOfService.split('T')[1].split(':')[0]
+    );
 
-
-
-    return [startSchedule, endSchedule];
+    slots.push(startSchedule, endSchedule);
   });
+
+  return slots;
+}
+
+export function timeList(date: string): number[] {
+  let dayOfWeek = new Date(date).getDay();
+
+  let quarta: boolean = dayOfWeek === 2;
+  let sabado: boolean = dayOfWeek === 5;
+
+  switch (true) {
+    case quarta:
+      return [15, 16, 17, 18];
+    case sabado:
+      return [8, 9, 10, 11, 13, 14, 15, 16, 17];
+    default:
+      return [14, 15, 16, 17, 18];
+  }
 }
