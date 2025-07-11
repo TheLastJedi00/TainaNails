@@ -1,0 +1,48 @@
+@import "../../pages/home/styles/variables.scss";
+
+header {
+  position: absolute;
+  margin: 1em;
+
+  .home {
+    color: white;
+    background-color: $dark-color;
+    border-radius: 40px;
+    padding: 1em;
+  }
+}
+section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url(../../../assets/Login.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  width: 100vw;
+  div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: min-content;
+    width: 20em;
+    padding: 20px;
+    padding-top: 0;
+    background-color: $dark-color;
+    border-radius: 10px;
+
+    img {
+      width: 20em;
+    }
+    .input {
+      width: 70%;
+    }
+    .visibility-button {
+      border: 0;
+      margin-right: 8px;
+      padding: 0;
+    }
+  }
+}

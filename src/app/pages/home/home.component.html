@@ -24,14 +24,16 @@
         </button>
       </div>
     </div>
-    <a class="button admin" href="#">Admin</a>
+    <button mat-button class="admin" color="primary" [routerLink]="['/login']">
+      <mat-icon class="material-symbols-rounded">person</mat-icon>Admin
+    </button>
   </aside>
   <div class="home-content">
     <div class="first-container">
       <h1 class="title">Beleza e elegância começando pelas mãos.</h1>
       <button href="#" mat-flat-button color="accent" class="social-media">
-        <mat-icon class="material-symbols-rounded">public</mat-icon>Acompanhe meu
-        trabalho
+        <mat-icon class="material-symbols-rounded">public</mat-icon>Acompanhe
+        meu trabalho
       </button>
     </div>
     <app-smart-container></app-smart-container>
