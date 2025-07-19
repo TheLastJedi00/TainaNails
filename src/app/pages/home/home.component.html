@@ -1,41 +1,57 @@
-<link
-  href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded"
-  rel="stylesheet"
-/>
-<div class="home-container">
-  <aside>
-    <div class="aside-group">
-      <img
-        class="logo"
-        src="../../../assets/Logo.png"
-        alt="Tainá Lima: Nail Design"
-      />
-      <div class="buttons-list">
-        <button mat-button href="#" color="accent">
-          <mat-icon class="material-symbols-rounded">home</mat-icon>Home
-        </button>
-        <button mat-button href="#" color="primary">
-          <mat-icon class="material-symbols-rounded">maps_ugc</mat-icon>Fale
-          Comigo
-        </button>
-        <button mat-button href="#" color="primary">
-          <mat-icon class="material-symbols-rounded">location_on</mat-icon>Onde
-          me encontrar
-        </button>
-      </div>
+<app-header></app-header>
+<main>
+  <section class="first-container">
+    <H1>Beleza e elegância começando pelas mãos.</H1>
+    <button mat-flat-button color="accent">Acompanhe meu trabalho</button>
+  </section>
+  <section class="second-container">
+    <img src="../../../assets/Taina.png" alt="Tainá Lima" />
+    <div>
+      <h2>
+        Meu foco é unir estética e saúde, utilizando produtos de alta qualidade
+        e protocolos de higiene rigorosos para garantir um resultado impecável,
+        natural e duradouro.
+        <br />Agende seu horário e descubra a resistência e a beleza que suas
+        unhas podem ter:
+      </h2>
+      <button mat-flat-button color="accent">Agendar horário</button>
     </div>
-    <button mat-button class="admin" color="primary" [routerLink]="['/login']">
-      <mat-icon class="material-symbols-rounded">person</mat-icon>Admin
-    </button>
-  </aside>
-  <div class="home-content">
-    <div class="first-container">
-      <h1 class="title">Beleza e elegância começando pelas mãos.</h1>
-      <button href="#" mat-flat-button color="accent" class="social-media">
-        <mat-icon class="material-symbols-rounded">public</mat-icon>Acompanhe
-        meu trabalho
-      </button>
+  </section>
+  <section class="third-container">
+    <div>
+      <h2>Excelência Técnica e Humana</h2>
+      <mat-list class="list">
+        <mat-list-item>
+          <span matListItemTitle>Qualidade dos Produtos</span>
+          <span matListItemLine
+            >Utiliza esmaltes, géis e preparadores de marcas confiáveis, que
+            garantem beleza e durabilidade.</span
+          >
+        </mat-list-item>
+        <mat-list-item>
+          <span matListItemTitle>Consultoria Profissional</span>
+          <span
+            >Oferece sugestões de cores, formatos e técnicas que valorizam as
+            mãos da cliente, mas sem ser insistente..</span
+          >
+        </mat-list-item>
+        <mat-list-item>
+          <span matListItemTitle>Orientações de Cuidado</span>
+          <span>
+            Ensina a cliente como cuidar das unhas em casa para maximizar a
+            durabilidade do procedimento.</span
+          >
+        </mat-list-item>
+        <mat-list-item>
+          <span matListItemTitle>Mãos de Fada</span>
+          <span>
+            Realiza o procedimento com delicadeza, precisão e cuidado, evitando
+            machucar as cutículas ou causar desconforto.
+          </span>
+        </mat-list-item>
+      </mat-list>
     </div>
-    <app-smart-container></app-smart-container>
-  </div>
-</div>
+    <img src="../../../assets/ListImg.jpg" alt="" />
+  </section>
+</main>
+<app-footer></app-footer>
