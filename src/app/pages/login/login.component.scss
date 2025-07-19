@@ -3,13 +3,6 @@
 header {
   position: absolute;
   margin: 1em;
-
-  .home {
-    color: white;
-    background-color: $dark-color;
-    border-radius: 40px;
-    padding: 1em;
-  }
 }
 section {
   display: flex;
@@ -29,12 +22,12 @@ section {
     height: min-content;
     width: 20em;
     padding: 20px;
-    padding-top: 0;
-    background-color: $dark-color;
+    background-color: white;
     border-radius: 10px;
 
     img {
       width: 20em;
+      margin-bottom: 20px
     }
     .input {
       width: 70%;

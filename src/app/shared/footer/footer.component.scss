@@ -3,8 +3,8 @@
 footer {
   display: flex;
   justify-content: space-evenly;
-  align-items: start;
-  height: 25vh;
+  align-items: center;
+  height: fit-content;
   padding: 1em 3em;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.751);
 
@@ -12,10 +12,10 @@ footer {
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 100%;
     justify-content: center;
+    gap: 1em;
     img {
-      height: 40%;
+      height: 100px;
     }
     p {
       font-family: $font-caligraphy;
@@ -26,13 +26,67 @@ footer {
     }
   }
 
-  .button-list {
+  .row {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: start;
-    justify-content: space-between;
-    border-left: 1px solid $dark-color;
-    padding: 1em 3em;
-    color: $dark-color;
+    justify-content: space-evenly;
+    width: auto;
+    padding: 10px;
+
+    .button-list {
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+      justify-content: space-between;
+      border-left: 1px solid $dark-color;
+      padding: 1em 3em;
+      padding-top: 0;
+      color: $dark-color;
+    }
+  }
+  .button-list {
+    text-align: center;
+    border-left: none;
+  }
+}
+
+@media (max-width: 768px) {
+  footer {
+    flex-direction: column;
+    padding: 1em;
+
+    .logotype {
+      gap: 0;
+      img {
+        height: auto;
+        width: 80vw;
+      }
+      p {
+        font-size: 2.2em;
+      }
+    }
+
+    .button-list {
+      border-left: none;
+      width: 100%;
+      align-items: center;
+    }
+
+    .row {
+      display: flex;
+      flex-direction: row;
+      align-items: start;
+      justify-content: space-evenly;
+      width: 100%;
+      padding: 10px;
+
+      .button-list {
+        padding: 1em;
+        padding-top: 0;
+        border-left: 1px solid $dark-color;
+        align-items: start;
+      }
+    }
   }
 }
