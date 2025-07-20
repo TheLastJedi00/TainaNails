@@ -1,94 +1,132 @@
-<h1 mat-dialog-title>Agendamento</h1>
-<mat-dialog-content>
-  <mat-stepper orientation="vertical" [linear]="isLinear" #stepper>
-    <mat-step [stepControl]="firstFormGroup">
-      <form [formGroup]="firstFormGroup">
-        <ng-template matStepLabel>Qual seu nome?</ng-template>
-        <mat-form-field>
-          <mat-label>Nome e Sobrenome</mat-label>
-          <input
-            matInput
-            placeholder="Nome e Sobrenome"
-            formControlName="firstCtrl"
-            required
-          />
-        </mat-form-field>
-        <div>
-          <button mat-button matStepperNext>Próximo</button>
-        </div>
-      </form>
-    </mat-step>
-    <mat-step [stepControl]="secondFormGroup">
-      <form [formGroup]="secondFormGroup">
-        <ng-template matStepLabel>Me diga um contato</ng-template>
-        <mat-form-field>
-          <mat-label>Telefone</mat-label>
-          <input
-            matInput
-            formControlName="secondCtrl"
-            placeholder="(47)98877-6655"
-            required
-          />
-        </mat-form-field>
-        <div>
-          <button mat-button matStepperPrevious>Anterior</button>
-          <button mat-button matStepperNext>Próximo</button>
-        </div>
-      </form>
-    </mat-step>
+<section>
+  <h1 mat-dialog-title>Agendamento</h1>
+  <mat-dialog-content>
+    <mat-stepper orientation="vertical" [linear]="!isLinear" #stepper>
+      <mat-step [stepControl]="firstFormGroup">
+        <form [formGroup]="firstFormGroup">
+          <ng-template matStepLabel>Qual seu nome?</ng-template>
+          <mat-form-field>
+            <mat-label>Nome e Sobrenome</mat-label>
+            <input
+              matInput
+              placeholder="Nome e Sobrenome"
+              formControlName="firstCtrl"
+              required
+            />
+          </mat-form-field>
+          <div>
+            <button mat-raised-button matStepperNext color="accent">
+              Próximo
+            </button>
+          </div>
+        </form>
+      </mat-step>
+      <mat-step [stepControl]="secondFormGroup">
+        <form [formGroup]="secondFormGroup">
+          <ng-template matStepLabel>Me diga um contato</ng-template>
+          <mat-form-field>
+            <mat-label>Telefone</mat-label>
+            <input
+              matInput
+              formControlName="secondCtrl"
+              placeholder="(47)98877-6655"
+              required
+            />
+          </mat-form-field>
+          <div>
+            <button mat-button matStepperPrevious color="primary">
+              Anterior
+            </button>
+            <button mat-raised-button matStepperNext color="accent">
+              Próximo
+            </button>
+          </div>
+        </form>
+      </mat-step>
 
-    <mat-step [stepControl]="thirdFormGroup">
-      <form [formGroup]="thirdFormGroup">
-        <ng-template matStepLabel>Escolha serviço</ng-template>
-        <mat-form-field>
-          <mat-label>Serviço</mat-label>
-          <mat-select formControlName="thirdCtrl" required>
-            <mat-option
-              *ngFor="let service of services"
-              [value]="service.id"
-              >{{ service.name }}</mat-option
-            >
-          </mat-select>
-        </mat-form-field>
-        <div>
-          <button mat-button matStepperPrevious>Anterior</button>
-          <button mat-button matStepperNext>Próximo</button>
-        </div>
-      </form>
-    </mat-step>
+      <mat-step [stepControl]="thirdFormGroup">
+        <form [formGroup]="thirdFormGroup">
+          <ng-template matStepLabel>Escolha serviço</ng-template>
+          <mat-form-field>
+            <mat-label>Serviço</mat-label>
+            <mat-select formControlName="thirdCtrl" required>
+              <mat-option
+                *ngFor="let service of services"
+                [value]="service.id"
+                >{{ service.name }}</mat-option
+              >
+            </mat-select>
+          </mat-form-field>
+          <div>
+            <button mat-button matStepperPrevious color="primary">
+              Anterior
+            </button>
+            <button mat-raised-button matStepperNext color="accent">
+              Próximo
+            </button>
+          </div>
+        </form>
+      </mat-step>
 
-    <mat-step [stepControl]="fourthFormGroup">
-      <form [formGroup]="fourthFormGroup">
-        <ng-template matStepLabel>Escolha uma data</ng-template>
-        <mat-form-field class="mat-mdc-text-field-wrapper">
-          <mat-label>Escolha uma data</mat-label>
-          <input
-            formControlName="fourthCtrl"
-            required
-            matInput
-            [matDatepicker]="picker"
-          />
-          <mat-hint>DD/MM/AAAA</mat-hint>
-          <mat-datepicker-toggle
-            matIconSuffix
-            [for]="picker"
-          ></mat-datepicker-toggle>
-          <mat-datepicker #picker></mat-datepicker>
-        </mat-form-field>
-        <div>
-          <button mat-button matStepperPrevious>Anterior</button>
-          <button mat-button matStepperNext>Próximo</button>
-        </div>
-      </form>
-    </mat-step>
+      <mat-step [stepControl]="fourthFormGroup">
+        <form [formGroup]="fourthFormGroup">
+          <ng-template matStepLabel>Escolha uma data</ng-template>
+          <mat-form-field class="mat-mdc-text-field-wrapper">
+            <mat-label>Escolha uma data</mat-label>
+            <input
+              formControlName="fourthCtrl"
+              required
+              matInput
+              [matDatepicker]="picker"
+            />
+            <mat-hint>DD/MM/AAAA</mat-hint>
+            <mat-datepicker-toggle
+              matIconSuffix
+              [for]="picker"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+          <div>
+            <button mat-button matStepperPrevious color="primary">
+              Anterior
+            </button>
+            <button mat-raised-button matStepperNext color="accent">
+              Próximo
+            </button>
+          </div>
+        </form>
+      </mat-step>
 
-    <mat-step>
-      <ng-template matStepLabel>Done</ng-template>
-      <p>You are now done.</p>
-      <div>
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-button (click)="stepper.reset()">Reset</button>
-      </div>
-    </mat-step>
-  </mat-stepper>
-</mat-dialog-content>
+      <mat-step [stepControl]="fifthFormGroup">
+        <form [formGroup]="fifthFormGroup">
+          <ng-template matStepLabel>Escolha um horário</ng-template>
+          <mat-form-field>
+            <mat-label>Horário disponível</mat-label>
+            <mat-select formControlName="fifthCtrl" required>
+              <mat-option *ngFor="let time of timeList" [value]="time"
+                >{{ time }}:00</mat-option
+              >
+            </mat-select>
+          </mat-form-field>
+          <div>
+            <button mat-button matStepperPrevious color="primary">
+              Anterior
+            </button>
+            <button mat-raised-button matStepperNext color="accent">
+              Próximo
+            </button>
+          </div>
+        </form>
+      </mat-step>
+
+      <mat-step>
+        <ng-template matStepLabel>Done</ng-template>
+        <p>You are now done.</p>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button (click)="stepper.reset()">Reset</button>
+        </div>
+      </mat-step>
+    </mat-stepper>
+  </mat-dialog-content>
+</section>

@@ -39,6 +39,7 @@ import { MAT_DATE_LOCALE, provideNativeDateAdapter } from '@angular/material/cor
 })
 export class DialogComponent {
   services: { id: number; name: string }[];
+  timeList!: number[];
 
   firstFormGroup = this._formBuilder.group({
     firstCtrl: ['', Validators.required],
@@ -52,8 +53,12 @@ export class DialogComponent {
   fourthFormGroup = this._formBuilder.group({
     fourthCtrl: ['', Validators.required],
   });
+  fifthFormGroup = this._formBuilder.group({
+    fifthCtrl: ['', Validators.required],
+  });
 
   isLinear = false;
+
 
   constructor(private _formBuilder: FormBuilder) {
     this.services = [
@@ -79,5 +84,7 @@ export class DialogComponent {
       { id: 20, name: 'Alongamento com SoftGel' },
       { id: 21, name: 'Remoção de Alongamento' },
     ];
+
+    this.timeList = [8, 9, 10, 11, 14 ,15, 16, 17, 18]
   }
 }

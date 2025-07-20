@@ -87,6 +87,8 @@ main {
       a {
         font-size: 1em;
         border-radius: 5px;
+        padding: 0.4em 1em;
+        height: fit-content;
       }
     }
     .second-container {
@@ -105,6 +107,12 @@ main {
           font-size: 0.8em;
           text-align: justify;
           margin-bottom: 8px;
+          font-weight: 500;
+        }
+        button {
+          font-size: 0.8em;
+          padding: 0.5em 1em;
+          height: fit-content;
         }
       }
     }
