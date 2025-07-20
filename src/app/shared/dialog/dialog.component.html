@@ -85,8 +85,17 @@
               [for]="picker"
             ></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
-            <mat-error *ngIf="fourthFormGroup.get('dateCtrl')?.hasError('sundayNotAvailable')">
+            <mat-error
+              *ngIf="
+                fourthFormGroup.get('dateCtrl')?.hasError('sundayNotAvailable')
+              "
+            >
               Não atendo aos domingos.
+            </mat-error>
+            <mat-error
+              *ngIf="fourthFormGroup.get('dateCtrl')?.hasError('pastDate')"
+            >
+              Data escolhida é passada.
             </mat-error>
           </mat-form-field>
           <div>
@@ -103,7 +112,9 @@
       <mat-step [stepControl]="fifthFormGroup">
         <form [formGroup]="fifthFormGroup">
           <ng-template matStepLabel>Escolha um horário</ng-template>
-          <mat-form-field>
+          <mat-spinner *ngIf="timeListIsEmpty()" color="accent"></mat-spinner>
+
+          <mat-form-field *ngIf="!timeListIsEmpty()">
             <mat-label>Horário disponível</mat-label>
             <mat-select formControlName="timeCtrl" required>
               <mat-option *ngFor="let time of timeList" [value]="time"
@@ -111,11 +122,18 @@
               >
             </mat-select>
           </mat-form-field>
+
           <div>
             <button mat-button matStepperPrevious color="primary">
               Anterior
             </button>
-            <button mat-raised-button matStepperNext color="accent">
+            <button
+              mat-raised-button
+              [disabled]="timeListIsEmpty()"
+              color="accent"
+              matStepperNext
+              color="accent"
+            >
               Próximo
             </button>
           </div>
@@ -123,11 +141,25 @@
       </mat-step>
 
       <mat-step>
-        <ng-template matStepLabel>Done</ng-template>
-        <p>You are now done.</p>
+        <ng-template matStepLabel>Confirmar dados</ng-template>
+        <mat-list>
+          <mat-list-item>Nome: </mat-list-item>
+          <mat-divider></mat-divider>
+          <mat-list-item>Telefone: </mat-list-item>
+          <mat-divider></mat-divider>
+          <mat-list-item>Serviço: </mat-list-item>
+          <mat-divider></mat-divider>
+          <mat-list-item>Data: </mat-list-item>
+          <mat-divider></mat-divider>
+          <mat-list-item>Hora: </mat-list-item>
+        </mat-list>
         <div>
-          <button mat-button matStepperPrevious>Back</button>
-          <button mat-button (click)="stepper.reset()">Reset</button>
+          <button mat-button matStepperPrevious color="primary">
+            Anterior
+          </button>
+          <button mat-raised-button (click)="stepper.reset()" color="warn">
+            Refazer
+          </button>
         </div>
       </mat-step>
     </mat-stepper>

@@ -22,6 +22,17 @@ import {
   provideNativeDateAdapter,
 } from '@angular/material/core';
 import { Observable, of } from 'rxjs';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatDividerModule} from '@angular/material/divider';
+import {MatListModule} from '@angular/material/list';
+
+export type ScheduleInfo = {
+  name: string;
+  phone: string;
+  service: string;
+  date: Date;
+  time: number;
+}
 
 @Component({
   selector: 'app-dialog',
@@ -38,6 +49,9 @@ import { Observable, of } from 'rxjs';
     CommonModule,
     MatButtonModule,
     MatDatepickerModule,
+    MatProgressSpinnerModule,
+    MatDividerModule,
+    MatListModule
   ],
   providers: [
     provideNativeDateAdapter(),
@@ -82,7 +96,9 @@ export class DialogComponent {
       { id: 21, name: 'Remoção de Alongamento' },
     ];
 
-    this.timeList = [8, 9, 10, 11, 14, 15, 16, 17, 18];
+    this.timeList = [
+      8, 9, 10, 11, 14, 15, 16, 17, 18
+    ];
     
     this.firstFormGroup = this._formBuilder.group({
       nameCtrl: ['', Validators.required],
@@ -112,7 +128,13 @@ export class DialogComponent {
     if (date.getDay() === 0) {
       return of({ sundayNotAvailable: true });
     }
+    if (date < new Date()){
+      return of({ pastDate: true });
+    }
 
     return of(null);
   };
+  timeListIsEmpty(): boolean {
+    return this.timeList.length === 0;
+  }
 }
