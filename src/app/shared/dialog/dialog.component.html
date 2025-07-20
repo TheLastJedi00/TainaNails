@@ -10,7 +10,7 @@
             <input
               matInput
               placeholder="Nome e Sobrenome"
-              formControlName="firstCtrl"
+              formControlName="nameCtrl"
               required
             />
           </mat-form-field>
@@ -28,7 +28,7 @@
             <mat-label>Telefone</mat-label>
             <input
               matInput
-              formControlName="secondCtrl"
+              formControlName="phoneCtrl"
               placeholder="(47)98877-6655"
               required
             />
@@ -49,7 +49,7 @@
           <ng-template matStepLabel>Escolha serviço</ng-template>
           <mat-form-field>
             <mat-label>Serviço</mat-label>
-            <mat-select formControlName="thirdCtrl" required>
+            <mat-select formControlName="serviceCtrl" required>
               <mat-option
                 *ngFor="let service of services"
                 [value]="service.id"
@@ -74,7 +74,7 @@
           <mat-form-field class="mat-mdc-text-field-wrapper">
             <mat-label>Escolha uma data</mat-label>
             <input
-              formControlName="fourthCtrl"
+              formControlName="dateCtrl"
               required
               matInput
               [matDatepicker]="picker"
@@ -85,6 +85,9 @@
               [for]="picker"
             ></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
+            <mat-error *ngIf="fourthFormGroup.get('dateCtrl')?.hasError('sundayNotAvailable')">
+              Não atendo aos domingos.
+            </mat-error>
           </mat-form-field>
           <div>
             <button mat-button matStepperPrevious color="primary">
@@ -102,7 +105,7 @@
           <ng-template matStepLabel>Escolha um horário</ng-template>
           <mat-form-field>
             <mat-label>Horário disponível</mat-label>
-            <mat-select formControlName="fifthCtrl" required>
+            <mat-select formControlName="timeCtrl" required>
               <mat-option *ngFor="let time of timeList" [value]="time"
                 >{{ time }}:00</mat-option
               >
