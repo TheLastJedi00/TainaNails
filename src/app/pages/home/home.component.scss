@@ -6,6 +6,15 @@ main {
   height: fit-content;
   width: 100%;
 
+  .menu-button {
+    position: fixed;
+    background-color: #075E54;
+    color: white;
+    top: 93vh;
+    left: 95.5vw;
+    font-size: large;
+  }
+
   section {
     box-sizing: border-box;
     padding: 1em 3em;
@@ -72,6 +81,14 @@ main {
 
 @media (max-width: 768px) {
   main {
+    .menu-button {
+    position: fixed;
+    background-color: #075E54;
+    color: white;
+    top: 93vh;
+    left: 85vw;
+    font-size: large;
+  }
     section {
       flex-direction: column;
       padding: 1em;

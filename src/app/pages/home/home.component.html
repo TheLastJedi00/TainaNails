@@ -1,5 +1,24 @@
 <app-header></app-header>
 <main>
+  <button
+    mat-icon-button
+    [matMenuTriggerFor]="menu"
+    aria-label="Contatos"
+    class="menu-button"
+  >
+    <mat-icon>maps_ugc</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <a mat-menu-item href="https://wa.me/5547991936313">
+      <span>Abrir no Whatsapp</span>
+      <mat-icon>maps_ugc</mat-icon>
+    </a>
+    <!-- <button mat-menu-item disabled>
+      <mat-icon>voicemail</mat-icon>
+      <span>Check voice mail</span>
+    </button> -->
+  </mat-menu>
+
   <section class="first-container">
     <H1>Beleza e elegância começando pelas mãos.</H1>
     <a
@@ -19,7 +38,9 @@
         <br />Agende seu horário e descubra a resistência e a beleza que suas
         unhas podem ter:
       </h2>
-      <button mat-flat-button color="accent" (click)="openDialog()">Agendar horário</button>
+      <button mat-flat-button color="accent" (click)="openDialog()">
+        Agendar horário
+      </button>
     </div>
   </section>
   <section class="third-container">

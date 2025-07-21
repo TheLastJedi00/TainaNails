@@ -7,11 +7,12 @@ import { MatListModule } from '@angular/material/list';
 import { FooterComponent } from "../../shared/footer/footer.component";
 import { MatDialog } from '@angular/material/dialog';
 import { DialogComponent } from '../../shared/dialog/dialog.component';
+import {MatMenuModule} from '@angular/material/menu';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [ MatButtonModule, MatIconModule, RouterModule, HeaderComponent, MatListModule, FooterComponent ],
+  imports: [ MatButtonModule, MatIconModule, RouterModule, HeaderComponent, MatListModule, FooterComponent, MatMenuModule ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
