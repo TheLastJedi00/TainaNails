@@ -8,7 +8,7 @@ main {
 
   .menu-button {
     position: fixed;
-    background-color: #075E54;
+    background-color: #075e54;
     color: white;
     top: 93vh;
     left: 95.5vw;
@@ -82,13 +82,11 @@ main {
 @media (max-width: 768px) {
   main {
     .menu-button {
-    position: fixed;
-    background-color: #075E54;
-    color: white;
-    top: 93vh;
-    left: 85vw;
-    font-size: large;
-  }
+      translate: -50% -50%;
+      left: 92%;
+      top: 93%;
+      z-index: 9;
+    }
     section {
       flex-direction: column;
       padding: 1em;
