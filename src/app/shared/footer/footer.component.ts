@@ -3,11 +3,12 @@ import {MatButtonModule} from '@angular/material/button';
 import { MatDialog } from '@angular/material/dialog';
 import { RouterModule } from '@angular/router';
 import { DialogComponent } from '../dialog/dialog.component';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-footer',
   standalone: true,
-  imports: [ MatButtonModule, RouterModule ],
+  imports: [ MatButtonModule, RouterModule, MatIconModule ],
   templateUrl: './footer.component.html',
   styleUrl: './footer.component.scss'
 })
