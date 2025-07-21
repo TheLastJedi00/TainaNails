@@ -26,22 +26,25 @@ footer {
     }
   }
 
+  .button-list {
+    text-align: center;
+    padding: 1em;
+    padding-top: 0;
+  }
+
   .row {
     display: flex;
     flex-direction: row;
     align-items: start;
     justify-content: space-evenly;
-    width: auto;
+    width: 40%;
     padding: 10px;
-  }
-  .button-list {
-    text-align: center;
-    border-left: none;
-    .dev-link {
-      .dev-img {
-        display: block;
-        height: 1.5em;
-      }
+
+    .button-list {
+      display: flex;
+      flex-direction: column;
+      border-left: 1px solid $dark-color;
+      align-items: start;
     }
   }
 }
@@ -67,21 +70,16 @@ footer {
       width: 100%;
       align-items: center;
     }
-  }
-
-  .row {
-    display: flex;
-    flex-direction: row;
-    align-items: start;
-    justify-content: space-evenly;
+    .row {
     width: 100%;
     padding: 10px;
 
     .button-list {
       padding: 1em;
       padding-top: 0;
-      border-left: 1px solid $dark-color;
-      align-items: start;
     }
   }
+  }
+
+  
 }
