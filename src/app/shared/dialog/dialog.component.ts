@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
 import {
   FormBuilder,
   Validators,
@@ -6,10 +6,13 @@ import {
   ReactiveFormsModule,
   AbstractControl,
   ValidationErrors,
-  Form,
   FormGroup,
 } from '@angular/forms';
-import { MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
+import {
+  MAT_DIALOG_DATA,
+  MatDialogModule,
+  MatDialogRef,
+} from '@angular/material/dialog';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
@@ -21,10 +24,10 @@ import {
   MAT_DATE_LOCALE,
   provideNativeDateAdapter,
 } from '@angular/material/core';
-import { Observable, of } from 'rxjs';
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
-import {MatDividerModule} from '@angular/material/divider';
-import {MatListModule} from '@angular/material/list';
+import { Observable, of, Subscription } from 'rxjs';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatListModule } from '@angular/material/list';
 
 export type ScheduleInfo = {
   name: string;
@@ -32,7 +35,7 @@ export type ScheduleInfo = {
   service: string;
   date: Date;
   time: number;
-}
+};
 
 @Component({
   selector: 'app-dialog',
@@ -43,7 +46,6 @@ export type ScheduleInfo = {
     FormsModule,
     ReactiveFormsModule,
     MatFormFieldModule,
-    MatButtonModule,
     MatInputModule,
     MatSelectModule,
     CommonModule,
@@ -51,17 +53,16 @@ export type ScheduleInfo = {
     MatDatepickerModule,
     MatProgressSpinnerModule,
     MatDividerModule,
-    MatListModule
+    MatListModule,
   ],
   providers: [
     provideNativeDateAdapter(),
     { provide: MAT_DATE_LOCALE, useValue: 'pt-BR' },
-    { provide: MAT_DIALOG_DATA, useValue: {} },
   ],
   templateUrl: './dialog.component.html',
   styleUrl: './dialog.component.scss',
 })
-export class DialogComponent {
+export class DialogComponent implements OnInit {
   services: { id: number; name: string }[];
   timeList!: number[];
   isLinear: boolean = false;
@@ -70,8 +71,18 @@ export class DialogComponent {
   thirdFormGroup: FormGroup;
   fourthFormGroup: FormGroup;
   fifthFormGroup: FormGroup;
+  name: string = '';
+  phone: string = '';
+  service: string = '';
+  date: string = '';
+  time: string = '';
+  private subscriptions: Subscription[] = [];
 
-  constructor(private _formBuilder: FormBuilder) {
+  constructor(
+    private _formBuilder: FormBuilder,
+    public dialogRef: MatDialogRef<DialogComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any
+  ) {
     this.services = [
       { id: 1, name: 'Manicure' },
       { id: 2, name: 'Pedicure' },
@@ -96,10 +107,8 @@ export class DialogComponent {
       { id: 21, name: 'Remoção de Alongamento' },
     ];
 
-    this.timeList = [
-      8, 9, 10, 11, 14, 15, 16, 17, 18
-    ];
-    
+    this.timeList = [8, 9, 10, 11, 14, 15, 16, 17, 18];
+
     this.firstFormGroup = this._formBuilder.group({
       nameCtrl: ['', Validators.required],
     });
@@ -114,7 +123,30 @@ export class DialogComponent {
     });
     this.fifthFormGroup = this._formBuilder.group({
       timeCtrl: ['', Validators.required],
-    })
+    });
+  }
+
+  ngOnInit(): void {
+      this.subscriptions.push(
+      this.firstFormGroup.valueChanges.subscribe((value) => {
+        this.name = value.nameCtrl;
+      }),
+      this.secondFormGroup.valueChanges.subscribe((value) => {
+        this.phone = value.phoneCtrl;
+      }),
+      this.thirdFormGroup.valueChanges.subscribe((value) => {
+        this.service = value.serviceCtrl;
+      }),
+      this.fourthFormGroup.valueChanges.subscribe((value) => {
+        this.date = value.dateCtrl.toISOString();
+      }),
+      this.fifthFormGroup.valueChanges.subscribe((value) => {
+        this.time = value.timeCtrl;
+      })
+    );
+  }
+  ngOnDestroy(): void {
+    this.subscriptions.forEach((sub) => sub.unsubscribe());
   }
 
   dateValidator = (
@@ -128,12 +160,13 @@ export class DialogComponent {
     if (date.getDay() === 0) {
       return of({ sundayNotAvailable: true });
     }
-    if (date < new Date()){
+    if (date < new Date()) {
       return of({ pastDate: true });
     }
 
     return of(null);
   };
+
   timeListIsEmpty(): boolean {
     return this.timeList.length === 0;
   }

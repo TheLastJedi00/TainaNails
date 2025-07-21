@@ -52,7 +52,7 @@
             <mat-select formControlName="serviceCtrl" required>
               <mat-option
                 *ngFor="let service of services"
-                [value]="service.id"
+                [value]="service.name"
                 >{{ service.name }}</mat-option
               >
             </mat-select>
@@ -143,15 +143,15 @@
       <mat-step>
         <ng-template matStepLabel>Confirmar dados</ng-template>
         <mat-list>
-          <mat-list-item>Nome: </mat-list-item>
+          <mat-list-item>Nome: <strong>{{this.name}}</strong></mat-list-item>
           <mat-divider></mat-divider>
-          <mat-list-item>Telefone: </mat-list-item>
+          <mat-list-item>Telefone: <strong>{{this.phone}}</strong></mat-list-item>
           <mat-divider></mat-divider>
-          <mat-list-item>Serviço: </mat-list-item>
+          <mat-list-item>Serviço: <strong>{{this.service}}</strong></mat-list-item>
           <mat-divider></mat-divider>
-          <mat-list-item>Data: </mat-list-item>
+          <mat-list-item>Data: <strong>{{this.date.split('T')[0].split('-').reverse().join('/')}}</strong></mat-list-item>
           <mat-divider></mat-divider>
-          <mat-list-item>Hora: </mat-list-item>
+          <mat-list-item>Hora: <strong>{{this.time}}h</strong></mat-list-item>
         </mat-list>
         <div>
           <button mat-button matStepperPrevious color="primary">

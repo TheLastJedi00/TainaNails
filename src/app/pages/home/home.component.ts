@@ -19,6 +19,8 @@ export class HomeComponent {
   constructor(private dialog: MatDialog) {}
 
   openDialog() {
-    this.dialog.open(DialogComponent);
+    this.dialog.open(DialogComponent, {
+      panelClass: 'dialog-component',
+    });
   }
 }
