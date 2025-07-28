@@ -43,7 +43,6 @@
           </div>
         </form>
       </mat-step>
-
       <mat-step [stepControl]="thirdFormGroup">
         <form [formGroup]="thirdFormGroup">
           <ng-template matStepLabel>Escolha serviço</ng-template>
@@ -108,12 +107,10 @@
           </div>
         </form>
       </mat-step>
-
       <mat-step [stepControl]="fifthFormGroup">
         <form [formGroup]="fifthFormGroup">
           <ng-template matStepLabel>Escolha um horário</ng-template>
           <mat-spinner *ngIf="timeListIsEmpty()" color="accent"></mat-spinner>
-
           <mat-form-field *ngIf="!timeListIsEmpty()">
             <mat-label>Horário disponível</mat-label>
             <mat-select formControlName="timeCtrl" required>
@@ -122,7 +119,6 @@
               >
             </mat-select>
           </mat-form-field>
-
           <div>
             <button mat-button matStepperPrevious color="primary">
               Anterior
@@ -139,19 +135,31 @@
           </div>
         </form>
       </mat-step>
-
       <mat-step>
         <ng-template matStepLabel>Confirmar dados</ng-template>
         <mat-list>
-          <mat-list-item>Nome: <strong>{{this.name}}</strong></mat-list-item>
+          <mat-list-item
+            >Nome: <strong>{{ this.name }}</strong></mat-list-item
+          >
           <mat-divider></mat-divider>
-          <mat-list-item>Telefone: <strong>{{this.phone}}</strong></mat-list-item>
+          <mat-list-item
+            >Telefone: <strong>{{ this.phone }}</strong></mat-list-item
+          >
           <mat-divider></mat-divider>
-          <mat-list-item>Serviço: <strong>{{this.service}}</strong></mat-list-item>
+          <mat-list-item
+            >Serviço: <strong>{{ this.service }}</strong></mat-list-item
+          >
           <mat-divider></mat-divider>
-          <mat-list-item>Data: <strong>{{this.date.split('T')[0].split('-').reverse().join('/')}}</strong></mat-list-item>
+          <mat-list-item
+            >Data:
+            <strong>{{
+              this.date.split("T")[0].split("-").reverse().join("/")
+            }}</strong></mat-list-item
+          >
           <mat-divider></mat-divider>
-          <mat-list-item>Hora: <strong>{{this.time}}h</strong></mat-list-item>
+          <mat-list-item
+            >Hora: <strong>{{ this.time }}h</strong></mat-list-item
+          >
         </mat-list>
         <div>
           <button mat-button matStepperPrevious color="primary">

@@ -2,174 +2,29 @@
   <button mat-raised-button routerLink="/" color="accent">Início</button>
 </header>
 <main>
-  <section class="container">
-    <div>
-      <mat-accordion multi>
-        <h1>Segunda-Feira</h1>
-        <mat-expansion-panel *ngFor="let time of normalDaySlots">
-          <mat-expansion-panel-header>
-            <mat-panel-title> {{ time }}:00 </mat-panel-title>
-            <mat-panel-description>
-              Disponível
-              <mat-icon>account_circle</mat-icon>
-            </mat-panel-description>
-          </mat-expansion-panel-header>
-          <mat-list>
-            <mat-list-item>Nome:</mat-list-item>
-            <mat-divider></mat-divider>
-            <mat-list-item>Telefone:</mat-list-item>
-            <mat-divider></mat-divider>
-            <mat-list-item>Serviço:</mat-list-item>
-            <mat-divider></mat-divider>
-            <mat-list-item>Início:</mat-list-item>
-            <mat-divider></mat-divider>
-            <mat-list-item>fim:</mat-list-item>
-            <mat-divider></mat-divider>
-            <mat-list-item>Id:</mat-list-item>
-          </mat-list>
-          <button mat-raised-button color="accent">Editar</button>
-        </mat-expansion-panel>
-      </mat-accordion>
+  <section>
+    <div class="title">
+      <!-- <img src="../../../assets/Logotype.svg" alt="Tainá Lima Nail Designer" /> -->
+      <h1>Agenda da Semana</h1>
+      <button mat-icon-button aria-label="Editar Semana" color="accent">
+        <mat-icon>edit</mat-icon>
+      </button>
     </div>
-    <div>
-      <mat-accordion multi>
-        <h1>Terça-Feira</h1>
-        <mat-expansion-panel *ngFor="let time of normalDaySlots">
-          <mat-expansion-panel-header>
-            <mat-panel-title> {{ time }}:00 </mat-panel-title>
-            <mat-panel-description>
-              Disponível
-              <mat-icon>account_circle</mat-icon>
-            </mat-panel-description>
-          </mat-expansion-panel-header>
-          <mat-list>
-            <mat-list-item>Nome:</mat-list-item>
-            <mat-divider></mat-divider>
-            <mat-list-item>Telefone:</mat-list-item>
-            <mat-divider></mat-divider>
-            <mat-list-item>Serviço:</mat-list-item>
-            <mat-divider></mat-divider>
-            <mat-list-item>Início:</mat-list-item>
-            <mat-divider></mat-divider>
-            <mat-list-item>fim:</mat-list-item>
-            <mat-divider></mat-divider>
-            <mat-list-item>Id:</mat-list-item>
-          </mat-list>
-          <button mat-raised-button color="accent">Editar</button>
-        </mat-expansion-panel>
-      </mat-accordion>
-    </div>
-    <div>
-      <mat-accordion multi>
-        <h1>Quarta-Feira</h1>
-        <mat-expansion-panel *ngFor="let time of wednesdaySlots">
-          <mat-expansion-panel-header>
-            <mat-panel-title> {{ time }}:00 </mat-panel-title>
-            <mat-panel-description>
-              Disponível
-              <mat-icon>account_circle</mat-icon>
-            </mat-panel-description>
-          </mat-expansion-panel-header>
-          <mat-list>
-            <mat-list-item>Nome:</mat-list-item>
-            <mat-divider></mat-divider>
-            <mat-list-item>Telefone:</mat-list-item>
-            <mat-divider></mat-divider>
-            <mat-list-item>Serviço:</mat-list-item>
-            <mat-divider></mat-divider>
-            <mat-list-item>Início:</mat-list-item>
-            <mat-divider></mat-divider>
-            <mat-list-item>fim:</mat-list-item>
-            <mat-divider></mat-divider>
-            <mat-list-item>Id:</mat-list-item>
-          </mat-list>
-          <button mat-raised-button color="accent">Editar</button>
-        </mat-expansion-panel>
-      </mat-accordion>
-    </div>
-    <div>
-      <mat-accordion multi>
-        <h1>Quinta-Feira</h1>
-        <mat-expansion-panel *ngFor="let time of normalDaySlots">
-          <mat-expansion-panel-header>
-            <mat-panel-title> {{ time }}:00 </mat-panel-title>
-            <mat-panel-description>
-              Disponível
-              <mat-icon>account_circle</mat-icon>
-            </mat-panel-description>
-          </mat-expansion-panel-header>
-          <mat-list>
-            <mat-list-item>Nome:</mat-list-item>
-            <mat-divider></mat-divider>
-            <mat-list-item>Telefone:</mat-list-item>
-            <mat-divider></mat-divider>
-            <mat-list-item>Serviço:</mat-list-item>
-            <mat-divider></mat-divider>
-            <mat-list-item>Início:</mat-list-item>
-            <mat-divider></mat-divider>
-            <mat-list-item>fim:</mat-list-item>
-            <mat-divider></mat-divider>
-            <mat-list-item>Id:</mat-list-item>
-          </mat-list>
-          <button mat-raised-button color="accent">Editar</button>
-        </mat-expansion-panel>
-      </mat-accordion>
-    </div>
-    <div>
-      <mat-accordion multi>
-        <h1>Sexta-Feira</h1>
-        <mat-expansion-panel *ngFor="let time of normalDaySlots">
-          <mat-expansion-panel-header>
-            <mat-panel-title> {{ time }}:00 </mat-panel-title>
-            <mat-panel-description>
-              Disponível
-              <mat-icon>account_circle</mat-icon>
-            </mat-panel-description>
-          </mat-expansion-panel-header>
-          <mat-list>
-            <mat-list-item>Nome:</mat-list-item>
-            <mat-divider></mat-divider>
-            <mat-list-item>Telefone:</mat-list-item>
-            <mat-divider></mat-divider>
-            <mat-list-item>Serviço:</mat-list-item>
-            <mat-divider></mat-divider>
-            <mat-list-item>Início:</mat-list-item>
-            <mat-divider></mat-divider>
-            <mat-list-item>fim:</mat-list-item>
-            <mat-divider></mat-divider>
-            <mat-list-item>Id:</mat-list-item>
-          </mat-list>
-          <button mat-raised-button color="accent">Editar</button>
-        </mat-expansion-panel>
-      </mat-accordion>
-    </div>
-    <div>
-      <mat-accordion multi>
-        <h1>Sábado</h1>
-        <mat-expansion-panel *ngFor="let time of saturdaySlots">
-          <mat-expansion-panel-header>
-            <mat-panel-title> {{ time }}:00 </mat-panel-title>
-            <mat-panel-description>
-              Disponível
-              <mat-icon>account_circle</mat-icon>
-            </mat-panel-description>
-          </mat-expansion-panel-header>
-          <mat-list>
-            <mat-list-item>Nome:</mat-list-item>
-            <mat-divider></mat-divider>
-            <mat-list-item>Telefone:</mat-list-item>
-            <mat-divider></mat-divider>
-            <mat-list-item>Serviço:</mat-list-item>
-            <mat-divider></mat-divider>
-            <mat-list-item>Início:</mat-list-item>
-            <mat-divider></mat-divider>
-            <mat-list-item>fim:</mat-list-item>
-            <mat-divider></mat-divider>
-            <mat-list-item>Id:</mat-list-item>
-          </mat-list>
-          <button mat-raised-button color="accent">Editar</button>
-        </mat-expansion-panel>
-      </mat-accordion>
+    <mat-divider></mat-divider>
+    <div class="weekdays">
+      <ul class="weekday-column" *ngFor="let weekday of weekdays">
+        <li>
+          <h2>{{ weekday }}</h2>
+          <ul class="time-column">
+            <li class="time-slot" *ngFor="let slot of saturdaySlots">
+              <button mat-raised-button [matMenuTriggerFor]="menu" color="accent">{{slot}}:00</button>
+              <mat-menu #menu="matMenu">
+                <button mat-menu-item><mat-icon>info</mat-icon>Informações</button>
+              </mat-menu>
+            </li>
+          </ul>
+        </li>
+      </ul>
     </div>
   </section>
 </main>
