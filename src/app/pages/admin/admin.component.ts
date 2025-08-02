@@ -34,8 +34,19 @@ export class AdminComponent {
   saturdaySlots: number[] = [8, 9, 10, 11, 14, 15, 16, 17, 18];
   weekdays: string[] = ['Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado' ];
 
-  slotIsAvailable(slot: string): string {
-    switch (slot) {}
+  slotIsAvailable(slot: number, weekday: string): string {
+    let morningTime: boolean = slot < 12;
+    let isSaturday: boolean = weekday === 'Sábado';
+    let isWednesday: boolean = weekday === 'Quarta';
+    if ((!isSaturday && morningTime)||(isWednesday && slot < 15)) {
+      return "basic"
+    }
     return "accent";
+  }
+  slotFontColor(theme: string){
+    if(theme === "basic"){
+      return "#c7c7c7ff";
+    }
+    return "white";
   }
 }

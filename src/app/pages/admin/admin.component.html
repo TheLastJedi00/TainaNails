@@ -17,9 +17,31 @@
           <h2>{{ weekday }}</h2>
           <ul class="time-column">
             <li class="time-slot" *ngFor="let slot of saturdaySlots">
-              <button mat-raised-button [matMenuTriggerFor]="menu" color="accent">{{slot}}:00</button>
+              <button
+                mat-raised-button
+                [matMenuTriggerFor]="menu"
+                [color]="slotIsAvailable(slot, weekday)"
+                [style.color]="slotFontColor(slotIsAvailable(slot, weekday))"
+              >
+                {{ slot }}h
+              </button>
               <mat-menu #menu="matMenu">
-                <button mat-menu-item><mat-icon>info</mat-icon>Informações</button>
+                <p mat-menu-item><mat-icon>person</mat-icon>João Silva</p>
+                <p mat-menu-item><mat-icon>add_call</mat-icon>(47)98877-6655</p>
+                <p mat-menu-item>
+                  <mat-icon>design_services</mat-icon>Manicure
+                </p>
+                <p mat-menu-item>
+                  <mat-icon>calendar_month</mat-icon>25/25/2025
+                </p>
+                <p mat-menu-item><mat-icon>schedule</mat-icon>{{ slot }}:00</p>
+
+                  <button mat-menu-item color="warn">
+                    <mat-icon>delete</mat-icon>Excluir
+                  </button>
+                  <button mat-menu-item color="primary">
+                    <mat-icon>edit</mat-icon>Editar
+                  </button>
               </mat-menu>
             </li>
           </ul>
