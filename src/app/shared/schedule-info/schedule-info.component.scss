@@ -1,0 +1,26 @@
+section {
+  padding: 1em;
+  div {
+    text-align: center;
+    h1 {
+        margin: 0;
+    }
+    h2 {
+      padding: 0;
+      padding-bottom: 2%;
+    }
+  }
+  .content {
+    p {
+        display: flex;
+        align-items: center;
+        gap: 0.5em;
+    }
+  }
+  .buttons {
+    padding: 0;
+    display: flex;
+    justify-content: space-evenly;
+  }
+}
+
