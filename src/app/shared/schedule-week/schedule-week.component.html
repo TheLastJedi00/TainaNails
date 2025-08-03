@@ -1,0 +1,18 @@
+<section>
+  <div>
+    <h2>Busca Por Semana</h2>
+    <p>Selecione uma segunda-feira.</p>
+  </div>
+  <mat-dialog-content class="content">
+    <mat-form-field>
+      <mat-label>Segunda-feira</mat-label>
+      <input matInput [matDatepicker]="picker" />
+      <mat-hint>DD/MM/AAAA</mat-hint>
+      <mat-datepicker-toggle matIconSuffix [for]="picker">
+      </mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker> </mat-form-field
+  ></mat-dialog-content>
+  <mat-dialog-actions class="buttons">
+    <button mat-raised-button color="accent">Buscar</button>
+  </mat-dialog-actions>
+</section>

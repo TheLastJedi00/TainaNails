@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatInputModule } from '@angular/material/input';
+import { MatNativeDateModule } from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
@@ -10,6 +11,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { CommonModule } from '@angular/common';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { ScheduleInfoComponent } from '../../shared/schedule-info/schedule-info.component';
+import { ScheduleWeekComponent } from '../../shared/schedule-week/schedule-week.component';
 
 @Component({
   selector: 'app-admin',
@@ -18,6 +20,7 @@ import { ScheduleInfoComponent } from '../../shared/schedule-info/schedule-info.
     MatIconModule,
     MatFormFieldModule,
     MatInputModule,
+    MatNativeDateModule,
     MatDatepickerModule,
     MatButtonModule,
     RouterModule,
@@ -35,18 +38,18 @@ export class AdminComponent {
   wednesdaySlots: number[] = [15, 16, 17, 18];
   saturdaySlots: number[] = [8, 9, 10, 11, 14, 15, 16, 17, 18];
   weekdays: string[] = [
-    'Segunda',
-    'Terça',
-    'Quarta',
-    'Quinta',
-    'Sexta',
-    'Sábado',
+    'Seg',
+    'Ter',
+    'Qua',
+    'Qui',
+    'Sex',
+    'Sáb',
   ];
 
   slotIsAvailable(slot: number, weekday: string): string {
     let morningTime: boolean = slot < 12;
-    let isSaturday: boolean = weekday === 'Sábado';
-    let isWednesday: boolean = weekday === 'Quarta';
+    let isSaturday: boolean = weekday === 'Sáb';
+    let isWednesday: boolean = weekday === 'Qua';
     if ((!isSaturday && morningTime) || (isWednesday && slot < 15)) {
       return 'basic';
     }
@@ -58,15 +61,19 @@ export class AdminComponent {
     }
     return 'white';
   }
-  
+
   constructor(public dialog: MatDialog) {}
 
-  openDialog(slot: number, weekday: string) {
+  openScheduleInfo(slot: number, weekday: string) {
     this.dialog.open(ScheduleInfoComponent, {
       data: {
         timeSlot: slot,
         weekDay: weekday,
-      }
+      },
     });
+  }
+
+  openScheduleWeek() {
+    this.dialog.open(ScheduleWeekComponent, {});
   }
 }

@@ -1,0 +1,17 @@
+section {
+    padding: 1em;
+    text-align: center;
+    div {
+        p {
+            margin: 0;
+            margin-bottom: 16px;
+        }
+    }
+    .content {
+        padding: 0 1em;
+    }
+    .buttons {
+        display: flex;
+        justify-content: end;
+    }
+}

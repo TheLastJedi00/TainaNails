@@ -46,6 +46,7 @@ main {
         margin: 0;
         padding: 1em;
         border-left: rgba(128, 128, 128, 0.429) 1px solid;
+        
 
         .time-column {
           display: grid;
@@ -69,5 +70,95 @@ main {
       }
     }
   }
+}
 
+@media (max-width: 768px) {
+  header {
+    position: absolute;
+    margin: 1em;
+  }
+
+  main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url(../../../assets/Login.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+    width: 100%;
+
+    section {
+      background-color: white;
+      width: fit-content;
+      min-height: fit-content;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.226);
+      padding: 0.5em;
+
+      .title {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 0.2em;
+        height: 3em;
+        width: 100%;
+
+        h1 {
+          font-size: 1.5em;
+          margin: 0.5em 0;
+        }
+      }
+      .weekdays {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        height: fit-content;
+        margin: 0;
+        padding: 0.2em 0;
+
+        .weekday-column {
+          list-style-type: none;
+          margin: 0;
+          padding: 0.2em;
+          border-left: rgba(128, 128, 128, 0.429) 1px solid;
+          width: 14.2vw;
+
+          h2 {
+            font-size: 1em;
+            margin: 0;
+            margin-left: 0.2em;
+          }
+
+          .time-column {
+            display: grid;
+            grid-template: repeat(5, 1fr) / 1fr;
+            justify-content: space-between;
+            padding: 0;
+            list-style-type: none;
+            width: fit-content;
+
+            .time-slot {
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              height: 2.5em;
+              margin-top: 0.5em;
+
+              button {
+                height: 100%;
+                width: 90%;
+                font-size: 1em;
+                border-radius: 7px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .mdc-button{
+    min-width: 10px;
+  }
 }

@@ -4,9 +4,8 @@
 <main>
   <section>
     <div class="title">
-      <!-- <img src="../../../assets/Logotype.svg" alt="Tainá Lima Nail Designer" /> -->
       <h1>Agenda da Semana</h1>
-      <button mat-icon-button aria-label="Editar Semana" color="accent">
+      <button mat-icon-button aria-label="Editar Semana" color="accent" (click)="openScheduleWeek()">
         <mat-icon>edit</mat-icon>
       </button>
     </div>
@@ -21,7 +20,7 @@
                 mat-raised-button
                 [color]="slotIsAvailable(slot, weekday)"
                 [style.color]="slotFontColor(slotIsAvailable(slot, weekday))"
-                (click)="openDialog(slot, weekday)"
+                (click)="openScheduleInfo(slot, weekday)"
               >
                 {{ slot }}h
               </button>
