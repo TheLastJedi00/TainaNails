@@ -25,4 +25,11 @@ export class ScheduleInfoComponent {
     public dialog: MatDialog,
     @Inject(MAT_DIALOG_DATA) public data: { timeSlot: number; weekDay: string }
   ) {}
+
+  deleteIsDisabled(index: string): boolean {
+    if (index === 'index') {
+      return true;
+    }
+    return false
+  }
 }
