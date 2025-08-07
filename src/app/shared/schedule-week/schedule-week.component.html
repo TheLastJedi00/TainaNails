@@ -6,13 +6,17 @@
   <mat-dialog-content class="content">
     <mat-form-field>
       <mat-label>Segunda-feira</mat-label>
-      <input matInput [matDatepicker]="picker" />
+      <input matInput [matDatepicker]="picker" [formControl]="dateControl"/>
       <mat-hint>DD/MM/AAAA</mat-hint>
+      <mat-error *ngIf="dateControl.hasError('required')">Campo brigatório</mat-error>
+      <mat-error *ngIf="dateControl.hasError('invalidDate')">Escolha uma segunda-feira</mat-error>
+      
       <mat-datepicker-toggle matIconSuffix [for]="picker">
       </mat-datepicker-toggle>
-      <mat-datepicker #picker></mat-datepicker> </mat-form-field
-  ></mat-dialog-content>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+  </mat-dialog-content>
   <mat-dialog-actions class="buttons">
-    <button mat-raised-button color="accent">Buscar</button>
+    <button mat-raised-button mat-dialog-close [disabled]="dateControl.invalid" color="accent">Buscar</button>
   </mat-dialog-actions>
 </section>
