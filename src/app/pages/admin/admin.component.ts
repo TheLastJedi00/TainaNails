@@ -12,6 +12,7 @@ import { CommonModule } from '@angular/common';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { ScheduleInfoComponent } from '../../shared/schedule-info/schedule-info.component';
 import { ScheduleWeekComponent } from '../../shared/schedule-week/schedule-week.component';
+import { DialogComponent } from '../../shared/dialog/dialog.component';
 
 @Component({
   selector: 'app-admin',
@@ -37,14 +38,7 @@ export class AdminComponent {
   normalDaySlots: number[] = [14, 15, 16, 17, 18];
   wednesdaySlots: number[] = [15, 16, 17, 18];
   saturdaySlots: number[] = [8, 9, 10, 11, 14, 15, 16, 17, 18];
-  weekdays: string[] = [
-    'Seg',
-    'Ter',
-    'Qua',
-    'Qui',
-    'Sex',
-    'Sáb',
-  ];
+  weekdays: string[] = ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'];
 
   slotIsAvailable(slot: number, weekday: string): string {
     let morningTime: boolean = slot < 12;
@@ -75,5 +69,9 @@ export class AdminComponent {
 
   openScheduleWeek() {
     this.dialog.open(ScheduleWeekComponent, {});
+  }
+
+  openScheduleStepper() {
+    this.dialog.open(DialogComponent, {});
   }
 }
