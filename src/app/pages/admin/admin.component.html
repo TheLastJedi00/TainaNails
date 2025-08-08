@@ -24,13 +24,14 @@
       <ul class="weekday-column" *ngFor="let weekday of weekdays">
         <li>
           <h2>{{ weekday }}</h2>
+          <span>{{dayIterator(weekdays.indexOf(weekday))}}</span>
           <ul class="time-column">
             <li class="time-slot" *ngFor="let slot of saturdaySlots">
               <button
                 mat-raised-button
                 [color]="slotIsAvailable(slot, weekday)"
                 [style.color]="slotFontColor(slotIsAvailable(slot, weekday))"
-                (click)="openScheduleInfo(slot, weekday)"
+                (click)="openScheduleInfo(slot, weekday, dayIterator(weekdays.indexOf(weekday)))"
               >
                 {{ slot }}h
               </button>

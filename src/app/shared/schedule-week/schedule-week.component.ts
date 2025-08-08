@@ -37,7 +37,7 @@ import { MatInputModule } from '@angular/material/input';
   templateUrl: './schedule-week.component.html',
   styleUrl: './schedule-week.component.scss',
 })
-export class ScheduleWeekComponent {
+export class ScheduleWeekComponent{
   dateControl = new FormControl(
     '',
     [Validators.required,
@@ -56,4 +56,8 @@ export class ScheduleWeekComponent {
     }
     return null;
   }
+
+  constructor() {
+  }
+
 }

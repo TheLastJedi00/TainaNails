@@ -39,6 +39,9 @@ export class AdminComponent {
   wednesdaySlots: number[] = [15, 16, 17, 18];
   saturdaySlots: number[] = [8, 9, 10, 11, 14, 15, 16, 17, 18];
   weekdays: string[] = ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'];
+  selectedDate: Date = new Date();
+  dayList: string[] = [];
+
 
   slotIsAvailable(slot: number, weekday: string): string {
     let morningTime: boolean = slot < 12;
@@ -58,20 +61,38 @@ export class AdminComponent {
 
   constructor(public dialog: MatDialog) {}
 
-  openScheduleInfo(slot: number, weekday: string) {
+  openScheduleInfo(slot: number, weekday: string, selectedDate: string) {
     this.dialog.open(ScheduleInfoComponent, {
       data: {
         timeSlot: slot,
         weekDay: weekday,
+        selectedDate: selectedDate,
       },
     });
   }
 
   openScheduleWeek() {
-    this.dialog.open(ScheduleWeekComponent, {});
+    const selectedDate = this.dialog.open(ScheduleWeekComponent, {});
+
+    selectedDate.afterClosed().subscribe((date: Date) => {
+      if(date){
+        this.selectedDate = date;
+      }
+    });
+  }
+
+  dayIterator(index: number): string {
+    const selectedDay = this.selectedDate;
+    const day = selectedDay.getDate() + index;
+    const month = this.selectedDate.getMonth();
+    const year = this.selectedDate.getFullYear();
+
+    return new Date(year, month, day).toLocaleDateString().split(`/${year}`)[0];
   }
 
   openScheduleStepper() {
     this.dialog.open(DialogComponent, {});
   }
+
+  
 }

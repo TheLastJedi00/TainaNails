@@ -23,7 +23,7 @@ export class ScheduleInfoComponent {
 
   constructor(
     public dialog: MatDialog,
-    @Inject(MAT_DIALOG_DATA) public data: { timeSlot: number; weekDay: string }
+    @Inject(MAT_DIALOG_DATA) public data: { timeSlot: number; weekDay: string; selectedDate: string }
   ) {}
 
   deleteIsDisabled(index: string): boolean {
