@@ -102,7 +102,7 @@ main {
     padding: 0;
 
     section {
-      background-color: white;
+      background-color: rgba(255, 255, 255, 0.707);
       width: fit-content;
       min-height: fit-content;
       border-radius: 10px;
@@ -137,18 +137,18 @@ main {
           margin: 0;
           padding: 0.2em;
           border-left: rgba(128, 128, 128, 0.429) 1px solid;
-          width: 12vw;
-          min-width: 3.5em;
+          width: 11vw;
+          min-width: 3.3em;
 
           h2 {
             font-size: 1em;
             margin: 0;
-            margin-left: 0.2em;
+            margin-left: 0.3em;
           }
           span {
             font-size: 0.8em;
             margin: 0;
-            margin-left: 0.2em;
+            margin-left: 0.4em;
           }
 
           .time-column {
