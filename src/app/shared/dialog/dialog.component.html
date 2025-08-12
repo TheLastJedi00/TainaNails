@@ -165,8 +165,8 @@
           <button mat-button matStepperPrevious color="primary">
             Anterior
           </button>
-          <button mat-raised-button (click)="stepper.reset()" color="warn">
-            Refazer
+          <button mat-raised-button mat-dialog-close (click)="createSchedule()" color="accent">
+            Confirmar
           </button>
         </div>
       </mat-step>

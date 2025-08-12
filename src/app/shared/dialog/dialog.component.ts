@@ -28,6 +28,8 @@ import { Observable, of, Subscription } from 'rxjs';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
+import { SchedulesService } from '../../core/services/schedules.service';
+import { Schedule } from '../../core/types/types';
 
 export type ScheduleInfo = {
   name: string;
@@ -75,13 +77,14 @@ export class DialogComponent implements OnInit {
   phone: string = '';
   service: string = '';
   date: string = '';
-  time: string = '';
+  time: number = 0;
   private subscriptions: Subscription[] = [];
 
   constructor(
     private _formBuilder: FormBuilder,
     public dialogRef: MatDialogRef<DialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    private schedulesService: SchedulesService
   ) {
     this.services = [
       { id: 1, name: 'Manicure' },
@@ -119,7 +122,7 @@ export class DialogComponent implements OnInit {
       serviceCtrl: ['', Validators.required],
     });
     this.fourthFormGroup = this._formBuilder.group({
-      dateCtrl: ['', [Validators.required], [this.dateValidator]],
+      dateCtrl: ['', [Validators.required, this.dateValidator]],
     });
     this.fifthFormGroup = this._formBuilder.group({
       timeCtrl: ['', Validators.required],
@@ -127,7 +130,7 @@ export class DialogComponent implements OnInit {
   }
 
   ngOnInit(): void {
-      this.subscriptions.push(
+    this.subscriptions.push(
       this.firstFormGroup.valueChanges.subscribe((value) => {
         this.name = value.nameCtrl;
       }),
@@ -138,7 +141,13 @@ export class DialogComponent implements OnInit {
         this.service = value.serviceCtrl;
       }),
       this.fourthFormGroup.valueChanges.subscribe((value) => {
-        this.date = value.dateCtrl.toISOString();
+        if (value.dateCtrl) {
+          const date = value.dateCtrl as Date;
+          const year = date.getFullYear();
+          const month = (date.getMonth() + 1).toString().padStart(2, '0');
+          const day = date.getDate().toString().padStart(2, '0');
+          this.date = `${year}-${month}-${day}`;
+        }
       }),
       this.fifthFormGroup.valueChanges.subscribe((value) => {
         this.time = value.timeCtrl;
@@ -149,25 +158,47 @@ export class DialogComponent implements OnInit {
     this.subscriptions.forEach((sub) => sub.unsubscribe());
   }
 
-  dateValidator = (
-    control: AbstractControl
-  ): Observable<ValidationErrors | null> => {
+  dateValidator(control: AbstractControl): ValidationErrors | null {
     const date = control.value as Date;
     if (!date) {
-      return of(null);
+      return null;
     }
 
     if (date.getDay() === 0) {
-      return of({ sundayNotAvailable: true });
+      return { sundayNotAvailable: true };
     }
-    if (date < new Date()) {
-      return of({ pastDate: true });
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    if (date < today) {
+      return { pastDate: true };
     }
 
-    return of(null);
-  };
+    return null;
+  }
 
   timeListIsEmpty(): boolean {
     return this.timeList.length === 0;
   }
+
+  createSchedule(): void {
+    const schedule: Schedule = {
+      date: `${this.date}T${this.time.toString().padStart(2, '0')}:00`,
+      name: this.name,
+      service: this.service,
+      serviceCode: this.services.find((s) => s.name === this.service)?.id || 0,
+      phone: this.phone,
+      dayOfWeek: new Date(this.date).toLocaleDateString('pt-BR', {
+        weekday: 'long',
+      }),
+    };
+    this.schedulesService.createSchedule(schedule).subscribe({
+      next: () => {
+        this.dialogRef.close();
+      },
+      error: (error) => {
+        console.error('Error creating schedule:', error);
+      },
+    });
+  }
+
 }
