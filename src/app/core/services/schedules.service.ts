@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class SchedulesService {
-  // The API URL is set based on the environment configuration
+
   private readonly apiUrl: string = environment.apiUrl;
 
   constructor(private http: HttpClient) {}
