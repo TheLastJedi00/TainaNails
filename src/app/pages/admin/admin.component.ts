@@ -29,6 +29,7 @@ import { DialogComponent } from '../../shared/dialog/dialog.component';
     MatDividerModule,
     CommonModule,
     MatDialogModule,
+    CommonModule
   ],
   providers: [],
   templateUrl: './admin.component.html',
@@ -39,7 +40,7 @@ export class AdminComponent {
   wednesdaySlots: number[] = [15, 16, 17, 18];
   saturdaySlots: number[] = [8, 9, 10, 11, 14, 15, 16, 17, 18];
   weekdays: string[] = ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'];
-  selectedDate: Date = new Date();
+  selectedDate!: Date;
   dayList: string[] = [];
 
 

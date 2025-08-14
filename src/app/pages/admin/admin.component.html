@@ -15,12 +15,12 @@
       <mat-icon>add</mat-icon>Agendar
     </button>
   </section>
-  <section>
+  <section *ngIf="selectedDate">
     <div class="title">
       <h1>Agenda da Semana</h1>
     </div>
     <mat-divider></mat-divider>
-    <div class="weekdays">
+    <div class="weekdays" >
       <ul class="weekday-column" *ngFor="let weekday of weekdays">
         <li>
           <h2>{{ weekday }}</h2>
