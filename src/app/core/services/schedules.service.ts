@@ -8,13 +8,15 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class SchedulesService {
-
   private readonly apiUrl: string = environment.apiUrl;
 
   constructor(private http: HttpClient) {}
 
-  listSchedules(date: string) {
-    return this.http.get<Page<ScheduleResponse>>(`${this.apiUrl}/agendamento?date=${date}T00:00`);
+  listSchedules(date: string, saturday: string) {
+    let urlPrefix = `${this.apiUrl}/agendamento?`;
+    return this.http.get<Page<ScheduleResponse>>(
+      `${urlPrefix}date=${date}&saturday=${saturday}`
+    );
   }
 
   createSchedule(schedule: Schedule): Observable<any> {
