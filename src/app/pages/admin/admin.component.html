@@ -15,30 +15,46 @@
       <mat-icon>add</mat-icon>Agendar
     </button>
   </section>
-  <section *ngIf="selectedDate">
-    <div class="title">
-      <h1>Agenda da Semana</h1>
-    </div>
-    <mat-divider></mat-divider>
-    <div class="weekdays" >
-      <ul class="weekday-column" *ngFor="let weekday of weekdays">
-        <li>
-          <h2>{{ weekday }}</h2>
-          <span>{{dayIterator(weekdays.indexOf(weekday))}}</span>
-          <ul class="time-column">
-            <li class="time-slot" *ngFor="let slot of saturdaySlots">
-              <button
-                mat-raised-button
-                [color]="slotIsAvailable(slot, weekday)"
-                [style.color]="slotFontColor(slotIsAvailable(slot, weekday))"
-                (click)="openScheduleInfo(slot, weekday, dayIterator(weekdays.indexOf(weekday)))"
-              >
-                {{ slot }}h
-              </button>
-            </li>
-          </ul>
-        </li>
-      </ul>
-    </div>
-  </section>
+  <ng-container [ngSwitch]="">
+    
+    <section class="loading" *ngIf="selectedDate && !sharedService.isResponseValid">
+      <mat-spinner>
+        <p *ngIf="sharedService.message != ''">{{ sharedService.message }}</p>
+      </mat-spinner>
+    </section>
+
+    <section *ngIf="selectedDate && sharedService.isResponseValid">
+      <div class="title">
+        <h1>Agenda da Semana</h1>
+      </div>
+      <mat-divider></mat-divider>
+      <div class="weekdays">
+        <ul class="weekday-column" *ngFor="let weekday of weekdays">
+          <li>
+            <h2>{{ weekday }}</h2>
+            <span>{{ dayIterator(weekdays.indexOf(weekday)) }}</span>
+            <ul class="time-column">
+              <li class="time-slot" *ngFor="let slot of saturdaySlots">
+                <button
+                  mat-raised-button
+                  [disabled]="slotIsAvailable(slot, weekday)"
+                  [color]="this.sharedService.isOccupiedSlot(slot, dayIterator(weekdays.indexOf(weekday))) ? 'basic' : 'accent'"
+                  [style.color]="this.sharedService.isOccupiedSlot(slot, dayIterator(weekdays.indexOf(weekday))) ? '#c7c7c7ff' : 'white'"
+                  (click)="
+                    openScheduleInfo(
+                      slot,
+                      weekday,
+                      dayIterator(weekdays.indexOf(weekday))
+                    )
+                  "
+                >
+                  {{ slot }}h
+                </button>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </section>
+  </ng-container>
 </main>

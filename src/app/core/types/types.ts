@@ -12,6 +12,7 @@ export interface Schedule {
 }
 
 export interface ScheduleResponse {
+  id: number;
   date: string;
   dayOfWeek: string;
   endOfService: string;

@@ -1,4 +1,5 @@
-import { Page, Schedule, ScheduleResponse } from "../../../core/types/types";
+import { Inject } from "@angular/core";
+import { Page, ScheduleResponse } from "../../../core/types/types";
 
 export class WeekUtils{
 
@@ -39,4 +40,5 @@ export class WeekUtils{
         console.log(week);
         return week;
     }
+
 }

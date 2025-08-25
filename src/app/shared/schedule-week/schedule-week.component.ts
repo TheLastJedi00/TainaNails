@@ -19,7 +19,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { SchedulesService } from '../../core/services/schedules.service';
-import { WeekUtils } from './utils/week-utils';
+import { SharedService } from '../../core/services/shared.service';
+
 
 @Component({
   selector: 'app-schedule-week',
@@ -38,8 +39,7 @@ import { WeekUtils } from './utils/week-utils';
   providers: [
     provideNativeDateAdapter(),
     { provide: MAT_DATE_LOCALE, useValue: 'pt-BR' },
-    SchedulesService,
-    WeekUtils,
+    SchedulesService
   ],
   templateUrl: './schedule-week.component.html',
   styleUrl: './schedule-week.component.scss',
@@ -62,7 +62,7 @@ export class ScheduleWeekComponent {
 
   constructor(
     @Inject(SchedulesService) public service: SchedulesService,
-    @Inject(WeekUtils) public utils: WeekUtils
+    @Inject(SharedService) public sharedService: SharedService
   ) {}
 
   getDaysOfWeek(input: string) {
@@ -77,11 +77,14 @@ export class ScheduleWeekComponent {
 
     this.service.listSchedules(mondayString, saturdayString).subscribe({
       next: (response) => {
-        this.utils.schedulesOnDay(response);
+        this.sharedService.responseValidattor(response);
+        this.sharedService.slotListBuilder(response);
       },
       error: (error) => {
+        this.sharedService.errorCatcher(error);
         console.error(error);
       },
     });
   }
+
 }

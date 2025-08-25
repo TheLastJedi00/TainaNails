@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatInputModule } from '@angular/material/input';
 import { MatNativeDateModule } from '@angular/material/core';
@@ -13,6 +13,9 @@ import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { ScheduleInfoComponent } from '../../shared/schedule-info/schedule-info.component';
 import { ScheduleWeekComponent } from '../../shared/schedule-week/schedule-week.component';
 import { DialogComponent } from '../../shared/dialog/dialog.component';
+import { SharedService } from '../../core/services/shared.service';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-admin',
@@ -29,8 +32,9 @@ import { DialogComponent } from '../../shared/dialog/dialog.component';
     MatDividerModule,
     CommonModule,
     MatDialogModule,
-    CommonModule
-  ],
+    CommonModule,
+    MatProgressSpinnerModule,
+],
   providers: [],
   templateUrl: './admin.component.html',
   styleUrl: './admin.component.scss',
@@ -41,26 +45,20 @@ export class AdminComponent {
   saturdaySlots: number[] = [8, 9, 10, 11, 14, 15, 16, 17, 18];
   weekdays: string[] = ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'];
   selectedDate!: Date;
+  loading = this.sharedService.isResponseValid;
   dayList: string[] = [];
 
-
-  slotIsAvailable(slot: number, weekday: string): string {
+  slotIsAvailable(slot: number, weekday: string): boolean {
     let morningTime: boolean = slot < 12;
     let isSaturday: boolean = weekday === 'Sáb';
     let isWednesday: boolean = weekday === 'Qua';
     if ((!isSaturday && morningTime) || (isWednesday && slot < 15)) {
-      return 'basic';
+      return true;
     }
-    return 'accent';
-  }
-  slotFontColor(theme: string) {
-    if (theme === 'basic') {
-      return '#c7c7c7ff';
-    }
-    return 'white';
+    return false;
   }
 
-  constructor(public dialog: MatDialog) {}
+  constructor(public dialog: MatDialog, @Inject(SharedService) public sharedService: SharedService) {}
 
   openScheduleInfo(slot: number, weekday: string, selectedDate: string) {
     this.dialog.open(ScheduleInfoComponent, {
@@ -88,12 +86,12 @@ export class AdminComponent {
     const month = this.selectedDate.getMonth();
     const year = this.selectedDate.getFullYear();
 
-    return new Date(year, month, day).toLocaleDateString().split(`/${year}`)[0];
+    return new Date(year, month, day).toLocaleDateString();
   }
 
   openScheduleStepper() {
     this.dialog.open(DialogComponent, {});
   }
-
+  
   
 }
