@@ -15,7 +15,7 @@
       <mat-icon>add</mat-icon>Agendar
     </button>
   </section>
-  <ng-container [ngSwitch]="">
+
     
     <section class="loading" *ngIf="selectedDate && !sharedService.isResponseValid">
       <mat-spinner>
@@ -39,7 +39,7 @@
                   mat-raised-button
                   [disabled]="slotIsAvailable(slot, weekday)"
                   [color]="this.sharedService.isOccupiedSlot(slot, dayIterator(weekdays.indexOf(weekday))) ? 'basic' : 'accent'"
-                  [style.color]="this.sharedService.isOccupiedSlot(slot, dayIterator(weekdays.indexOf(weekday))) ? '#c7c7c7ff' : 'white'"
+                  [style.color]="this.buttonFontColor(slot, weekday)"
                   (click)="
                     openScheduleInfo(
                       slot,
@@ -56,5 +56,4 @@
         </ul>
       </div>
     </section>
-  </ng-container>
 </main>

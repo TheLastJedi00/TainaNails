@@ -10,8 +10,8 @@
     <p><mat-icon>design_services</mat-icon>{{ service }}</p>
   </mat-dialog-content>
   <mat-dialog-actions class="buttons">
-    <button mat-button [disabled]="deleteIsDisabled(id)" color="warn"><mat-icon>delete</mat-icon>Excluír</button>
-    <button mat-raised-button [disabled]="deleteIsDisabled(id)" color="primary">
+    <button mat-button [disabled]="deleteIsDisabled(id)" (click)="openDeleteDialog()" color="warn"><mat-icon>delete</mat-icon>Excluír</button>
+    <button mat-raised-button [disabled]="deleteIsDisabled(id)" (click)="openEditDialog()" color="primary">
       <mat-icon>edit</mat-icon>Editar
     </button>
   </mat-dialog-actions>

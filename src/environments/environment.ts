@@ -1,4 +1,4 @@
 export const environment = {
-    apiUrl: 'https://api.taina.nails',
+    apiUrl: 'tainanails-api-dmazefaucub4gefw.canadacentral-01.azurewebsites.net',
     production: true,
 };

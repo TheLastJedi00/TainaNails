@@ -8,6 +8,8 @@ import {
 import { MatIconModule } from '@angular/material/icon';
 import { SharedService } from '../../core/services/shared.service';
 import { isAfter, isBefore, isEqual } from 'date-fns';
+import { ScheduleEditComponent } from '../schedule-edit/schedule-edit.component';
+import { ScheduleDeleteComponent } from '../schedule-delete/schedule-delete.component';
 
 @Component({
   selector: 'app-schedule-info',
@@ -61,11 +63,32 @@ export class ScheduleInfoComponent {
     this.date = slot?.date || '01/01/2000';
 
     if (end) {
-      this.id = 'index';
+      this.id = end?.id.toString() || 'index';
       this.name = end?.name || 'Cliente Desconhecido';
       this.phone = end?.phone || '(00) 00000-0000';
       this.service = end?.service || 'Serviço Desconhecido';
       this.date = end?.date || '01/01/2000';
     }
+  }
+
+  openEditDialog() {
+    this.dialog.open(ScheduleEditComponent, {
+      data: {
+        id: this.id,
+        name: this.name,
+        phone: this.phone,
+      },
+    });
+  }
+  openDeleteDialog() {
+    this.dialog.open(ScheduleDeleteComponent, {
+      data: {
+        id: this.id,
+        name: this.name,
+        phone: this.phone,
+        service: this.service,
+        date: this.date,
+      },
+    });
   }
 }

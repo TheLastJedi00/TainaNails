@@ -34,7 +34,7 @@ import { Observable } from 'rxjs';
     MatDialogModule,
     CommonModule,
     MatProgressSpinnerModule,
-],
+  ],
   providers: [],
   templateUrl: './admin.component.html',
   styleUrl: './admin.component.scss',
@@ -58,7 +58,10 @@ export class AdminComponent {
     return false;
   }
 
-  constructor(public dialog: MatDialog, @Inject(SharedService) public sharedService: SharedService) {}
+  constructor(
+    public dialog: MatDialog,
+    @Inject(SharedService) public sharedService: SharedService
+  ) {}
 
   openScheduleInfo(slot: number, weekday: string, selectedDate: string) {
     this.dialog.open(ScheduleInfoComponent, {
@@ -74,7 +77,7 @@ export class AdminComponent {
     const selectedDate = this.dialog.open(ScheduleWeekComponent, {});
 
     selectedDate.afterClosed().subscribe((date: Date) => {
-      if(date){
+      if (date) {
         this.selectedDate = date;
       }
     });
@@ -92,6 +95,17 @@ export class AdminComponent {
   openScheduleStepper() {
     this.dialog.open(DialogComponent, {});
   }
-  
-  
+
+  buttonFontColor(slot: number, weekday: string): string {
+    const isAvailable = this.slotIsAvailable(slot, weekday)
+    const isOccupied = this.sharedService.isOccupiedSlot(slot, this.dayIterator(this.weekdays.indexOf(weekday)))
+
+    if (isAvailable) {
+      return 'white';
+    } else if (isOccupied) {
+      return '#c7c7c7ff';
+    } else {
+      return 'white';
+    }
+  }
 }

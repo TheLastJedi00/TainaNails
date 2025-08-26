@@ -1,0 +1,49 @@
+<section>
+  <div>
+    <h1>Editar Cliente</h1>
+  </div>
+  <mat-dialog-content class="content">
+    <div>
+      <mat-form-field>
+        <mat-label>Nome</mat-label>
+        <input matInput type="text" [(ngModel)]="valueName" />
+        <button
+          *ngIf="valueName"
+          matSuffix
+          mat-icon-button
+          aria-label="Clear"
+          (click)="valueName = ''"
+        >
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Telefone</mat-label>
+        <input matInput type="text" [(ngModel)]="valuePhone" />
+        <button
+          *ngIf="valuePhone"
+          matSuffix
+          mat-icon-button
+          aria-label="Clear"
+          (click)="valuePhone = ''"
+        >
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-form-field>
+
+      <p>
+        Para alterar tipo de atendimento e horário crie um novo agendamento
+        para este cliente e apague este agendamento antigo!
+      </p>
+    </div>
+  </mat-dialog-content>
+  <mat-dialog-actions class="buttons">
+    <button mat-button mat-dialog-close color="warn">
+      <mat-icon>cancel</mat-icon>Cancelar
+    </button>
+    <button mat-raised-button color="primary">
+      <mat-icon>save</mat-icon>Salvar
+    </button>
+  </mat-dialog-actions>
+</section>

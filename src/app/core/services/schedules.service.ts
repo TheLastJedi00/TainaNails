@@ -22,4 +22,8 @@ export class SchedulesService {
   createSchedule(schedule: Schedule): Observable<any> {
     return this.http.post<Schedule>(`${this.apiUrl}/agendamento`, schedule);
   }
+
+  deleteSchedule(id: number): Observable<any> {
+    return this.http.delete(`${this.apiUrl}/agendamento/${id}`);
+  }
 }
