@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import {
   FormControl,
   Validators,
@@ -12,7 +12,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
+import { AuthService } from '../../core/services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -31,10 +32,13 @@ import { RouterModule } from '@angular/router';
   styleUrl: './login.component.scss',
 })
 export class LoginComponent {
-
   hide = true;
 
-  constructor(private fb: FormBuilder) {}
+  constructor(
+    private fb: FormBuilder,
+    @Inject(AuthService) private auth: AuthService,
+    private router: Router
+  ) {}
 
   loginForm: FormGroup = this.fb.group({
     email: ['', [Validators.required, Validators.email]],
@@ -47,5 +51,16 @@ export class LoginComponent {
     }
 
     return this.loginForm.get('email')?.hasError('email') ? 'Email inválido' : '';
+  }
+
+  login(login: string, password: string){
+    this.auth.authenticate(login, password).subscribe({
+      next: (res) => {
+        this.router.navigate(['/admin']);
+      },
+      error: (err) => {
+        console.error('Erro no login:', err);
+      }
+    });
   }
 }

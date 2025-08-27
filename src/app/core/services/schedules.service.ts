@@ -1,8 +1,9 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment.development';
 import { Page, Schedule, ScheduleResponse } from '../types/types';
 import { Observable } from 'rxjs';
+import { TokenService } from './token.service';
 
 @Injectable({
   providedIn: 'root',
@@ -10,7 +11,7 @@ import { Observable } from 'rxjs';
 export class SchedulesService {
   private readonly apiUrl: string = environment.apiUrl;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private tokenService: TokenService) {}
 
   listSchedules(date: string, saturday: string) {
     let urlPrefix = `${this.apiUrl}/agendamento?`;
@@ -24,6 +25,9 @@ export class SchedulesService {
   }
 
   deleteSchedule(id: number): Observable<any> {
-    return this.http.delete(`${this.apiUrl}/agendamento/${id}`);
+    const token = this.tokenService.getToken();
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.delete(`${this.apiUrl}/agendamento/${id}`, { headers });
   }
+
 }

@@ -36,7 +36,11 @@
       </button>
       <mat-error *ngIf="loginForm.get('password')?.invalid">Senha obrigatória</mat-error>
     </mat-form-field>
-    <button mat-raised-button [disabled]="loginForm.invalid" color="primary" routerLink="/admin">
+    <button 
+    mat-raised-button 
+    [disabled]="loginForm.invalid" 
+    color="primary" 
+    (click)="login(loginForm.get('email')?.value, loginForm.get('password')?.value)">
       Entrar
     </button>
   </div>

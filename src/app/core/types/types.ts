@@ -48,3 +48,7 @@ export interface Page<ScheduleResponse> {
   totalElements: number;
   totalPages: number;
 }
+
+export interface AuthResponse {
+  token: string;
+}
