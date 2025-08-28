@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment.development';
-import { Page, Schedule, ScheduleResponse } from '../types/types';
+import { Page, Schedule, ScheduleResponse, ScheduleUpdate } from '../types/types';
 import { Observable } from 'rxjs';
 import { TokenService } from './token.service';
 
@@ -28,6 +28,15 @@ export class SchedulesService {
     const token = this.tokenService.getToken();
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     return this.http.delete(`${this.apiUrl}/agendamento/${id}`, { headers });
+  }
+
+  updateSchedule(update: ScheduleUpdate): Observable<any> {
+    const token = this.tokenService.getToken();
+    console.log(update);
+    console.log(token);
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.put<ScheduleUpdate>(
+      `${this.apiUrl}/agendamento`, update, { headers });
   }
 
 }

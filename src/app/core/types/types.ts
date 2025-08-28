@@ -21,6 +21,12 @@ export interface ScheduleResponse {
   service: string;
 }
 
+export interface ScheduleUpdate {
+  id: number;
+  name: string;
+  phone: string;
+}
+
 export interface Sort {
   empty: boolean;
   sorted: boolean;

@@ -3,10 +3,10 @@
     <h1>Editar Cliente</h1>
   </div>
   <mat-dialog-content class="content">
-    <div>
+    <div [formGroup]="form">
       <mat-form-field>
         <mat-label>Nome</mat-label>
-        <input matInput type="text" [(ngModel)]="valueName" />
+        <input matInput type="text" [(ngModel)]="valueName" [formControl]="newName"/>
         <button
           *ngIf="valueName"
           matSuffix
@@ -20,7 +20,7 @@
 
       <mat-form-field>
         <mat-label>Telefone</mat-label>
-        <input matInput type="text" [(ngModel)]="valuePhone" />
+        <input matInput type="text" [(ngModel)]="valuePhone" [formControl]="newPhone"/>
         <button
           *ngIf="valuePhone"
           matSuffix
@@ -42,7 +42,7 @@
     <button mat-button mat-dialog-close color="warn">
       <mat-icon>cancel</mat-icon>Cancelar
     </button>
-    <button mat-raised-button color="primary">
+    <button mat-raised-button color="primary" (click)="updateSchedule(valueName, valuePhone)" mat-dialog-close [disabled]="!form.valid">
       <mat-icon>save</mat-icon>Salvar
     </button>
   </mat-dialog-actions>
