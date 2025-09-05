@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { environment } from '../../../environments/environment.development';
+import { environment } from '../../../environments/environment';
 import { Page, Schedule, ScheduleResponse, ScheduleUpdate } from '../types/types';
 import { Observable } from 'rxjs';
 import { TokenService } from './token.service';
