@@ -1,0 +1,16 @@
+{
+  "hosting": {
+    "public": "dist/taina-nails",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}
