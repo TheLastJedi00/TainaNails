@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "dist/taina-nails-angular",
+    "public": "dist/taina-nail-angular",
     "ignore": [
       "firebase.json",
       "**/.*",
