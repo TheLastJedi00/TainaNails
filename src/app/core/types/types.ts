@@ -11,6 +11,11 @@ export interface Schedule {
   dayOfWeek: string;
 }
 
+export interface Login {
+  email: string;
+  password: string;
+}
+
 export interface ScheduleResponse {
   id: number;
   date: string;

@@ -14,6 +14,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { Router, RouterModule } from '@angular/router';
 import { AuthService } from '../../core/services/auth.service';
+import { Login } from '../../core/types/types';
 
 @Component({
   selector: 'app-login',
@@ -53,14 +54,13 @@ export class LoginComponent {
     return this.loginForm.get('email')?.hasError('email') ? 'Email inválido' : '';
   }
 
-  login(login: string, password: string){
-    this.auth.authenticate(login, password).subscribe({
-      next: (res) => {
-        this.router.navigate(['/admin']);
-      },
-      error: (err) => {
-        console.error('Erro no login:', err);
+  login(admin: Login){
+    this.auth.login(admin).then((success) => {
+      if (!success) {
+        console.error('Email ou senha inválidos');
       }
+    }).catch((error) => {
+      console.error('Erro no login:', error);
     });
   }
 }
