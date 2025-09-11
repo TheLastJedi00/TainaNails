@@ -54,7 +54,11 @@ export class LoginComponent {
     return this.loginForm.get('email')?.hasError('email') ? 'Email inválido' : '';
   }
 
-  login(admin: Login){
+  login(){
+    const admin: Login = {
+      email: this.loginForm.get('email')?.value,
+      password: this.loginForm.get('password')?.value
+    };
     this.auth.login(admin).then((success) => {
       if (!success) {
         console.error('Email ou senha inválidos');

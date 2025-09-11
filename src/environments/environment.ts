@@ -2,7 +2,8 @@ export const environment = {
     apiUrl: 'https://tainanails-api-dmazefaucub4gefw.canadacentral-01.azurewebsites.net',
     production: true,
 };
-export const firebaseEnvironment = {
+
+export const firebaseEnv = {
   production: true,
   firebase: {
     apiKey: 'AIzaSyDsgKRR5X13g-IdLdEUV_fWKfvhPT1Ko0A',
