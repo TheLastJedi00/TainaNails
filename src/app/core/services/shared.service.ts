@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Page, ScheduleResponse } from '../types/types';
+import { Page, Schedule, ScheduleResponse } from '../types/types';
 import { isEqual, isAfter, isBefore } from 'date-fns'
+import { SourceTextModule } from 'vm';
+import { Timestamp } from '@angular/fire/firestore';
 
 @Injectable({
   providedIn: 'root',
@@ -8,13 +10,13 @@ import { isEqual, isAfter, isBefore } from 'date-fns'
 export class SharedService {
   isResponseValid: boolean = false;
   message: string = '';
-  slotsOccupied: ScheduleResponse[] = [];
+  slotsOccupied: Schedule[] = [];
 
-  responseValidattor(response: Page<ScheduleResponse>) {
+  responseValidattor(response: Schedule[]) {
     if (
       response &&
-      response.content !== undefined &&
-      response.content != null
+      response !== undefined &&
+      response != null
     ) {
       this.isResponseValid = true;
     } else {
@@ -27,9 +29,9 @@ export class SharedService {
     this.message = `An error occurred:, ${error}`;
   }
 
-  slotListBuilder(response: Page<ScheduleResponse>) {
-    response.content.forEach((schedule) => {
-      this.slotsOccupied.push(schedule);
+  slotListBuilder(response: Schedule[]) {
+    response.forEach((schedule) => {
+      if(schedule.active) this.slotsOccupied.push(schedule);
     });
   }
 
@@ -44,8 +46,8 @@ export class SharedService {
     let slotDate: Date = new Date(year, month - 1, day, timeSlot, 0, 0);
 
     return this.slotsOccupied.some((schedule) => {
-      let start = new Date(schedule.date);
-      let end = new Date(schedule.endOfService);
+      let start = (schedule.startTime as Timestamp).toDate();
+      let end = (schedule.endTime as Timestamp).toDate();
 
       return this.hasConflict(slotDate, start, end);
     });

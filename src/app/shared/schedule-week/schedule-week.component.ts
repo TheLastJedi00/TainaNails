@@ -72,10 +72,8 @@ export class ScheduleWeekComponent {
     let month = monday.getMonth();
     let year = monday.getFullYear();
     let saturday = new Date(year, month, dateInt + 5, 23, 59);
-    let mondayString: string = monday.toISOString().split('.')[0];
-    let saturdayString: string = saturday.toISOString().split('.')[0];
 
-    this.service.listSchedules(mondayString, saturdayString).subscribe({
+    this.service.listSchedules(monday, saturday).subscribe({
       next: (response) => {
         this.sharedService.responseValidattor(response);
         this.sharedService.slotListBuilder(response);

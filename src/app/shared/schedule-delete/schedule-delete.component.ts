@@ -17,22 +17,15 @@ import { ScheduleInfoComponent } from '../schedule-info/schedule-info.component'
   styleUrl: './schedule-delete.component.scss'
 })
 export class ScheduleDeleteComponent {
-  idValue: number = this.data.id;
+  idValue: string = this.data.id;
   nameValue: string = this.data.name;
   phoneValue: string = this.data.phone;
   serviceValue: string = this.data.service;
-  dateValue: string = new Date(this.data.date)
-  .toLocaleDateString('pt-BR', {
-    day: '2-digit',
-    month: '2-digit',
-    year: 'numeric',
-    hour: '2-digit',
-    minute: '2-digit',
-  });
+  dateValue: string = this.data.date;
 
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: {
-        id: number,
+        id: string,
         name: string,
         phone: string,
         service: string,
@@ -43,14 +36,12 @@ export class ScheduleDeleteComponent {
     ) {}
 
   deleteSchedule() {
-    this.schedulesService.deleteSchedule(this.idValue).subscribe({
-      next: (res) => {
-        console.log('Agendamento excluído com sucesso:', res);
-        window.location.reload();
-      },
-      error: (err) => {
-        console.error('Erro ao excluir agendamento:', err);
-      }
+    this.schedulesService.deleteSchedule(this.idValue).then(() => {
+      this.infoDialog.close();
+      console.log('Schedule deleted successfully');
+      window.location.reload();
+    }).catch((error) => {
+      console.error('Error deleting schedule:', error);
     });
   }
 }

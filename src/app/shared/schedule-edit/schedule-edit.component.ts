@@ -27,12 +27,12 @@ import { SchedulesService } from '../../core/services/schedules.service';
 export class ScheduleEditComponent {
   valueName: string = this.data.name;
   valuePhone: string = this.data.phone;
-  valueId: number = this.data.id;
+  valueId: string = this.data.id;
   newName: FormControl = new FormControl(this.valueName);
   newPhone: FormControl = new FormControl(this.valuePhone);
 
   constructor(@Inject(MAT_DIALOG_DATA) 
-  public data: {id: number, name: string, phone: string},
+  public data: {id: string, name: string, phone: string},
   private schedulesService: SchedulesService  
 ) {}
 
@@ -49,14 +49,11 @@ export class ScheduleEditComponent {
       phone: phone
     }
 
-    this.schedulesService.updateSchedule(scheduleUpdate).subscribe({
-      next: (res) => {
-        window.location.reload();
-        console.log(res);
-      },
-      error: (err) => {
-        console.log(err);
-      }
-    })
+    this.schedulesService.updateSchedule(scheduleUpdate).then(() => {
+      console.log('Schedule updated successfully');
+      window.location.reload();
+    }).catch((error) => {
+      console.error('Error updating schedule:', error);
+    });
   }
 }

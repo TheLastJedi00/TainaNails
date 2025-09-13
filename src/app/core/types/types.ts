@@ -6,10 +6,10 @@ export interface Service {
 }
 export interface Schedule {
   id?: string;
-  startTime: Date;
-  endTime: Date | Timestamp;
+  startTime: Timestamp | Date;
+  endTime: Timestamp | Date;
   clientName: string;
-  serviceName: number;
+  serviceName: string;
   clientPhone: string;
   active: boolean;
   createdAt?: Date | Timestamp;
@@ -31,7 +31,7 @@ export interface ScheduleResponse {
 }
 
 export interface ScheduleUpdate {
-  id: number;
+  id: string;
   name: string;
   phone: string;
 }

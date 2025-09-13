@@ -2,15 +2,20 @@ rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
 
+    
     match /schedules/{scheduleId} {
+
+      allow read: if true;
+
       allow create: if true;
-      allow read, update, delete: if false;
+
+      allow update, delete: if request.auth != null &&
+                              get(/databases/$(database)/documents/admins/$(request.auth.uid)).data.isAdmin == true;
     }
 
-    // Regra para a coleção 'admins' (que já tínhamos)
     match /admins/{adminId} {
       allow read: if request.auth != null;
-      allow write: if false;
+      allow write: if false; 
     }
   }
 }
