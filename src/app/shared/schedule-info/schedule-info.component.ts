@@ -1,4 +1,4 @@
-import { Component, Inject, Input } from '@angular/core';
+import { Component, Inject, Input, OnInit } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import {
   MAT_DIALOG_DATA,
@@ -19,7 +19,7 @@ import { Timestamp } from '@angular/fire/firestore';
   templateUrl: './schedule-info.component.html',
   styleUrl: './schedule-info.component.scss',
 })
-export class ScheduleInfoComponent {
+export class ScheduleInfoComponent implements OnInit {
   @Input('id') id: string = 'index';
   @Input('name') name: string = 'Cliente Desconhecido';
   @Input('phone') phone: string = '(00) 00000-0000';
@@ -31,8 +31,9 @@ export class ScheduleInfoComponent {
     @Inject(MAT_DIALOG_DATA)
     public data: { timeSlot: number; weekDay: string; selectedDate: string },
     @Inject(SharedService) public sharedService: SharedService
-  ) {
-    this.findDataByDate(data.selectedDate, data.timeSlot);
+  ) {}
+  ngOnInit(): void {
+    this.findDataByDate(this.data.selectedDate, this.data.timeSlot);
   }
 
   deleteIsDisabled(index: string): boolean {
@@ -42,37 +43,35 @@ export class ScheduleInfoComponent {
     return false;
   }
 
-  findDataByDate(date: string, time: number) {
-    let day = parseInt(date.split('/')[0]);
-    let month = parseInt(date.split('/')[1]) - 1;
-    let year = parseInt(date.split('/')[2]);
-    let dateObj = new Date(year, month, day, time, 0, 0);
+  findDataByDate(date: string, time: number): void {
+    const [day, month, year] = date.split('/').map(Number);
+    const clickedDateTime = new Date(year, month - 1, day, time, 0, 0);
 
-    const slot = this.sharedService.slotsOccupied.find((slot) =>
-      isEqual((slot.startTime as Timestamp).toDate(), new Date(dateObj))
-    );
-    const end = this.sharedService.slotsOccupied.find(
-      (slot) =>
-        isAfter(new Date(dateObj), new Date(slot.startTime as Date)) &&
-        isBefore(new Date(dateObj), new Date(slot.endTime as Date))
-    );
+    const foundSchedule = this.sharedService.slotsOccupied.find((schedule) => {
+      if (!schedule?.startTime || !schedule?.endTime) {
+        return false;
+      }
 
-    this.id = slot?.id || 'index';
-    this.name = slot?.clientName || 'Cliente Desconhecido';
-    this.phone = slot?.clientPhone || '(00) 00000-0000';
-    this.service = slot?.serviceName || 'Serviço Desconhecido';
-    this.date =
-      (slot?.startTime as Timestamp).toDate().toLocaleDateString('pt-BR') ||
-      '01/01/2000';
+      const startTime = (schedule.startTime as Timestamp).toDate();
+      const endTime = (schedule.endTime as Timestamp).toDate();
 
-    if (end) {
-      this.id = end?.id || 'index';
-      this.name = end?.clientName || 'Cliente Desconhecido';
-      this.phone = end?.clientPhone || '(00) 00000-0000';
-      this.service = end?.serviceName || 'Serviço Desconhecido';
-      this.date =
-        (slot?.startTime as Timestamp).toDate().toLocaleDateString('pt-BR') ||
-        '01/01/2000';
+      return (
+        isEqual(startTime, clickedDateTime) ||
+        (clickedDateTime > startTime && clickedDateTime < endTime)
+      );
+    });
+
+    if (foundSchedule) {
+      this.id = foundSchedule.id || 'index';
+      this.name = foundSchedule.clientName;
+      this.phone = foundSchedule.clientPhone;
+      this.service = foundSchedule.serviceName;
+      this.date = (foundSchedule.startTime as Timestamp)
+        .toDate()
+        .toLocaleDateString('pt-BR', { hour: '2-digit', minute: '2-digit' });
+    } else {
+      this.name = 'Horário Disponível';
+      this.id = 'index';
     }
   }
 
