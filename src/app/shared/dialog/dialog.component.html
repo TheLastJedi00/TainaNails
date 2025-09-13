@@ -138,26 +138,25 @@
         <ng-template matStepLabel>Confirmar dados</ng-template>
         <mat-list>
           <mat-list-item
-            >Nome: <strong>{{ this.name }}</strong></mat-list-item
+            >Nome: <strong>{{ this.formGroup.value.nameCtrl }}</strong></mat-list-item
           >
           <mat-divider></mat-divider>
           <mat-list-item
-            >Telefone: <strong>{{ this.phone }}</strong></mat-list-item
+            >Telefone: <strong>{{ this.formGroup.value.phoneCtrl }}</strong></mat-list-item
           >
           <mat-divider></mat-divider>
           <mat-list-item
-            >Serviço: <strong>{{ this.service }}</strong></mat-list-item
+            >Serviço: <strong>{{ this.formGroup.value.serviceCtrl }}</strong></mat-list-item
           >
           <mat-divider></mat-divider>
           <mat-list-item
             >Data:
-            <strong>{{
-              this.date.split("T")[0].split("-").reverse().join("/")
-            }}</strong></mat-list-item
+            <strong>{{ this.formGroup.value.dateCtrl | date : 'dd/MM/yyyy' : 'GMT-3' }}
+            </strong></mat-list-item
           >
           <mat-divider></mat-divider>
           <mat-list-item
-            >Hora: <strong>{{ this.time }}h</strong></mat-list-item
+            >Hora: <strong>{{ this.formGroup.value.timeCtrl }}h</strong></mat-list-item
           >
         </mat-list>
         <div>

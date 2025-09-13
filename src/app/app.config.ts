@@ -26,7 +26,7 @@ export const appConfig: ApplicationConfig = {
     ),
     isDevMode() ? [
       { provide: USE_AUTH_EMULATOR, useValue: ['http://localhost:9099'] },
-      { provide: USE_FIRESTORE_EMULATOR, useValue: ['localhost', 8080] }
+      { provide: USE_FIRESTORE_EMULATOR, useValue: ['localhost', 8081] }
     ] : [],
   ]
 };

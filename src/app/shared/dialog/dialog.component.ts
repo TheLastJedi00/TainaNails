@@ -56,16 +56,10 @@ import { DialogUtils } from './dialog-utils/dialog-utils';
   templateUrl: './dialog.component.html',
   styleUrl: './dialog.component.scss',
 })
-export class DialogComponent implements OnInit {
+export class DialogComponent {
   timeList!: number[];
   isLinear: boolean = false;
-  name: string = '';
-  phone: string = '';
-  service: string = '';
-  date: string = '';
-  time: number = 0;
   subscriptions: Subscription[] = [];
-
 
   constructor(
     private fb: FormBuilder,
@@ -74,7 +68,6 @@ export class DialogComponent implements OnInit {
     private schedulesService: SchedulesService,
     public utils: DialogUtils
   ) {
-
     this.timeList = [8, 9, 10, 11, 14, 15, 16, 17, 18];
   }
 
@@ -86,49 +79,39 @@ export class DialogComponent implements OnInit {
     timeCtrl: ['', Validators.required],
   });
 
-
-  ngOnInit(): void {
-    this.subscriptions.push(
-      this.formGroup.valueChanges.subscribe((value) => {
-        this.name = value.nameCtrl;
-        this.phone = value.phoneCtrl;
-        this.service = value.serviceCtrl;
-        if (value.dateCtrl) {
-          const date = value.dateCtrl as Date;
-          const year = date.getFullYear();
-          const month = (date.getMonth() + 1).toString().padStart(2, '0');
-          const day = date.getDate().toString().padStart(2, '0');
-          this.date = `${year}-${month}-${day}`;
-        }
-        this.time = value.timeCtrl;
-      })
-    );
-  }
-
-  ngOnDestroy(): void {
-    this.subscriptions.forEach((sub) => sub.unsubscribe());
-  }
-
   timeListIsEmpty(): boolean {
     return this.timeList.length === 0;
   }
 
+  endOfService(dateTime: Date): Date {
+    const selectedService = this.utils.services.find(
+      (service) => service.name === this.formGroup.value.serviceCtrl
+    );
+  
+    const endTime = new Date(dateTime);
+    endTime.setMinutes(dateTime.getMinutes() + selectedService!.duration);
+
+    return endTime;
+  }
+
   createSchedule(): void {
+    const formValues = this.formGroup.value;
+    const dateTime = new Date(formValues.dateCtrl);
+    dateTime.setHours(formValues.timeCtrl);
+
     const schedule: Schedule = {
-      date: `${this.date}T${this.time.toString().padStart(2, '0')}:00`,
-      name: this.name,
-      service: this.service,
-      serviceCode: this.utils.services.find((s) => s.name === this.service)?.id || 0,
-      phone: this.phone,
-      dayOfWeek: this.utils.getDayOfWeek(new Date(this.date)),
+      startTime: dateTime,
+      endTime: this.endOfService(dateTime),
+      clientName: formValues.nameCtrl,
+      clientPhone: formValues.phoneCtrl,
+      serviceName: formValues.serviceCtrl,
+      active: true,
+      createdAt: new Date(),
     };
-    this.schedulesService.createSchedule(schedule).subscribe({
-      next: () => {
-        this.dialogRef.close();
-      },
-      error: (error) => {
-        console.error('Error creating schedule:', error);
-      },
+
+    console.log(schedule);
+    this.schedulesService.createSchedule(schedule).then(() => {
+      this.dialogRef.close();
     });
   }
 }

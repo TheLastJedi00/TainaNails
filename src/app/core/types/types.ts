@@ -1,14 +1,18 @@
+import { Timestamp } from 'firebase/firestore';
+
 export interface Service {
   id: number;
   name: string;
 }
 export interface Schedule {
-  date: string;
-  name: string;
-  service: string;
-  serviceCode: number;
-  phone: string;
-  dayOfWeek: string;
+  id?: string;
+  startTime: Date;
+  endTime: Date | Timestamp;
+  clientName: string;
+  serviceName: number;
+  clientPhone: string;
+  active: boolean;
+  createdAt?: Date | Timestamp;
 }
 
 export interface Login {

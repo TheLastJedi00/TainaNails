@@ -8,20 +8,6 @@ import { Login } from '../types/types';
   providedIn: 'root'
 })
 export class AuthService {
-  // private readonly apiUrl: string = environment.apiUrl;
-
-  // constructor(private http: HttpClient, private tokenService: TokenService ) { }
-
-  // authenticate(email: string, password: string): Observable<HttpResponse<AuthResponse>> {
-  //   return this.http.post<AuthResponse>(`${this.apiUrl}/login`, 
-  //     { email, password },
-  //     { observe: 'response' }).pipe(
-  //       tap((res) => {
-  //         const authToken = res.body?.token || '';
-  //         this.tokenService.saveToken(authToken);
-  //       })
-  //     )
-  // }
 
   user$: Observable<firebase.default.User | null>;
 

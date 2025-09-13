@@ -4,14 +4,18 @@ import { environment } from '../../../environments/environment';
 import { Page, Schedule, ScheduleResponse, ScheduleUpdate } from '../types/types';
 import { Observable } from 'rxjs';
 import { TokenService } from './token.service';
+import { AngularFirestore, AngularFirestoreCollection, DocumentReference } from '@angular/fire/compat/firestore';
 
 @Injectable({
   providedIn: 'root',
 })
 export class SchedulesService {
   private readonly apiUrl: string = environment.apiUrl;
+  private schedulesCollection: AngularFirestoreCollection<Schedule>;
 
-  constructor(private http: HttpClient, private tokenService: TokenService) {}
+  constructor(private http: HttpClient, private tokenService: TokenService, private firestore: AngularFirestore) {
+    this.schedulesCollection = this.firestore.collection<Schedule>('schedules');
+  }
 
   listSchedules(date: string, saturday: string) {
     let urlPrefix = `${this.apiUrl}/agendamento?`;
@@ -20,8 +24,8 @@ export class SchedulesService {
     );
   }
 
-  createSchedule(schedule: Schedule): Observable<any> {
-    return this.http.post<Schedule>(`${this.apiUrl}/agendamento`, schedule);
+  createSchedule(schedule: Omit<Schedule, 'id' | 'createdAt'>): Promise<DocumentReference<Schedule>> {
+    return this.schedulesCollection.add(schedule);
   }
 
   deleteSchedule(id: number): Observable<any> {
