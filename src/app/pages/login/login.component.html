@@ -2,7 +2,7 @@
   <button mat-raised-button [routerLink]="['']" color="accent">Início</button>
 </header>
 <section [formGroup]="loginForm">
-  <div class="container">
+  <div class="container" *ngIf="!isLoading">
     <img src="../../../assets/Logotype.svg" alt="Tainá Lima Nail Design" />
     <mat-form-field class="input">
       <mat-label>Seu email</mat-label>
@@ -34,14 +34,19 @@
           hide ? "visibility_off" : "visibility"
         }}</mat-icon>
       </button>
-      <mat-error *ngIf="loginForm.get('password')?.invalid">Senha obrigatória</mat-error>
+      <mat-error *ngIf="loginForm.get('password')?.invalid"
+        >Senha obrigatória</mat-error
+      >
     </mat-form-field>
-    <button 
-    mat-raised-button 
-    [disabled]="loginForm.invalid" 
-    color="primary" 
-    (click)="login()">
+    <button
+      mat-raised-button
+      [disabled]="loginForm.invalid"
+      color="primary"
+      (click)="login()"
+    >
       Entrar
     </button>
+    <p *ngIf="loginError.value">{{ loginError.message }}</p>
   </div>
+  <div *ngIf="isLoading"><mat-spinner color="accent"></mat-spinner></div>
 </section>

@@ -16,6 +16,7 @@ import { DialogComponent } from '../../shared/dialog/dialog.component';
 import { SharedService } from '../../core/services/shared.service';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { Observable } from 'rxjs';
+import { AuthService } from '../../core/services/auth.service';
 
 @Component({
   selector: 'app-admin',
@@ -60,7 +61,8 @@ export class AdminComponent {
 
   constructor(
     public dialog: MatDialog,
-    @Inject(SharedService) public sharedService: SharedService
+    @Inject(SharedService) public sharedService: SharedService,
+    @Inject(AuthService) private authService: AuthService
   ) {}
 
   openScheduleInfo(slot: number, weekday: string, selectedDate: string) {
@@ -107,5 +109,11 @@ export class AdminComponent {
     } else {
       return 'white';
     }
+  }
+
+  logout(){
+    this.authService.logout().then(() => {
+      window.location.reload();
+    });
   }
 }

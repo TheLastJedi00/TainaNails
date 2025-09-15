@@ -4,6 +4,11 @@ export interface Service {
   duration: number;
   name: string;
 }
+export interface LoginError {
+  message: string;
+  value: boolean;
+}
+
 export interface Schedule {
   id?: string;
   startTime: Timestamp | Date;

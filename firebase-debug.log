@@ -1,56 +1,58 @@
-[debug] [2025-09-14T22:17:01.766Z] ----------------------------------------------------------------------
-[debug] [2025-09-14T22:17:01.778Z] Command:       C:\nvm4w\nodejs\node.exe C:\nvm4w\nodejs\node_modules\firebase-tools\lib\bin\firebase.js emulators:start
-[debug] [2025-09-14T22:17:01.778Z] CLI Version:   14.15.2
-[debug] [2025-09-14T22:17:01.778Z] Platform:      win32
-[debug] [2025-09-14T22:17:01.778Z] Node Version:  v20.11.0
-[debug] [2025-09-14T22:17:01.778Z] Time:          Sun Sep 14 2025 19:17:01 GMT-0300 (Horário Padrão de Brasília)
-[debug] [2025-09-14T22:17:01.778Z] ----------------------------------------------------------------------
+[debug] [2025-09-15T18:37:37.051Z] ----------------------------------------------------------------------
+[debug] [2025-09-15T18:37:37.063Z] Command:       C:\nvm4w\nodejs\node.exe C:\nvm4w\nodejs\node_modules\firebase-tools\lib\bin\firebase.js emulators:start
+[debug] [2025-09-15T18:37:37.064Z] CLI Version:   14.15.2
+[debug] [2025-09-15T18:37:37.064Z] Platform:      win32
+[debug] [2025-09-15T18:37:37.064Z] Node Version:  v20.11.0
+[debug] [2025-09-15T18:37:37.064Z] Time:          Mon Sep 15 2025 15:37:37 GMT-0300 (Horário Padrão de Brasília)
+[debug] [2025-09-15T18:37:37.064Z] ----------------------------------------------------------------------
 [debug] 
-[debug] [2025-09-14T22:17:02.038Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2025-09-14T22:17:02.038Z] > authorizing via signed-in user (jediaelborges23@gmail.com)
-[debug] [2025-09-14T22:17:02.289Z] java version "21.0.6" 2025-01-21 LTS
-
-[debug] [2025-09-14T22:17:02.290Z] Java(TM) SE Runtime Environment (build 21.0.6+8-LTS-188)
+[debug] [2025-09-15T18:37:37.066Z] >>> [apiv2][query] GET https://firebase-public.firebaseio.com/cli.json [none]
+[debug] [2025-09-15T18:37:37.341Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-09-15T18:37:37.341Z] > authorizing via signed-in user (jediaelborges23@gmail.com)
+[debug] [2025-09-15T18:37:37.604Z] java version "21.0.6" 2025-01-21 LTS
+Java(TM) SE Runtime Environment (build 21.0.6+8-LTS-188)
 Java HotSpot(TM) 64-Bit Server VM (build 21.0.6+8-LTS-188, mixed mode, sharing)
 
-[debug] [2025-09-14T22:17:02.318Z] Parsed Java major version: 21
+[debug] [2025-09-15T18:37:37.618Z] Parsed Java major version: 21
 [info] i  emulators: Starting emulators: auth, firestore, hosting {"metadata":{"emulator":{"name":"hub"},"message":"Starting emulators: auth, firestore, hosting"}}
-[debug] [2025-09-14T22:17:02.330Z] [logging] Logging Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
-[debug] [2025-09-14T22:17:02.331Z] [auth] Authentication Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
-[debug] [2025-09-14T22:17:02.331Z] [firestore] Firestore Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
-[debug] [2025-09-14T22:17:02.331Z] [firestore.websocket] websocket server for firestore only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2025-09-15T18:37:37.632Z] [logging] Logging Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2025-09-15T18:37:37.632Z] [auth] Authentication Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2025-09-15T18:37:37.632Z] [firestore] Firestore Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2025-09-15T18:37:37.632Z] [firestore.websocket] websocket server for firestore only supports listening on one address (127.0.0.1). Not listening on ::1
 [warn] !  hosting: Hosting Emulator unable to start on port 5001, starting on 5002 instead. {"metadata":{"emulator":{"name":"hosting"},"message":"Hosting Emulator unable to start on port 5001, starting on 5002 instead."}}
-[debug] [2025-09-14T22:17:02.331Z] [hosting] Hosting Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
-[debug] [2025-09-14T22:17:02.332Z] assigned listening specs for emulators {"user":{"hub":[{"address":"127.0.0.1","family":"IPv4","port":4400},{"address":"::1","family":"IPv6","port":4400}],"ui":[{"address":"127.0.0.1","family":"IPv4","port":4000},{"address":"::1","family":"IPv6","port":4000}],"logging":[{"address":"127.0.0.1","family":"IPv4","port":4500}],"auth":[{"address":"127.0.0.1","family":"IPv4","port":9099}],"firestore":[{"address":"127.0.0.1","family":"IPv4","port":8081}],"firestore.websocket":[{"address":"127.0.0.1","family":"IPv4","port":9150}],"hosting":[{"address":"127.0.0.1","family":"IPv4","port":5002}]},"metadata":{"message":"assigned listening specs for emulators"}}
-[debug] [2025-09-14T22:17:02.337Z] [hub] writing locator at C:\Users\Pichau\AppData\Local\Temp\hub-tainalima-nails.json
-[debug] [2025-09-14T22:17:02.350Z] Ignoring unsupported arg: auto_download {"metadata":{"emulator":{"name":"firestore"},"message":"Ignoring unsupported arg: auto_download"}}
-[debug] [2025-09-14T22:17:02.351Z] Ignoring unsupported arg: single_project_mode_error {"metadata":{"emulator":{"name":"firestore"},"message":"Ignoring unsupported arg: single_project_mode_error"}}
-[debug] [2025-09-14T22:17:02.351Z] Starting Firestore Emulator with command {"binary":"java","args":["-Dgoogle.cloud_firestore.debug_log_level=FINE","-Duser.language=en","-jar","C:\\Users\\Pichau\\.cache\\firebase\\emulators\\cloud-firestore-emulator-v1.19.8.jar","--host","127.0.0.1","--port",8081,"--websocket_port",9150,"--project_id","tainalima-nails","--rules","C:\\Users\\Pichau\\Documents\\Projects\\taina-nails-main\\taina-nails\\firestore.rules","--single_project_mode",true],"optionalArgs":["port","webchannel_port","host","rules","websocket_port","functions_emulator","seed_from_export","project_id","single_project_mode"],"joinArgs":false,"shell":false,"port":8081} {"metadata":{"emulator":{"name":"firestore"},"message":"Starting Firestore Emulator with command {\"binary\":\"java\",\"args\":[\"-Dgoogle.cloud_firestore.debug_log_level=FINE\",\"-Duser.language=en\",\"-jar\",\"C:\\\\Users\\\\Pichau\\\\.cache\\\\firebase\\\\emulators\\\\cloud-firestore-emulator-v1.19.8.jar\",\"--host\",\"127.0.0.1\",\"--port\",8081,\"--websocket_port\",9150,\"--project_id\",\"tainalima-nails\",\"--rules\",\"C:\\\\Users\\\\Pichau\\\\Documents\\\\Projects\\\\taina-nails-main\\\\taina-nails\\\\firestore.rules\",\"--single_project_mode\",true],\"optionalArgs\":[\"port\",\"webchannel_port\",\"host\",\"rules\",\"websocket_port\",\"functions_emulator\",\"seed_from_export\",\"project_id\",\"single_project_mode\"],\"joinArgs\":false,\"shell\":false,\"port\":8081}"}}
+[debug] [2025-09-15T18:37:37.633Z] [hosting] Hosting Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2025-09-15T18:37:37.633Z] assigned listening specs for emulators {"user":{"hub":[{"address":"127.0.0.1","family":"IPv4","port":4400},{"address":"::1","family":"IPv6","port":4400}],"ui":[{"address":"127.0.0.1","family":"IPv4","port":4000},{"address":"::1","family":"IPv6","port":4000}],"logging":[{"address":"127.0.0.1","family":"IPv4","port":4500}],"auth":[{"address":"127.0.0.1","family":"IPv4","port":9099}],"firestore":[{"address":"127.0.0.1","family":"IPv4","port":8081}],"firestore.websocket":[{"address":"127.0.0.1","family":"IPv4","port":9150}],"hosting":[{"address":"127.0.0.1","family":"IPv4","port":5002}]},"metadata":{"message":"assigned listening specs for emulators"}}
+[debug] [2025-09-15T18:37:37.636Z] [hub] writing locator at C:\Users\Pichau\AppData\Local\Temp\hub-tainalima-nails.json
+[debug] [2025-09-15T18:37:37.649Z] Ignoring unsupported arg: auto_download {"metadata":{"emulator":{"name":"firestore"},"message":"Ignoring unsupported arg: auto_download"}}
+[debug] [2025-09-15T18:37:37.649Z] Ignoring unsupported arg: single_project_mode_error {"metadata":{"emulator":{"name":"firestore"},"message":"Ignoring unsupported arg: single_project_mode_error"}}
+[debug] [2025-09-15T18:37:37.649Z] Starting Firestore Emulator with command {"binary":"java","args":["-Dgoogle.cloud_firestore.debug_log_level=FINE","-Duser.language=en","-jar","C:\\Users\\Pichau\\.cache\\firebase\\emulators\\cloud-firestore-emulator-v1.19.8.jar","--host","127.0.0.1","--port",8081,"--websocket_port",9150,"--project_id","tainalima-nails","--rules","C:\\Users\\Pichau\\Documents\\Projects\\taina-nails-main\\taina-nails\\firestore.rules","--single_project_mode",true],"optionalArgs":["port","webchannel_port","host","rules","websocket_port","functions_emulator","seed_from_export","project_id","single_project_mode"],"joinArgs":false,"shell":false,"port":8081} {"metadata":{"emulator":{"name":"firestore"},"message":"Starting Firestore Emulator with command {\"binary\":\"java\",\"args\":[\"-Dgoogle.cloud_firestore.debug_log_level=FINE\",\"-Duser.language=en\",\"-jar\",\"C:\\\\Users\\\\Pichau\\\\.cache\\\\firebase\\\\emulators\\\\cloud-firestore-emulator-v1.19.8.jar\",\"--host\",\"127.0.0.1\",\"--port\",8081,\"--websocket_port\",9150,\"--project_id\",\"tainalima-nails\",\"--rules\",\"C:\\\\Users\\\\Pichau\\\\Documents\\\\Projects\\\\taina-nails-main\\\\taina-nails\\\\firestore.rules\",\"--single_project_mode\",true],\"optionalArgs\":[\"port\",\"webchannel_port\",\"host\",\"rules\",\"websocket_port\",\"functions_emulator\",\"seed_from_export\",\"project_id\",\"single_project_mode\"],\"joinArgs\":false,\"shell\":false,\"port\":8081}"}}
 [info] i  firestore: Firestore Emulator logging to firestore-debug.log {"metadata":{"emulator":{"name":"firestore"},"message":"Firestore Emulator logging to \u001b[1mfirestore-debug.log\u001b[22m"}}
+[debug] [2025-09-15T18:37:37.694Z] <<< [apiv2][status] GET https://firebase-public.firebaseio.com/cli.json 200
+[debug] [2025-09-15T18:37:37.695Z] <<< [apiv2][body] GET https://firebase-public.firebaseio.com/cli.json {"cloudBuildErrorAfter":1594252800000,"cloudBuildWarnAfter":1590019200000,"defaultNode10After":1594252800000,"minVersion":"3.0.5","node8DeploysDisabledAfter":1613390400000,"node8RuntimeDisabledAfter":1615809600000,"node8WarnAfter":1600128000000}
 [info] +  firestore: Firestore Emulator UI websocket is running on 9150. {"metadata":{"emulator":{"name":"firestore"},"message":"Firestore Emulator UI websocket is running on 9150."}}
-[debug] [2025-09-14T22:17:10.381Z] Checked if tokens are valid: false, expires at: 1757878565992
-[debug] [2025-09-14T22:17:10.381Z] Checked if tokens are valid: false, expires at: 1757878565992
-[debug] [2025-09-14T22:17:10.382Z] > refreshing access token with scopes: []
-[debug] [2025-09-14T22:17:10.383Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
-[debug] [2025-09-14T22:17:10.384Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
-[debug] [2025-09-14T22:17:10.589Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
-[debug] [2025-09-14T22:17:10.589Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
-[debug] [2025-09-14T22:17:10.617Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/tainalima-nails/sites 
-[debug] [2025-09-14T22:17:11.909Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/tainalima-nails/sites 200
-[debug] [2025-09-14T22:17:11.910Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/tainalima-nails/sites {"sites":[{"name":"projects/tainalima-nails/sites/tainalima-nails","defaultUrl":"https://tainalima-nails.web.app","appId":"1:1008456345529:web:899c7433f9d97d0374b868","type":"DEFAULT_SITE"}]}
-[debug] [2025-09-14T22:17:11.910Z] Checked if tokens are valid: true, expires at: 1757891829589
-[debug] [2025-09-14T22:17:11.910Z] Checked if tokens are valid: true, expires at: 1757891829589
-[debug] [2025-09-14T22:17:11.910Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/tainalima-nails/webApps/1:1008456345529:web:899c7433f9d97d0374b868/config [none]
-[debug] [2025-09-14T22:17:12.915Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/tainalima-nails/webApps/1:1008456345529:web:899c7433f9d97d0374b868/config 200
-[debug] [2025-09-14T22:17:12.915Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/tainalima-nails/webApps/1:1008456345529:web:899c7433f9d97d0374b868/config {"projectId":"tainalima-nails","appId":"1:1008456345529:web:899c7433f9d97d0374b868","storageBucket":"tainalima-nails.firebasestorage.app","apiKey":"AIzaSyDsgKRR5X13g-IdLdEUV_fWKfvhPT1Ko0A","authDomain":"tainalima-nails.firebaseapp.com","messagingSenderId":"1008456345529","measurementId":"G-QB1SPN254S"}
-[debug] [2025-09-14T22:17:12.939Z] Checked if tokens are valid: true, expires at: 1757891829589
-[debug] [2025-09-14T22:17:12.939Z] Checked if tokens are valid: true, expires at: 1757891829589
-[debug] [2025-09-14T22:17:12.939Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/tainalima-nails [none]
-[debug] [2025-09-14T22:17:13.275Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/tainalima-nails 200
-[debug] [2025-09-14T22:17:13.275Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/tainalima-nails {"projectId":"tainalima-nails","projectNumber":"1008456345529","displayName":"TainaLima-Nails","name":"projects/tainalima-nails","resources":{"hostingSite":"tainalima-nails"},"state":"ACTIVE","etag":"1_41722564-115f-4393-b30d-e65623499f37"}
+[debug] [2025-09-15T18:37:45.476Z] Checked if tokens are valid: false, expires at: 1757899942349
+[debug] [2025-09-15T18:37:45.476Z] Checked if tokens are valid: false, expires at: 1757899942349
+[debug] [2025-09-15T18:37:45.477Z] > refreshing access token with scopes: []
+[debug] [2025-09-15T18:37:45.477Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2025-09-15T18:37:45.477Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-09-15T18:37:45.669Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2025-09-15T18:37:45.669Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-09-15T18:37:45.685Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/tainalima-nails/sites 
+[debug] [2025-09-15T18:37:46.853Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/tainalima-nails/sites 200
+[debug] [2025-09-15T18:37:46.853Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/tainalima-nails/sites {"sites":[{"name":"projects/tainalima-nails/sites/tainalima-nails","defaultUrl":"https://tainalima-nails.web.app","appId":"1:1008456345529:web:899c7433f9d97d0374b868","type":"DEFAULT_SITE"}]}
+[debug] [2025-09-15T18:37:46.853Z] Checked if tokens are valid: true, expires at: 1757965064669
+[debug] [2025-09-15T18:37:46.853Z] Checked if tokens are valid: true, expires at: 1757965064669
+[debug] [2025-09-15T18:37:46.854Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/tainalima-nails/webApps/1:1008456345529:web:899c7433f9d97d0374b868/config [none]
+[debug] [2025-09-15T18:37:47.997Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/tainalima-nails/webApps/1:1008456345529:web:899c7433f9d97d0374b868/config 200
+[debug] [2025-09-15T18:37:47.997Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/tainalima-nails/webApps/1:1008456345529:web:899c7433f9d97d0374b868/config {"projectId":"tainalima-nails","appId":"1:1008456345529:web:899c7433f9d97d0374b868","storageBucket":"tainalima-nails.firebasestorage.app","apiKey":"AIzaSyDsgKRR5X13g-IdLdEUV_fWKfvhPT1Ko0A","authDomain":"tainalima-nails.firebaseapp.com","messagingSenderId":"1008456345529","measurementId":"G-QB1SPN254S"}
+[debug] [2025-09-15T18:37:48.019Z] Checked if tokens are valid: true, expires at: 1757965064669
+[debug] [2025-09-15T18:37:48.020Z] Checked if tokens are valid: true, expires at: 1757965064669
+[debug] [2025-09-15T18:37:48.020Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/tainalima-nails [none]
+[debug] [2025-09-15T18:37:48.358Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/tainalima-nails 200
+[debug] [2025-09-15T18:37:48.358Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/tainalima-nails {"projectId":"tainalima-nails","projectNumber":"1008456345529","displayName":"TainaLima-Nails","name":"projects/tainalima-nails","resources":{"hostingSite":"tainalima-nails"},"state":"ACTIVE","etag":"1_41722564-115f-4393-b30d-e65623499f37"}
 [info] i  hosting[tainalima-nails]: Serving hosting files from: dist/taina-nail-angular/browser {"metadata":{"emulator":{"name":"hosting"},"message":"Serving hosting files from: \u001b[1mdist/taina-nail-angular/browser\u001b[22m"}}
 [info] +  hosting[tainalima-nails]: Local server: http://127.0.0.1:5002 {"metadata":{"emulator":{"name":"hosting"},"message":"Local server: \u001b[4m\u001b[1mhttp://127.0.0.1:5002\u001b[22m\u001b[24m"}}
-[debug] [2025-09-14T22:17:13.409Z] Could not find VSCode notification endpoint: FetchError: request to http://localhost:40001/vscode/notify failed, reason: . If you are not running the Firebase Data Connect VSCode extension, this is expected and not an issue.
+[debug] [2025-09-15T18:37:48.494Z] Could not find VSCode notification endpoint: FetchError: request to http://localhost:40001/vscode/notify failed, reason: . If you are not running the Firebase Data Connect VSCode extension, this is expected and not an issue.
 [info] 
 ┌─────────────────────────────────────────────────────────────┐
 │ ✔  All emulators ready! It is now safe to connect your app. │

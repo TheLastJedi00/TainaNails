@@ -14,7 +14,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { Router, RouterModule } from '@angular/router';
 import { AuthService } from '../../core/services/auth.service';
-import { Login } from '../../core/types/types';
+import { Login, LoginError } from '../../core/types/types';
+import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 
 @Component({
   selector: 'app-login',
@@ -28,12 +29,15 @@ import { Login } from '../../core/types/types';
     MatIconModule,
     MatButtonModule,
     RouterModule,
-  ],
+    MatProgressSpinnerModule
+],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
 })
 export class LoginComponent {
   hide = true;
+  isLoading = false;
+  loginError: LoginError  = {message:'', value: false};
 
   constructor(
     private fb: FormBuilder,
@@ -55,15 +59,23 @@ export class LoginComponent {
   }
 
   login(){
+    this.isLoading = true;
     const admin: Login = {
       email: this.loginForm.get('email')?.value,
       password: this.loginForm.get('password')?.value
     };
     this.auth.login(admin).then((success) => {
+      this.isLoading = false;
+      if (success) {
+        this.router.navigate(['/admin']);
+      }
       if (!success) {
         console.error('Email ou senha inválidos');
+        this.loginError = {message: 'Email ou senha inválidos', value: true};
       }
     }).catch((error) => {
+      this.isLoading = false;
+      this.loginError = {message: `Erro no login: ${error}`, value: true};
       console.error('Erro no login:', error);
     });
   }
