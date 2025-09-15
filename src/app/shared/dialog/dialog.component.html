@@ -101,7 +101,7 @@
             <button mat-button matStepperPrevious color="primary">
               Anterior
             </button>
-            <button mat-raised-button [disabled]="utils.isButtonDisabled(formGroup.get('dateCtrl')!)" matStepperNext color="accent">
+            <button mat-raised-button [disabled]="utils.isButtonDisabled(formGroup.get('dateCtrl')!)" matStepperNext color="accent" (click)="avaliableTimeList()">
               Próximo
             </button>
           </div>
@@ -110,8 +110,8 @@
       <mat-step [stepControl]="formGroup.get('timeCtrl')!">
         <form [formGroup]="formGroup">
           <ng-template matStepLabel>Escolha um horário</ng-template>
-          <mat-spinner *ngIf="timeListIsEmpty()" color="accent"></mat-spinner>
-          <mat-form-field *ngIf="!timeListIsEmpty()">
+          <mat-spinner *ngIf="isLoading" color="accent"></mat-spinner>
+          <mat-form-field *ngIf="!isLoading">
             <mat-label>Horário disponível</mat-label>
             <mat-select formControlName="timeCtrl" required>
               <mat-option *ngFor="let time of timeList" [value]="time"

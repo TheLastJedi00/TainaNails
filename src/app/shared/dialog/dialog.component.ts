@@ -29,6 +29,8 @@ import { MatListModule } from '@angular/material/list';
 import { SchedulesService } from '../../core/services/schedules.service';
 import { Schedule } from '../../core/types/types';
 import { DialogUtils } from './dialog-utils/dialog-utils';
+import { SharedService } from '../../core/services/shared.service';
+import { Timestamp } from 'firebase/firestore';
 
 @Component({
   selector: 'app-dialog',
@@ -57,18 +59,23 @@ import { DialogUtils } from './dialog-utils/dialog-utils';
   styleUrl: './dialog.component.scss',
 })
 export class DialogComponent {
-  timeList!: number[];
+  timeList: number[] = [];
   isLinear: boolean = false;
+  normalDaySlots: number[] = [14, 15, 16, 17, 18];
+  wednesdaySlots: number[] = [15, 16, 17, 18];
+  saturdaySlots: number[] = [8, 9, 10, 11, 14, 15, 16, 17, 18];
   subscriptions: Subscription[] = [];
+  isLoading = true;
 
   constructor(
     private fb: FormBuilder,
     public dialogRef: MatDialogRef<DialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private schedulesService: SchedulesService,
+    private sharedServices: SharedService,
     public utils: DialogUtils
   ) {
-    this.timeList = [8, 9, 10, 11, 14, 15, 16, 17, 18];
+    
   }
 
   formGroup: FormGroup = this.fb.group({
@@ -79,7 +86,51 @@ export class DialogComponent {
     timeCtrl: ['', Validators.required],
   });
 
-  timeListIsEmpty(): boolean {
+  avaliableTimeList() {
+    const selectedDate = new Date(this.formGroup.value.dateCtrl);
+    const startOfDay: Date = new Date(selectedDate.setHours(0, 0, 0, 0));
+    const endOfDay = new Date(selectedDate.setHours(23, 59, 59, 999));
+    const dayOfWeek = selectedDate.getDay();
+    const service = this.formGroup.value.serviceCtrl;
+    const occupiedTimeList: number[] = [];
+    let avaliableTimeList: number[] = [];
+
+    this.schedulesService.listSchedules(startOfDay, endOfDay).subscribe({
+      next: (schedulesFromDb) => {
+        schedulesFromDb.forEach((s) => {
+          const startTime = (s.startTime as Timestamp).toDate().getHours();
+          const endTime = (s.endTime as Timestamp).toDate().getHours();
+          occupiedTimeList.push(startTime);
+          if (startTime !== endTime) {
+            occupiedTimeList.push(endTime);
+          }
+        });
+        let baseTimeSlots: number[] = [];
+            switch (dayOfWeek) {
+                case 3:
+                    baseTimeSlots = this.wednesdaySlots;
+                    break;
+                case 6:
+                    baseTimeSlots = this.saturdaySlots;
+                    break;
+                default:
+                    baseTimeSlots = this.normalDaySlots;
+                    break;
+            }
+
+            avaliableTimeList = baseTimeSlots.filter(
+                (slot) => !occupiedTimeList.includes(slot)
+            );
+            this.isLoading = false;
+            this.timeList = avaliableTimeList;
+      },
+    });
+  }
+
+  timeListIsEmpty(disable?: boolean): boolean {
+    if(disable){
+      return false;
+    }
     return this.timeList.length === 0;
   }
 
@@ -87,7 +138,7 @@ export class DialogComponent {
     const selectedService = this.utils.services.find(
       (service) => service.name === this.formGroup.value.serviceCtrl
     );
-  
+
     const endTime = new Date(dateTime);
     endTime.setMinutes(dateTime.getMinutes() + selectedService!.duration);
 
@@ -109,7 +160,7 @@ export class DialogComponent {
       createdAt: new Date(),
     };
 
-    console.log(schedule);
+    this.avaliableTimeList();
     this.schedulesService.createSchedule(schedule).then(() => {
       this.dialogRef.close();
     });

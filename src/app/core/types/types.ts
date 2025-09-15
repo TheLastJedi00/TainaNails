@@ -1,7 +1,7 @@
 import { Timestamp } from 'firebase/firestore';
 
 export interface Service {
-  id: number;
+  duration: number;
   name: string;
 }
 export interface Schedule {
