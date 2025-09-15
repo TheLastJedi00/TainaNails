@@ -123,6 +123,24 @@ export class DialogComponent {
             );
             this.isLoading = false;
             this.timeList = avaliableTimeList;
+
+            const selectedService = this.utils.services.find(s => s.name === service);
+
+            const LONG_SERVICE_THRESHOLD = 60;
+
+            if (selectedService && selectedService.duration > LONG_SERVICE_THRESHOLD) {
+                
+                this.timeList = avaliableTimeList.filter(slot => {
+                    const isLastSlotException = (slot === 18);
+
+                    const nextSlotIsAvailable = avaliableTimeList.includes(slot + 1);
+
+                    return isLastSlotException || nextSlotIsAvailable;
+                });
+
+            } else {
+                this.timeList = avaliableTimeList;
+            }
       },
     });
   }
