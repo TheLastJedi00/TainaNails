@@ -31,6 +31,7 @@
               formControlName="phoneCtrl"
               placeholder="(47)98877-6655"
               required
+              [imask]="phoneMask"
             />
           </mat-form-field>
           <div>
@@ -138,25 +139,25 @@
         <ng-template matStepLabel>Confirmar dados</ng-template>
         <mat-list>
           <mat-list-item
-            >Nome: <strong>{{ this.formGroup.value.nameCtrl }}</strong></mat-list-item
+            ><mat-icon>person</mat-icon> <strong>{{ this.formGroup.value.nameCtrl }}</strong></mat-list-item
           >
           <mat-divider></mat-divider>
           <mat-list-item
-            >Telefone: <strong>{{ this.formGroup.value.phoneCtrl }}</strong></mat-list-item
+            ><mat-icon>phone</mat-icon> <strong>{{ this.formGroup.value.phoneCtrl }}</strong></mat-list-item
           >
           <mat-divider></mat-divider>
           <mat-list-item
-            >Serviço: <strong>{{ this.formGroup.value.serviceCtrl }}</strong></mat-list-item
+            ><mat-icon>design_services</mat-icon> <strong>{{ this.formGroup.value.serviceCtrl }}</strong></mat-list-item
           >
           <mat-divider></mat-divider>
           <mat-list-item
-            >Data:
+            ><mat-icon>date_range</mat-icon>
             <strong>{{ this.formGroup.value.dateCtrl | date : 'dd/MM/yyyy' : 'GMT-3' }}
             </strong></mat-list-item
           >
           <mat-divider></mat-divider>
           <mat-list-item
-            >Hora: <strong>{{ this.formGroup.value.timeCtrl }}h</strong></mat-list-item
+            ><mat-icon>access_time</mat-icon> <strong>{{ this.formGroup.value.timeCtrl }}h</strong></mat-list-item
           >
         </mat-list>
         <div>

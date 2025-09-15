@@ -61,4 +61,16 @@ export class DialogUtils {
   isButtonDisabled(inputValue: AbstractControl): boolean {
     return inputValue.invalid || inputValue.pristine;
   }
+  
+  phoneValidator(): ValidatorFn {
+    return (control: AbstractControl): ValidationErrors | null => {
+      const value = control.value;
+      if (!value) {
+        return null;
+      }
+      const numericValue = String(value).replace(/\D/g, '');
+      const isValid = numericValue.length === 10 || numericValue.length === 11;
+      return isValid ? null : { invalidPhone: true };
+    };
+  }
 }

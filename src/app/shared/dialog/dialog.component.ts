@@ -31,6 +31,8 @@ import { Schedule } from '../../core/types/types';
 import { DialogUtils } from './dialog-utils/dialog-utils';
 import { SharedService } from '../../core/services/shared.service';
 import { Timestamp } from 'firebase/firestore';
+import { IMaskModule } from 'angular-imask';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-dialog',
@@ -49,6 +51,8 @@ import { Timestamp } from 'firebase/firestore';
     MatProgressSpinnerModule,
     MatDividerModule,
     MatListModule,
+    IMaskModule,
+    MatIconModule,
   ],
   providers: [
     DialogUtils,
@@ -67,6 +71,17 @@ export class DialogComponent {
   subscriptions: Subscription[] = [];
   isLoading = true;
 
+  phoneMask = {
+    mask: [
+      {
+        mask: '(00) 0000-0000',
+      },
+      {
+        mask: '(00) 00000-0000',
+      },
+    ],
+  };
+
   constructor(
     private fb: FormBuilder,
     public dialogRef: MatDialogRef<DialogComponent>,
@@ -74,13 +89,11 @@ export class DialogComponent {
     private schedulesService: SchedulesService,
     private sharedServices: SharedService,
     public utils: DialogUtils
-  ) {
-    
-  }
+  ) {}
 
   formGroup: FormGroup = this.fb.group({
     nameCtrl: ['', Validators.required],
-    phoneCtrl: ['', Validators.required],
+    phoneCtrl: ['', [Validators.required, this.utils.phoneValidator()]],
     serviceCtrl: ['', Validators.required],
     dateCtrl: ['', [Validators.required, this.utils.dateValidator()]],
     timeCtrl: ['', Validators.required],
@@ -106,51 +119,56 @@ export class DialogComponent {
           }
         });
         let baseTimeSlots: number[] = [];
-            switch (dayOfWeek) {
-                case 3:
-                    baseTimeSlots = this.wednesdaySlots;
-                    break;
-                case 6:
-                    baseTimeSlots = this.saturdaySlots;
-                    break;
-                default:
-                    baseTimeSlots = this.normalDaySlots;
-                    break;
-            }
+        switch (dayOfWeek) {
+          case 3:
+            baseTimeSlots = this.wednesdaySlots;
+            break;
+          case 6:
+            baseTimeSlots = this.saturdaySlots;
+            break;
+          default:
+            baseTimeSlots = this.normalDaySlots;
+            break;
+        }
 
-            avaliableTimeList = baseTimeSlots.filter(
-                (slot) => !occupiedTimeList.includes(slot)
-            );
-            this.isLoading = false;
-            this.timeList = avaliableTimeList;
+        avaliableTimeList = baseTimeSlots.filter(
+          (slot) => !occupiedTimeList.includes(slot)
+        );
+        this.isLoading = false;
+        this.timeList = avaliableTimeList;
 
-            const selectedService = this.utils.services.find(s => s.name === service);
+        const selectedService = this.utils.services.find(
+          (s) => s.name === service
+        );
 
-            const LONG_SERVICE_THRESHOLD = 60;
+        const LONG_SERVICE_THRESHOLD = 60;
 
-            if (selectedService && selectedService.duration > LONG_SERVICE_THRESHOLD) {
-                
-                this.timeList = avaliableTimeList.filter(slot => {
-                    const isLastSlotException = (slot === 18);
+        if (
+          selectedService &&
+          selectedService.duration > LONG_SERVICE_THRESHOLD
+        ) {
+          this.timeList = avaliableTimeList.filter((slot) => {
+            const isLastSlotException = slot === 18;
 
-                    const nextSlotIsAvailable = avaliableTimeList.includes(slot + 1);
+            const nextSlotIsAvailable = avaliableTimeList.includes(slot + 1);
 
-                    return isLastSlotException || nextSlotIsAvailable;
-                });
-
-            } else {
-                this.timeList = avaliableTimeList;
-            }
+            return isLastSlotException || nextSlotIsAvailable;
+          });
+        } else {
+          this.timeList = avaliableTimeList;
+        }
       },
     });
   }
 
   timeListIsEmpty(disable?: boolean): boolean {
-    if(disable){
+    if (disable) {
       return false;
     }
     return this.timeList.length === 0;
   }
+
+  
 
   endOfService(dateTime: Date): Date {
     const selectedService = this.utils.services.find(

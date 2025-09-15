@@ -4,3 +4,16 @@
 h1 {
   text-align: center;
 }
+
+mat-list-item {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  flex-direction: row;
+  gap: 1em;
+  mat-icon {
+    height: 100%;
+    vertical-align: middle;
+    margin-right: 8px;
+  }
+}
