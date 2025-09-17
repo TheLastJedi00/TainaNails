@@ -18,7 +18,8 @@ export class ResponseDialogComponent {
   @Input() iconColor: string = this.data.iconColor;
   @Input() description: string = this.data.description ? this.data.description : '';
   @Input() strong: string = this.data.strong ? this.data.strong : '';
-  isLoading: boolean = this.data.isLoading;
+  isLoading: boolean = this.data.isLoading?? false;
+
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any) {}
 

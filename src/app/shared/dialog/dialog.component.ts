@@ -103,7 +103,7 @@ export class DialogComponent {
   });
 
   openResponseDialog(
-    isLoading: boolean = false,
+    isLoading: boolean,
     matIcon?: string,
     title?: string,
     iconColor?: string,
@@ -224,13 +224,16 @@ export class DialogComponent {
       createdAt: new Date(),
       acessCode: this.acessCode(formValues.nameCtrl, formValues.phoneCtrl),
     };
-    this.openResponseDialog(true);
+
+    const dialogRef = this.responseDialog.open(ResponseDialogComponent, {
+      data: { isLoading: true },
+    });
 
     this.avaliableTimeList();
     this.schedulesService
       .createSchedule(schedule)
       .then(() => {
-        this.dialogRef.close();
+        dialogRef.close();
         this.openResponseDialog(
           false,
           'check_circle',
@@ -241,6 +244,7 @@ export class DialogComponent {
         );
       })
       .catch((error) => {
+        dialogRef.close();
         this.openResponseDialog(
           false,
           'error',
