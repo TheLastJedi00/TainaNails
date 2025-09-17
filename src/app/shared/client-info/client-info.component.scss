@@ -1,0 +1,24 @@
+div {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+  height: min-content;
+  width: 15em;
+  padding: 10px;
+  background-color: white;
+  border-radius: 10px;
+  text-align: left;
+
+  p {
+    display: flex;
+    flex-direction: row;
+    mat-icon {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      margin-right: 10px;
+    }
+  }
+}

@@ -230,6 +230,7 @@ export class DialogComponent {
     });
 
     this.avaliableTimeList();
+
     this.schedulesService
       .createSchedule(schedule)
       .then(() => {

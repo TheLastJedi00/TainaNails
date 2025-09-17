@@ -30,6 +30,18 @@ export class SchedulesService {
     );
   }
 
+  listByAcessCode(acessCode: string): Observable<Schedule[]> {
+    const schedulesByCode = this.firestore.collection<Schedule>('schedules', ref => ref.where('acessCode', '==', acessCode)
+    );
+    return schedulesByCode.snapshotChanges().pipe(
+      map(actions => actions.map(a => {
+        const data = a.payload.doc.data() as Schedule;
+        const id = a.payload.doc.id;
+        return { id, ...data };
+      }))
+    );
+  }
+
   createSchedule(schedule: Omit<Schedule, 'id' | 'createdAt'>): Promise<DocumentReference<Schedule>> {
     return this.schedulesCollection.add(schedule);
   }
