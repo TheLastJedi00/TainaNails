@@ -16,6 +16,7 @@ import { Router, RouterModule } from '@angular/router';
 import { AuthService } from '../../core/services/auth.service';
 import { Login, LoginError } from '../../core/types/types';
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
+import { ResponseDialogComponent } from "../../shared/response-dialog/response-dialog.component";
 
 @Component({
   selector: 'app-login',
@@ -29,7 +30,8 @@ import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
     MatIconModule,
     MatButtonModule,
     RouterModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    ResponseDialogComponent
 ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',

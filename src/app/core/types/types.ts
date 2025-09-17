@@ -18,6 +18,7 @@ export interface Schedule {
   clientPhone: string;
   active: boolean;
   createdAt?: Date | Timestamp;
+  acessCode?: string;
 }
 
 export interface Login {

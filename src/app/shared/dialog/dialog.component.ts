@@ -8,6 +8,7 @@ import {
 } from '@angular/forms';
 import {
   MAT_DIALOG_DATA,
+  MatDialog,
   MatDialogModule,
   MatDialogRef,
 } from '@angular/material/dialog';
@@ -33,6 +34,7 @@ import { SharedService } from '../../core/services/shared.service';
 import { Timestamp } from 'firebase/firestore';
 import { IMaskModule } from 'angular-imask';
 import { MatIconModule } from '@angular/material/icon';
+import { ResponseDialogComponent } from '../response-dialog/response-dialog.component';
 
 @Component({
   selector: 'app-dialog',
@@ -88,6 +90,7 @@ export class DialogComponent {
     @Inject(MAT_DIALOG_DATA) public data: any,
     private schedulesService: SchedulesService,
     private sharedServices: SharedService,
+    private responseDialog: MatDialog,
     public utils: DialogUtils
   ) {}
 
@@ -98,6 +101,28 @@ export class DialogComponent {
     dateCtrl: ['', [Validators.required, this.utils.dateValidator()]],
     timeCtrl: ['', Validators.required],
   });
+
+  openResponseDialog(
+    isLoading: boolean = false,
+    matIcon?: string,
+    title?: string,
+    iconColor?: string,
+    description?: string,
+    strong?: string
+  ) {
+    const dialogRef = this.responseDialog.open(ResponseDialogComponent, {
+      data: {
+        isLoading: isLoading,
+        matIcon: matIcon,
+        title: title,
+        iconColor: iconColor,
+        description: description,
+        strong: strong,
+      },
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {});
+  }
 
   avaliableTimeList() {
     const selectedDate = new Date(this.formGroup.value.dateCtrl);
@@ -168,8 +193,6 @@ export class DialogComponent {
     return this.timeList.length === 0;
   }
 
-  
-
   endOfService(dateTime: Date): Date {
     const selectedService = this.utils.services.find(
       (service) => service.name === this.formGroup.value.serviceCtrl
@@ -179,6 +202,11 @@ export class DialogComponent {
     endTime.setMinutes(dateTime.getMinutes() + selectedService!.duration);
 
     return endTime;
+  }
+
+  acessCode(name: string, phone: string): string {
+    const splitPhone = phone.split('-')[1];
+    return `${name[0].toLocaleUpperCase()}${splitPhone}`;
   }
 
   createSchedule(): void {
@@ -194,11 +222,32 @@ export class DialogComponent {
       serviceName: formValues.serviceCtrl,
       active: true,
       createdAt: new Date(),
+      acessCode: this.acessCode(formValues.nameCtrl, formValues.phoneCtrl),
     };
+    this.openResponseDialog(true);
 
     this.avaliableTimeList();
-    this.schedulesService.createSchedule(schedule).then(() => {
-      this.dialogRef.close();
-    });
+    this.schedulesService
+      .createSchedule(schedule)
+      .then(() => {
+        this.dialogRef.close();
+        this.openResponseDialog(
+          false,
+          'check_circle',
+          'Agendamento efetuado com sucesso!',
+          'rgb(127, 206, 145)',
+          'O código para acompanhar seu agendamento é a primeira letra do seu nome junto aos quatro útimos dígitos do seu telefone.',
+          this.acessCode(formValues.nameCtrl, formValues.phoneCtrl)
+        );
+      })
+      .catch((error) => {
+        this.openResponseDialog(
+          false,
+          'error',
+          'Infelizmente houve um erro',
+          'rgba(206, 127, 127, 1)',
+          error
+        );
+      });
   }
 }

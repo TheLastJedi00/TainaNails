@@ -1,7 +1,9 @@
 <header>
   <button mat-raised-button [routerLink]="['']" color="accent">Início</button>
 </header>
-<section [formGroup]="loginForm">
+<section 
+[formGroup]="loginForm"
+>
   <div class="container" *ngIf="!isLoading">
     <img src="../../../assets/Logotype.svg" alt="Tainá Lima Nail Design" />
     <mat-form-field class="input">
