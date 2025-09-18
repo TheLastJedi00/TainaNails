@@ -19,6 +19,7 @@ export class SchedulesService {
     const collectionWithQuery = this.firestore.collection<Schedule>('schedules', ref => 
       ref.where('startTime', '>=', date)
          .where('startTime', '<=', saturday)
+         .where('active', '==', true)
          .orderBy('startTime', 'asc')
     );
     return collectionWithQuery.snapshotChanges().pipe(
