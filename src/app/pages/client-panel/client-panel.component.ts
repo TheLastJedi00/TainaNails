@@ -16,7 +16,9 @@ import { _closeDialogVia, MatDialog } from '@angular/material/dialog';
 import { Schedule } from '../../core/types/types';
 import { ResponseDialogComponent } from '../../shared/response-dialog/response-dialog.component';
 import { MatIconModule } from '@angular/material/icon';
-import { ClientInfoComponent } from '../../shared/client-info/client-info.component';
+import { MatTableModule } from '@angular/material/table';
+import { Timestamp } from '@angular/fire/firestore';
+
 
 @Component({
   selector: 'app-client-panel',
@@ -31,7 +33,7 @@ import { ClientInfoComponent } from '../../shared/client-info/client-info.compon
     MatError,
     CommonModule,
     MatIconModule,
-    ClientInfoComponent,
+    MatTableModule
   ],
   templateUrl: './client-panel.component.html',
   styleUrl: './client-panel.component.scss',
@@ -40,6 +42,7 @@ export class ClientPanelComponent {
   codeForm!: FormGroup;
   isLoading = false;
   schedulesList: Schedule[] = [];
+  displayedColumns: string[] = ['acessCode', 'clientName', 'clientPhone', 'serviceName', 'startTime'];
 
   constructor(
     private fb: FormBuilder,
@@ -69,6 +72,19 @@ export class ClientPanelComponent {
         strong: strong,
       },
     });
+  }
+
+  serverTimestampToDateString(timestamp: Timestamp){
+    const date: Date = timestamp.toDate();
+    const dateString: string = date.toLocaleDateString('pt-BR', {
+      day: '2-digit',
+      month: '2-digit',
+      year: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit',
+    }).replace(',', '');
+    
+    return dateString;
   }
 
   search() {

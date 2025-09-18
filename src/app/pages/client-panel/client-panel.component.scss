@@ -12,7 +12,7 @@ section {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  height: 100vh;
+  min-height: 100vh;
   width: 100vw;
   div {
     display: flex;
@@ -27,7 +27,7 @@ section {
 
     img {
       width: 20em;
-      margin-bottom: 20px
+      margin-bottom: 20px;
     }
     .input {
       width: 70%;
@@ -41,11 +41,11 @@ section {
       color: red;
     }
     span {
-        width: 70%;
-        font-size: 0.9em;
-        margin-bottom: 2em;
-        color: gray;
-        text-align: justify;
+      width: 70%;
+      font-size: 0.9em;
+      margin-bottom: 2em;
+      color: gray;
+      text-align: justify;
     }
   }
 }
