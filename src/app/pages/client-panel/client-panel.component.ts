@@ -42,7 +42,7 @@ export class ClientPanelComponent {
   codeForm!: FormGroup;
   isLoading = false;
   schedulesList: Schedule[] = [];
-  displayedColumns: string[] = ['acessCode', 'clientName', 'clientPhone', 'serviceName', 'startTime'];
+  displayedColumns: string[] = ['clientName', 'serviceName', 'startTime'];
 
   constructor(
     private fb: FormBuilder,

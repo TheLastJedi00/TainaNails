@@ -32,7 +32,7 @@ export class SchedulesService {
   }
 
   listByAcessCode(acessCode: string): Observable<Schedule[]> {
-    const schedulesByCode = this.firestore.collection<Schedule>('schedules', ref => ref.where('acessCode', '==', acessCode)
+    const schedulesByCode = this.firestore.collection<Schedule>('schedules', ref => ref.where('acessCode', '==', acessCode).where('active', '==', true).orderBy('startTime', 'asc')
     );
     return schedulesByCode.snapshotChanges().pipe(
       map(actions => actions.map(a => {
