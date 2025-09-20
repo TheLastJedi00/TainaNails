@@ -68,7 +68,7 @@ export class ScheduleDeleteComponent {
     });
   }
   deleteSchedule() {
-    this.isLoading = true;
+    // this.isLoading = true;
     this.schedulesService
 
     const response = this.responseDialog.open(ResponseDialogComponent, {
@@ -80,8 +80,7 @@ export class ScheduleDeleteComponent {
       .then(() => {
         response.close();
         this.infoDialog.close();
-        window.location.reload();
-        this.openResponseDialog(false, 'check_circle', 'Agendamento cancelado com sucesso!', 'rgb(127, 206, 145)');
+        this.openResponseDialog(false, 'check_circle', 'Agendamento cancelado com sucesso!', 'rgb(127, 206, 145)', 'Recarregue a página pra atualizar as alterações.');
       })
       .catch((error) => {
         response.close();
