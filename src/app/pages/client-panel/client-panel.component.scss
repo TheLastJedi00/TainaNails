@@ -48,4 +48,11 @@ section {
       text-align: justify;
     }
   }
+  .mdc-data-table__table {
+    min-width: 50%;
+    border: 0;
+    white-space: nowrap;
+    border-spacing: 0;
+    table-layout: fixed;
+  }
 }
